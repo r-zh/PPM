@@ -1,10 +1,11 @@
 package cn.edu.sdu.qlsc.sc.spepms.system.creation.models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
 
-import cn.edu.sdu.qlsc.sc.spepms.system.common.models.BaseModel;
+import cn.edu.sdu.qlsc.sc.spepms.system.common.models.AuditableModel;
 
 /**
  * 发布的项目
@@ -12,7 +13,7 @@ import cn.edu.sdu.qlsc.sc.spepms.system.common.models.BaseModel;
  * @author Peter Fu
  */
 @Entity
-public class PublishedProject extends BaseModel {
+public class PublishedProject extends AuditableModel {
 
     /**
      * 类别（外部合作、竞赛发布）
@@ -25,9 +26,14 @@ public class PublishedProject extends BaseModel {
     private Boolean billable;
 
     /**
-     * 报酬形式及额度
+     * 报酬形式
      */
-    private String rewardInfo;
+    private String rewardMethod;
+
+    /**
+     * 报酬额度
+     */
+    private BigDecimal rewardAmount;
 
     /**
      * 项目需求介绍
@@ -65,14 +71,6 @@ public class PublishedProject extends BaseModel {
         this.billable = billable;
     }
 
-    public String getRewardInfo() {
-        return rewardInfo;
-    }
-
-    public void setRewardInfo(String rewardInfo) {
-        this.rewardInfo = rewardInfo;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -103,6 +101,22 @@ public class PublishedProject extends BaseModel {
 
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public String getRewardMethod() {
+        return rewardMethod;
+    }
+
+    public void setRewardMethod(String rewardMethod) {
+        this.rewardMethod = rewardMethod;
+    }
+
+    public BigDecimal getRewardAmount() {
+        return rewardAmount;
+    }
+
+    public void setRewardAmount(BigDecimal rewardAmount) {
+        this.rewardAmount = rewardAmount;
     }
 
 }
