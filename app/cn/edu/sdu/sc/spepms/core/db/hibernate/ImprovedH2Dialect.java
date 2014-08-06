@@ -1,4 +1,4 @@
-package cn.edu.sdu.qlsc.sc.spepms.core.db.hibernate;
+package cn.edu.sdu.sc.spepms.core.db.hibernate;
 
 import org.hibernate.dialect.H2Dialect;
 

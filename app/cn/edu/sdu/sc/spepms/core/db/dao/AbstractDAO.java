@@ -1,4 +1,4 @@
-package cn.edu.sdu.qlsc.sc.spepms.core.db.dao;
+package cn.edu.sdu.sc.spepms.core.db.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;

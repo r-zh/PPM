@@ -1,11 +1,11 @@
-package cn.edu.sdu.qlsc.sc.spepms.system.creation.models;
+package cn.edu.sdu.sc.spepms.system.creation.models;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
 
-import cn.edu.sdu.qlsc.sc.spepms.system.common.models.AuditableModel;
+import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
 
 /**
  * 发布的项目

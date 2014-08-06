@@ -1,4 +1,4 @@
-package cn.edu.sdu.qlsc.sc.spepms.system.common.models;
+package cn.edu.sdu.sc.spepms.system.common.models;
 
 import java.util.Date;
 
