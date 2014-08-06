@@ -1,0 +1,165 @@
+@(head: Html = Html(""))(content: Html)
+
+@import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe
+@wireframe = @{Wireframe.current()}
+
+@main("学生工程实践活动管理系统", head) {
+
+<!-- Top menu -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">学生工程实践活动管理系统</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/"><span class="glyphicon glyphicon-briefcase"></span> 项目发布</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/"><span class="glyphicon glyphicon-bullhorn"></span> 新闻公告</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/"><span class="glyphicon glyphicon-download-alt"></span> 资源下载</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-credit-card"></span> 注册</a></li>
+                <li><a href="@routes.Application.teacherHome"><span class="glyphicon glyphicon-user"></span> 王老师</a></li>
+                <li><a href="@routes.Application.studentHome"><span class="glyphicon glyphicon-user"></span> 张三</a></li>
+                <li><a href="#" id="login-pannel-toggle"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> 注销</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+<!-- Main body -->
+<div class="container">
+
+    <!-- Login panel -->
+    <div id="login-panel" class="panel panel-default hide">
+        <div class="panel-body">
+            <form class="form-inline pull-right" role="form" action="@routes.Application.login" method="post">
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail2">类型</label> <select class="form-control" id="exampleInputEmail2">
+                        <option>学生</option>
+                        <option>教师</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <label class="sr-only" for="xuehao">学号</label> <input class="form-control" id="xuehao" placeholder="学号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputPassword2">密码</label> <input type="password" class="form-control" id="exampleInputPassword2" placeholder="密码">
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox"> 记住我
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary"">登录</button>
+            </form>
+        </div>
+    </div>
+
+    @if(wireframe.isShowBusinessMenu) {
+    <!-- Business menu -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">业务菜单</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">常用 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">项目发布</a></li>
+                            <li><a href="@routes.Application.addArticle">信息发布</a></li>
+                            <li><a href="#">实验室管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">教师信息管理</a></li>
+                            <li><a href="#">教师信息注册</a></li>
+                            <li><a href="#">学生信息管理</a></li>
+                            <li><a href="#">学生信息注册</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">立项申请</a></li>
+                            <li><a href="#">立项审核</a></li>
+                            <li><a href="#">项目管理</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">分类检索</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">作业提交 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">个人日报提交</a></li>
+                            <li><a href="#">个人周报提交</a></li>
+                            <li><a href="#">组周报提交</a></li>
+                            <li><a href="#">项目文档提交</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">文档管理</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">资源管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">实验室管理</a></li>
+                            <li><a href="#">实验室机位申请</a></li>
+                            <li><a href="#">实验室机位审核</a></li>
+                            <li><a href="#">实验室进入申请</a></li>
+                            <li><a href="#">实验室进入审核</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">设备管理</a></li>
+                            <li><a href="#">设备申请</a></li>
+                            <li><a href="#">设备审核</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">资料管理</a></li>
+                        </ul></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    }
+
+    <!-- Page content -->
+    @content
+
+</div>
+<!--/.container -->
+
+<script>
+    $('#login-pannel-toggle').click(function() {
+        var loginPanel = $('#login-panel');
+        if (loginPanel.hasClass('hide')) {
+            loginPanel.hide().removeClass('hide');
+        }
+        $('#login-panel').slideToggle();
+        return false;
+    });
+</script>
+
+}

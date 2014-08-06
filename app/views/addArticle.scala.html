@@ -1,0 +1,22 @@
+@()
+
+@layouts.basicLayout {
+
+<!-- Place inside the <head> of your HTML -->
+<script type="text/javascript" src="@routes.Assets.at("libs/tinymce/tinymce.min.js")"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    language: "zh_CN"
+ });
+</script>
+
+} {
+ 
+
+<!-- Place this in the body of the page content -->
+<form method="post">
+    <textarea></textarea>
+</form>
+
+}
