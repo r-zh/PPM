@@ -5,18 +5,34 @@
 <!-- Place inside the <head> of your HTML -->
 <script type="text/javascript" src="@routes.Assets.at("libs/tinymce/tinymce.min.js")"></script>
 <script type="text/javascript">
-tinymce.init({
-    selector: "textarea",
-    language: "zh_CN"
- });
+    tinymce.init({
+        selector : "textarea",
+        language : "zh_CN"
+    });
 </script>
 
 } {
  
+<div class="page-header">
+    <h1>信息发布</h1>
+</div>
 
 <!-- Place this in the body of the page content -->
-<form method="post">
-    <textarea></textarea>
+<form method="post" role="form">
+    <div class="form-group">
+        <label for="articleType">请选择一个类别</label>
+        <select class="form-control" id="articleType">
+            <option>新闻公告</option>
+            <option>资源下载</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="articleContent">内容</label>
+        <textarea id="articleContent"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">提交</button>
 </form>
 
 }

@@ -26,6 +26,7 @@ public class Application extends Controller {
     }
     
     public static Result addArticle() {
+        Wireframe.current().setShowBusinessMenu(true);
         return ok(addArticle.render());
     }
 
