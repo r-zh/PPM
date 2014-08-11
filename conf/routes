@@ -10,6 +10,7 @@ POST    /login                      controllers.Application.login()
 
 # Home page after user login
 GET     /home/student               controllers.Application.studentHome()
+#GET     /home/student               cn.edu.sdu.sc.spepms.system.common.controllers.MoumouController.studentHome()
 GET     /home/teacher               controllers.Application.teacherHome()
 
 # Articles
