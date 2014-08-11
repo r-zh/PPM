@@ -36,7 +36,10 @@ public class Application extends Controller {
         Wireframe.current().setShowBusinessMenu(true);
         return ok(addArticle.render());
     }
-
+    public static Result publishProject() {
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(publishProject.render());
+    }
     public static Result saveArticle() {
         return redirect(routes.Application.index());
     }

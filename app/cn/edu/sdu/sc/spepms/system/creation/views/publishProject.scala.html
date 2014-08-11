@@ -1,0 +1,90 @@
+@()
+
+@layouts.basicLayout {
+
+<!-- Place inside the <head> of your HTML -->
+<script type="text/javascript" src="@routes.Assets.at("libs/tinymce/tinymce.min.js")"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector : "textarea",
+		language : "zh_CN"
+	});
+</script>
+
+} {
+
+<div class="page-header">
+	<h1>项目基本信息填写</h1>
+</div>
+
+<!-- Place this in the body of the page content -->
+<form method="post" role="form">
+	<div class="form-group">
+
+		<label for="articleContent"><h2>项目名称</h2></label>
+		<input class="form-control" type="text" id="name" placeholder="请输入项目名称">
+	</div>
+	<div class="form-group">
+		
+
+		<label for="articleType"><h2>请选择项目类别</h2></label> <select
+			name="articleType" class="form-control" id="articleType">
+			<option>WEB项目</option>
+			<option>基于软件开发新技术的Web应用开发</option>
+			<option>应用软件（管理信息系统）开发</option>
+			<option>嵌入式项目</option>
+			<option>嵌入式软件开发</option>
+			<option>移动互联网应用开发</option>
+			<option>软件测试与质量保证项目实训</option>
+			<option>电子商务应用开发</option>
+			<option>商务智能（BI）应用开发</option>
+			<option>信息安全产品开发</option>
+			<option>数字媒体软件开发</option>
+			<option>金融信息化</option>
+			<option>网络数据挖掘与处理</option>
+			<option>社交网络应用开发</option>
+			<option>网络管理系统开发与应用</option>
+			<option>物联网应用项目实训</option>
+			<option>大数据应用项目实训</option>
+			<option>迷你项目</option>
+			<option>SaaS云服务系统开发</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="articleContent"><h2>项目细节</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>基本信息</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>项目背景</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>项目目标</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>系统功能需求</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>技术方案</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>项目环境要求</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>项目计划</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>人员考核评价标准</h2></label>
+		<textarea id="articleContent"></textarea>
+
+		<label for="articleContent"><h2>报考人数限制</h2></label>
+		<textarea id="articleContent"></textarea>
+	</div>
+
+
+	<button type="submit" class="btn btn-primary pull-right">提交</button>
+</form>
+
+}
