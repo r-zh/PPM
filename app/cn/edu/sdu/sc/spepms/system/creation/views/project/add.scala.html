@@ -1,0 +1,72 @@
+@() 
+@layouts.basicLayout {
+
+<!-- Place inside the <head> of your HTML -->
+<script type="text/javascript" src="@routes.Assets.at("libs/tinymce/tinymce.min.js")"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector : "textarea",
+        language : "zh_CN"
+    });
+</script>
+
+} {
+<div class="page-header">
+    <h1>项目基本信息填写</h1>
+</div>
+
+<!-- Place this in the body of the page content -->
+<form method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.projectSave()">
+    <div class="form-group">
+
+        <label for="CreationProject"><h2>项目名称</h2></label> <input
+            class="form-control" type="text" name="name" placeholder="请输入项目名称">
+    </div>
+    <div class="form-group">
+
+        <label for="CreationProject"><h2>项目类别</h2></label> <select
+            name="category" class="form-control" id="CreationProject">
+            <option>竞赛</option>
+            <option>教师科研</option>
+            <option>个人兴趣</option>
+            <option>外部合作</option>
+        </select>
+        
+        <div class="form-group">
+            <label for="CreationProject"><h2>性质</h2></label> <select
+                name="billable" class="form-control" id="CreationProject">
+                <option>有报酬</option>
+                <option>无报酬</option>
+            </select>
+        </div>
+        
+        <label for="CreationProject"><h2>报酬形式及额度</h2></label> <select
+            name="rewardMethod" class="form-control" id="CreationProject">
+            <option>现金</option>
+            <option>网上转帐</option>
+            <option>其他</option>
+            </select><input
+            class="form-control" type="number" name="rewardAmount" placeholder="请输入现金额度">
+        
+
+        <label for="CreationProject"><h2>项目需求介绍</h2></label>
+        <textarea name="description"></textarea>
+
+        <label for="CreationProject"><h2>起始时间</h2></label>
+        <textarea name="applicableFrom"></textarea>
+
+        <label for="CreationProject"><h2>终止时间</h2></label>
+        <textarea name="applicableTo"></textarea>
+
+        <label for="CreationProject"><h2>联系咨询方式</h2></label>
+        <textarea name="contactInfo"></textarea>
+
+        <label for="CreationProject"><h2>人数限制</h2></label> <input
+            class="form-control" type="number" name="number" placeholder="请输入项目人数">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary pull-right">提交</button>
+</form>
+
+}

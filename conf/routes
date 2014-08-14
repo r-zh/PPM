@@ -7,6 +7,11 @@ GET     /                           controllers.Application.index()
 
 # User login
 POST    /login                      controllers.Application.login()
+GET     /users                      controllers.Application.users()
+
+# User register
+GET    /register                    cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
+POST   /register/save               cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
 
 # Home page after user login
 GET     /home/student               controllers.Application.studentHome()
@@ -14,11 +19,21 @@ GET     /home/teacher               controllers.Application.teacherHome()
 
 # Articles
 GET     /articles/add               controllers.Application.addArticle()
-GET     /articles/publish           controllers.Application.publishProject()
+
 POST    /articles                   controllers.Application.saveArticle()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Project
-#GET     /project/publish            cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectsController.publishProject()
+GET     /project/publish            controllers.Application.publishProject()
+GET     /project/show               controllers.Application.showProject()
+#GET    /project/publish            cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectsController.publishProject()
+
+#Creation
+GET     /creation/index                     controllers.Application.creationPlatformIndex()
+GET     /creation/Project/add               cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.addProject()
+GET     /creation/Project/details           controllers.Application.showCreationProject()
+GET     /creation/Project/apply             controllers.Application.applyCreationProject()
+POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.projectSave()
+GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()

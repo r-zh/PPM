@@ -1,0 +1,11 @@
+@(users: List[cn.edu.sdu.sc.spepms.system.common.models.User])
+
+@layouts.basicLayout() {
+
+@for(user <- users) {
+<p>Name: @user.getName</p>
+<p>Gender: @user.getGender<p>
+<p>PersonalId: @user.getPersonalId</p>
+}
+
+}
