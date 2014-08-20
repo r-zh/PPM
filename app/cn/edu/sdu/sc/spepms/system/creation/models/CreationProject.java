@@ -59,7 +59,18 @@ public class CreationProject extends AuditableModel {
      * 人数上限
      */
     private long number;
- 
+
+    //审核是否通过
+    private boolean passed=false;
+
+    public void setPassed(boolean flag){
+        passed=flag;
+    }
+
+    public boolean getPassed(){
+        return passed;
+    }
+
     public String getCategory() {
         return category;
     }

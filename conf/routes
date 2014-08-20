@@ -31,11 +31,13 @@ GET     /project/show               controllers.Application.showProject()
 #GET    /project/publish            cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectsController.publishProject()
 
 #Creation
-GET     /creation/index                     cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.indexOfCreationPlatform()
+GET     /creation/index                     cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.index()
 GET     /creation/Project/add               cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.addProject()
-GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.showCreationProject()
+GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.details(id:Long)
+GET     /creation/Project/introduce         cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.showCreationProject()
 GET     /creation/Project/apply             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.applyCreationProject()
-POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.projectSave()
+POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.saveProject()
+GET     /creation/Project/pass              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.pass(id:Long)
 
 #Laboratory
 GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()

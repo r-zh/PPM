@@ -30,7 +30,7 @@ public class ProjectController extends Controller {
 
     //信息录入数据库
     @Transactional
-    public static Result projectSave() {
+    public static Result saveProject() {
         Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
         ProjectForm data = form.get();
 
@@ -50,12 +50,11 @@ public class ProjectController extends Controller {
 
         List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
         return ok(studentHome.render(creationProject));
-        //return ok();
     }
 
-    public static Result indexOfCreationPlatform() {
+    public static Result index() {
         Wireframe.current().setShowBusinessMenu(true);
-        return ok(creationPlatformIndex.render());
+        return ok(index.render());
     }
 
     public static Result showCreationProject() {
@@ -66,5 +65,23 @@ public class ProjectController extends Controller {
     public static Result applyCreationProject() {
         Wireframe.current().setShowBusinessMenu(true);
         return ok(applyCreationProject.render());
+    }
+
+    //项目详细信息
+    @Transactional
+    public static Result details(Long Id) {
+        Wireframe.current().setShowBusinessMenu(true);
+        CreationProject creationProject = JPA.em().createQuery("from CreationProject where id =?", CreationProject.class).setParameter(1,Id).getSingleResult();
+        return ok(details.render(creationProject));
+    }
+
+    // 通过该项目
+    @Transactional
+    public static Result pass(Long Id) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
+        creationProject.setPassed(true);
+        JPA.em().merge(creationProject);
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(details.render(creationProject));
     }
 }

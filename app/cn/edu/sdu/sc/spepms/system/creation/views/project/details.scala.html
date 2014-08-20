@@ -1,73 +1,91 @@
 @(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject) 
+
 @layouts.basicLayout {
 
 <!-- Place inside the <head> of your HTML -->
 
-} { 
+} {
 <div class="btn-group pull-right">
-  <button type="button" class="btn btn-default btn-lg ">
-     <span class="glyphicon glyphicon-ok"></span>审核通过
-  </button>
-  <button type="button" class="btn btn-default btn-lg ">
-     <span class="glyphicon glyphicon-remove"></span>审核失败
-  </button>
-  <button type="button" class="btn btn-default btn-lg ">
-     <span class="glyphicon glyphicon-heart"></span>我要报名
-  </button>
+    <button type="button" class="btn btn-default btn-lg btn-pass"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.pass(creationProject.getId)';">
+        <span class="glyphicon glyphicon-ok"></span>审核通过
+    </button>
+    <button type="button" class="btn btn-default btn-lg ">
+        <span class="glyphicon glyphicon-remove"></span>审核失败
+    </button>
+    <button type="button" class="btn btn-default btn-lg ">
+        <span class="glyphicon glyphicon-heart"></span>我要报名
+    </button>
 </div>
 
 
 <div class="page-header">
-    <h1><span class="label label-default">项目概观</h1>
+    <h1>
+        <span class="label label-default">项目概观
+    </h1>
 </div>
 
 <!-- Place this in the body of the page content -->
 <form method="post" role="form">
-    <label for="CreationProject"><h1><span class="label label-default">项目名称</span></h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">项目名称</span>
+        </h1></label>
     <ul>
         <h3>@creationProject.getName</h3>
     </ul>
-    <label for="articleType"><h1><span class="label label-default">项目类别</h1></label>
+    <label for="articleType"><h1>
+            <span class="label label-default">项目类别
+        </h1></label>
     <ul>
-        <h3>老师科研</h3>
+        <h3>@creationProject.getBillable</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">性质</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">性质
+        </h1></label>
     <ul>
-        <h3>有报酬</h3>
+        <h3>@creationProject.getCategory</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">额度</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">额度
+        </h1></label>
     <ul>
-        <h3>500</h3>
+        <h3>@creationProject.getRewardAmount</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">项目需求介绍</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">项目需求介绍
+        </h1></label>
     <ul>
-        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            软件操作简便、快捷，有效地减轻医院门诊工作人员的工作量，减少病人排队等候的时间。
-            界面设计风格统一，便于操作员快速掌握系统操作方法；用户界面简单明了，符合业务办理流程，具有人性化特点。
-            软件设计结构模块化、程序结构化、数据格式标准化、代码统一化，各种文档资料规范化。</h3>
+        <h3>@creationProject.getDescription</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">时间范围</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">时间范围
+        </h1></label>
     <ul>
-        <h3>2014-8-20 至 2014-12-12</h3>
+        <h3>@creationProject.getApplicableTo</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">联系咨询方式</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">联系咨询方式
+        </h1></label>
     <ul>
-        <h3>
-            18366119322
-        </h3>
+        <h3>@creationProject.getContactInfo</h3>
     </ul>
 
-    <label for="CreationProject"><h1><span class="label label-default">报考人数限制</h1></label>
+    <label for="CreationProject"><h1>
+            <span class="label label-default">报考人数限制
+        </h1></label>
     <ul>
-        <h3>
-            50
-        </h3>
+        <h3>@creationProject.getNumber</h3>
     </ul>
 </form>
 
 }
+<script>
+        $('.btn-pass').click(function() {
+            alert("操作成功");
+        });
+</script>
