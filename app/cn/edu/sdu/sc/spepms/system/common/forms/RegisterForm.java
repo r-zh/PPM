@@ -1,7 +1,5 @@
 package cn.edu.sdu.sc.spepms.system.common.forms;
 
-import java.util.Date;
-
 public class RegisterForm {
 
     private String name;
@@ -13,7 +11,7 @@ public class RegisterForm {
     private String birthday;
 
     private String email;
-    
+
     private String hometown;
 
     private String password;

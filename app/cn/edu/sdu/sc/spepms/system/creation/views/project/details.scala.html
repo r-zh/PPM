@@ -2,9 +2,6 @@
 
 @layouts.basicLayout {
 
-<!-- Place inside the <head> of your HTML -->
-
-} {
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-default btn-lg btn-pass"
         onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.pass(creationProject.getId)';">
@@ -18,12 +15,13 @@
     </button>
 </div>
 
-
 <div class="page-header">
     <h1>
         <span class="label label-default">项目概观
     </h1>
 </div>
+
+} {
 
 <!-- Place this in the body of the page content -->
 <form method="post" role="form">
@@ -83,9 +81,12 @@
     </ul>
 </form>
 
-}
+} {
+
 <script>
         $('.btn-pass').click(function() {
             alert("操作成功");
         });
 </script>
+
+}

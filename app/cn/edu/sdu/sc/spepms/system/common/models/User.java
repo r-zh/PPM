@@ -1,7 +1,5 @@
 package cn.edu.sdu.sc.spepms.system.common.models;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 
 @Entity
@@ -16,7 +14,7 @@ public class User extends AuditableModel {
     private String birthday;
 
     private String email;
-    
+
     private String hometown;
 
     private String password;

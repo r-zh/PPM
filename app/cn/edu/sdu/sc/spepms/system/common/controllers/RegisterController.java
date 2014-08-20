@@ -1,19 +1,20 @@
 package cn.edu.sdu.sc.spepms.system.common.controllers;
+
 import java.util.List;
 
-import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
-import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
-import cn.edu.sdu.sc.spepms.system.common.models.BaseModel;
-import cn.edu.sdu.sc.spepms.system.common.models.User;
-import cn.edu.sdu.sc.spepms.system.common.views.html.*;
-import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
-import play.*;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
+import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
+import cn.edu.sdu.sc.spepms.system.common.models.User;
+import cn.edu.sdu.sc.spepms.system.common.views.html.register;
+import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
+import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
 
-public class RegisterController extends Controller{
+public class RegisterController extends Controller {
 
     public static Result register() {
         Wireframe.current().setShowBusinessMenu(true);

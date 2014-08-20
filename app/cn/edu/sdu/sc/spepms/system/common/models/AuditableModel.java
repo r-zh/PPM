@@ -51,4 +51,5 @@ public abstract class AuditableModel extends BaseModel {
     public void setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
     }
+
 }

@@ -1,18 +1,12 @@
-@() @layouts.basicLayout {
+@()
 
-<!-- Place inside the <head> of your HTML -->
-<script type="text/javascript" src="@routes.Assets.at("libs/tinymce/tinymce.min.js")"></script>
-<script type="text/javascript">
-	tinymce.init({
-		selector : "textarea",
-		language : "zh_CN"
-	});
-</script>
+@layouts.basicLayout {
+
+<div class="page-header">
+    <h1>项目基本信息填写</h1>
+</div>
 
 } {
-<div class="page-header">
-	<h1>项目基本信息填写</h1>
-</div>
 
 <!-- Place this in the body of the page content -->
 <form method="post" role="form">
@@ -82,5 +76,7 @@
 
 	<button type="submit" class="btn btn-primary pull-right">提交</button>
 </form>
+
+} {
 
 }
