@@ -7,13 +7,13 @@ import javax.persistence.Entity;
 
 import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
 
-/**
- * 发布的项目
- * 
- * @author Peter Fu
- */
 @Entity
-public class PublishedProject extends AuditableModel {
+public class CreationProject extends AuditableModel {
+
+    /**
+     * 名称
+     */
+    private String name;
 
     /**
      * 类别（外部合作、竞赛发布）
@@ -23,7 +23,7 @@ public class PublishedProject extends AuditableModel {
     /**
      * 性质（有尝、无报酬）
      */
-    private Boolean billable;
+    private String billable;
 
     /**
      * 报酬形式
@@ -33,7 +33,7 @@ public class PublishedProject extends AuditableModel {
     /**
      * 报酬额度
      */
-    private BigDecimal rewardAmount;
+    private long rewardAmount;
 
     /**
      * 项目需求介绍
@@ -43,31 +43,63 @@ public class PublishedProject extends AuditableModel {
     /**
      * 时间范围（开始）
      */
-    private Date applicableFrom;
+    private String applicableFrom;
 
     /**
      * 时间范围（结束）
      */
-    private Date applicableTo;
+    private String applicableTo;
 
     /**
      * 联系咨询方式
      */
     private String contactInfo;
 
+    /**
+     * 人数上限
+     */
+    private long number;
+
+    //审核是否通过
+    private boolean passed=false;
+
+    public void setPassed(boolean flag){
+        passed=flag;
+    }
+
+    public boolean getPassed(){
+        return passed;
+    }
+
     public String getCategory() {
         return category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
     }
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public Boolean getBillable() {
+    public String getBillable() {
         return billable;
     }
 
-    public void setBillable(Boolean billable) {
+    public void setBillable(String billable) {
         this.billable = billable;
     }
 
@@ -79,19 +111,19 @@ public class PublishedProject extends AuditableModel {
         this.description = description;
     }
 
-    public Date getApplicableFrom() {
+    public String getApplicableFrom() {
         return applicableFrom;
     }
 
-    public void setApplicableFrom(Date applicableFrom) {
+    public void setApplicableFrom(String applicableFrom) {
         this.applicableFrom = applicableFrom;
     }
 
-    public Date getApplicableTo() {
+    public String getApplicableTo() {
         return applicableTo;
     }
 
-    public void setApplicableTo(Date applicableTo) {
+    public void setApplicableTo(String applicableTo) {
         this.applicableTo = applicableTo;
     }
 
@@ -111,12 +143,11 @@ public class PublishedProject extends AuditableModel {
         this.rewardMethod = rewardMethod;
     }
 
-    public BigDecimal getRewardAmount() {
+    public long getRewardAmount() {
         return rewardAmount;
     }
 
-    public void setRewardAmount(BigDecimal rewardAmount) {
+    public void setRewardAmount(long rewardAmount) {
         this.rewardAmount = rewardAmount;
     }
-
 }
