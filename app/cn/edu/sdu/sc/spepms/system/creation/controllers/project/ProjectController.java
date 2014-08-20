@@ -52,4 +52,19 @@ public class ProjectController extends Controller {
         return ok(studentHome.render(creationProject));
         //return ok();
     }
+
+    public static Result indexOfCreationPlatform() {
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(creationPlatformIndex.render());
+    }
+
+    public static Result showCreationProject() {
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(showCreationProject.render());
+    }
+
+    public static Result applyCreationProject() {
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(applyCreationProject.render());
+    }
 }

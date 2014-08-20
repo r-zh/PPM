@@ -42,10 +42,6 @@ public class Application extends Controller {
 		return ok(userList.render(users));
 	}
 
-	public static Result creationPlatformIndex() {
-		Wireframe.current().setShowBusinessMenu(true);
-		return ok(creationPlatformIndex.render());
-	}
     @Transactional
 	public static Result studentHome() {
 		Wireframe.current().setShowBusinessMenu(true);
@@ -79,21 +75,6 @@ public class Application extends Controller {
 	public static Result showProject() {
 		Wireframe.current().setShowBusinessMenu(true);
 		return ok(showProject.render());
-	}// 创新申请
-
-	public static Result publishCreationProject() {
-		Wireframe.current().setShowBusinessMenu(true);
-		return ok(publishCreationProject.render());
-	}// 创新审核报名
-
-	public static Result showCreationProject() {
-		Wireframe.current().setShowBusinessMenu(true);
-		return ok(showCreationProject.render());
-	}// 立项申请
-
-	public static Result applyCreationProject() {
-		Wireframe.current().setShowBusinessMenu(true);
-		return ok(applyCreationProject.render());
 	}
 
 	public static Result dummySavePublishedProject() {
