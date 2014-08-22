@@ -1,7 +1,7 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
+@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject]) 
 
 @layouts.basicLayout() {
- 
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">项目发布</h3>
@@ -13,11 +13,11 @@
             <li>山东大学校园网格和海量数据处理应用网格 <span class="label label-info">New</span></li>
             <li>山东大学研究生学位管理和培养管理系统</li>
             <li>山东大学软件学院综合教务管理信息系统</li>
-            <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.showCreationProject">山东大学软件学院医院门诊管理系统</a></li>
-            <!-- 展示已经通过了的项目 -->
+            <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.check">山东大学软件学院医院门诊管理系统</a></li>
+            <!-- 根据入口展示的项目 -->
             @for(creationProject <- creationProjects) { 
                 @if(creationProject.getPassed){
-                    <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></li> 
+                    <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></li>
                 }
             }
         </ul>
@@ -39,6 +39,4 @@
     </div>
 </div>
 
-} {
-
-}
+} { }
