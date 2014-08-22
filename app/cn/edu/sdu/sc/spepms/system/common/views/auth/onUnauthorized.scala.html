@@ -1,0 +1,10 @@
+@(redirectNeeded: Boolean)
+
+<script type="text/javascript">
+var redirect_url = decodeURIComponent(self.document.location.href);
+if(@{redirectNeeded}) {
+    location.href = "@{cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login()}?&redirect_url=" + encodeURIComponent(redirect_url);
+} else {
+    location.href = "@{cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login()}";
+}
+</script>

@@ -3,18 +3,17 @@ package cn.edu.sdu.sc.spepms.system.creation.controllers.project;
 import java.util.List;
 
 import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
-import cn.edu.sdu.sc.spepms.system.common.models.User;
+import cn.edu.sdu.sc.spepms.system.common.controllers.SecuredController;
 import cn.edu.sdu.sc.spepms.system.common.views.html.*;
 import cn.edu.sdu.sc.spepms.system.creation.forms.ProjectForm;
 import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
 import cn.edu.sdu.sc.spepms.system.creation.views.html.project.*;
-import play.*;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.mvc.*;
-import views.html.userList;
-public class ProjectController extends Controller {
+
+public class ProjectController extends SecuredController {
     //创新项目发布
     public static Result addProject() {
         Wireframe.current().setShowBusinessMenu(true);

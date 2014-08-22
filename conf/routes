@@ -6,7 +6,10 @@
 GET     /                           controllers.Application.index()
 
 # User login
-POST    /login                      controllers.Application.login()
+GET      /login                     cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.login()
+POST     /authenticate              cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
+GET      /logout                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
+
 GET     /users                      controllers.Application.users()
 
 # User register

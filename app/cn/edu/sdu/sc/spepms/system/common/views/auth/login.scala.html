@@ -1,0 +1,89 @@
+@(form: play.data.Form[cn.edu.sdu.sc.spepms.system.common.forms.LoginForm])
+
+@layouts.basicLayout {
+
+<div class="page-header">
+    <h1>登录</h1>
+</div>
+
+} {
+
+@if(flash.contains("error")) { 
+    <p class="error">
+        @flash.get("error")
+    </p>
+}
+
+<form action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.authenticate()" method="post">
+    <input type="hidden" name="redirectUrl" value="@flash.get("redirectUrl")">
+    
+    <div class="login-form">
+        <div class="control-group">
+            <input id="username" name="username" type="text" placeholder='用户名' value='@flash.get("username")'>
+        </div>
+        <div class="control-group">
+            <input id="password" name="password" type="password" placeholder='密码' value='@flash.get("password")'>
+        </div>
+        <div class="control-group">
+            <button id="js-btn-login" class="btn btn-primary btn-block" type="submit">
+                登录
+            </button>
+        </div>
+    </div>
+</form>
+
+} {
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var _this = this;
+        //init the tooltip
+        $("#username").tooltip({title: "Sorry, this is not a valid username.", placement: "right", trigger: "manual"});
+        $("#username").tooltip('hide');
+        $("#password").tooltip({title: "That's not the password on file.", placement: "right", trigger: "manual"});
+        $("#password").tooltip('hide');
+        //show valid error
+        if($(this).find("p.error").text() != "") {
+            if($(this).find("p.error").text().indexOf("username") > 0){
+                showErrorAction($('#username'));
+            }else {
+                showErrorAction($('#password'));
+            }
+        }
+        //hide error action
+        $(this).find("input").keyup(function() {
+            if($(this).val() != "") {
+                removeErrorAction($(this));
+            }
+        });
+        //valid
+        $(".btn.btn-primary.btn-block").click(function(e) {
+            e.preventDefault();
+            //if username is null show username tooltip
+            if($(_this).find("#username").val() == "") {
+                showErrorAction($('#username'));
+            //if password is null show pass word tooltip
+            }else if($(_this).find("#password").val() == ""){
+                showErrorAction($("#password"));
+            }else {
+                //if username and password are both not null then submit form
+                $(_this).find("form").submit();
+            }
+        });
+    });
+    //show error infos
+    var showErrorAction = function(element) {
+        $(element).focus();
+        $(element).parent().addClass("error");
+        $(element).tooltip('show');
+        $(".btn.btn-block:last").addClass("need-help");
+    };
+    //hide error infos
+    var removeErrorAction = function(element) {
+        $(element).tooltip('hide');
+        $(element).parent().removeClass("error");
+        $(".btn.btn-block:last").removeClass("need-help");
+    }
+</script>
+
+}
