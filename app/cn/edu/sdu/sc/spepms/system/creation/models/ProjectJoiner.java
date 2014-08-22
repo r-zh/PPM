@@ -17,11 +17,11 @@ public class ProjectJoiner extends BaseModel{
 
     /*
      *参与者的名称*/
-    private Long userName;
+    private String userName;
 
     /*
      *参与者的学号*/
-    private Long studentId;
+    private String studentId;
 
     public Long getProjectId() {
         return projectId;
@@ -35,16 +35,16 @@ public class ProjectJoiner extends BaseModel{
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-    public Long getUserName() {
+    public String getUserName() {
         return userName;
     }
-    public void setUserName(Long userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
-    public Long getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
-    public void setStudentId(Long studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 }

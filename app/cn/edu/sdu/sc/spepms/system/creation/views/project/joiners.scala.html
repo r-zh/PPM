@@ -1,0 +1,12 @@
+@(joiners: List[cn.edu.sdu.sc.spepms.system.creation.models.ProjectJoiner])
+
+@layouts.basicLayout() {
+
+<div>报名情况如下</div>
+@for(joiner <- joiners) {
+<p>Name: @joiner.getUserName</p>
+<p>Gender: @joiner.getStudentId<p>
+}
+} {
+
+}

@@ -7,11 +7,17 @@
         onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.pass(creationProject.getId)';">
         <span class="glyphicon glyphicon-ok"></span>审核通过
     </button>
-    <button type="button" class="btn btn-default btn-lg ">
+    <button type="button" class="btn btn-default btn-lg btn-unpass"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.unPass(creationProject.getId)';">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
-    <button type="button" class="btn btn-default btn-lg ">
+    <button type="button" class="btn btn-default btn-lg btn-join"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.join(creationProject.getId)';">
         <span class="glyphicon glyphicon-heart"></span>我要报名
+    </button>
+    <button type="button" class="btn btn-default btn-lg btn-joiner"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.joiners(creationProject.getId)';">
+        <span class="glyphicon glyphicon-heart"></span>报名情况
     </button>
 </div>
 
@@ -85,6 +91,9 @@
 
 <script>
         $('.btn-pass').click(function() {
+            alert("操作成功");
+        });
+        $('.btn-join').click(function() {
             alert("操作成功");
         });
 </script>

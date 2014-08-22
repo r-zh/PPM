@@ -38,6 +38,9 @@ GET     /creation/Project/introduce         cn.edu.sdu.sc.spepms.system.creation
 GET     /creation/Project/apply             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.applyCreationProject()
 POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.saveProject()
 GET     /creation/Project/pass              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.pass(id:Long)
+GET     /creation/Project/unPass            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.unPass(id:Long)
+GET     /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
+GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
 
 #Laboratory
 GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()
