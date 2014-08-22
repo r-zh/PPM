@@ -1,6 +1,12 @@
-@(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject) 
+@(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject)
+
+@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil
 
 @layouts.basicLayout {
+
+@ContextUtil.getCurrentUsername()
+
+@ContextUtil.getCurrentUserId()
 
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-default btn-lg btn-pass"

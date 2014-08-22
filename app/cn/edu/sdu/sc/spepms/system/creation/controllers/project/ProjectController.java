@@ -18,7 +18,8 @@ import views.html.index;
 public class ProjectController extends SecuredController {
     //创新项目发布
     public static Result addProject() {
-        Wireframe.current().setShowBusinessMenu(true);
+        System.out.println(request().username());
+    Wireframe.current().setShowBusinessMenu(true);
         return ok(add.render());
     }
 

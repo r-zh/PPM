@@ -85,6 +85,7 @@ public class AuthController extends Controller {
                 }
 
                 session("username", user.getName());
+                session("userId", user.getId() + "");
                 flash().put("relogin", "authenticate");
                 // redirect to requested url
                 return redirectToUrlOrHomepage(loginForm.data().get("redirectUrl"));
