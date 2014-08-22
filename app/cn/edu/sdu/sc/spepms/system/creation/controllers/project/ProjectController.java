@@ -7,11 +7,13 @@ import cn.edu.sdu.sc.spepms.system.common.controllers.SecuredController;
 import cn.edu.sdu.sc.spepms.system.common.views.html.*;
 import cn.edu.sdu.sc.spepms.system.creation.forms.ProjectForm;
 import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.models.ProjectJoiner;
 import cn.edu.sdu.sc.spepms.system.creation.views.html.project.*;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.mvc.*;
+import views.html.index;
 
 public class ProjectController extends SecuredController {
     //创新项目发布
@@ -33,27 +35,28 @@ public class ProjectController extends SecuredController {
         Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
         ProjectForm data = form.get();
 
-        CreationProject creatonProject=new CreationProject();
-        creatonProject.setName(data.getName());
-        creatonProject.setCategory(data.getCategory());
-        creatonProject.setBillable(data.getBillable());
-        creatonProject.setRewardMethod(data.getRewardMethod());
-        creatonProject.setRewardAmount(data.getRewardAmount());
-        creatonProject.setDescription(data.getDescription());
-        creatonProject.setApplicableFrom(data.getApplicableFrom());
-        creatonProject.setApplicableTo(data.getApplicableTo());
-        creatonProject.setContactInfo(data.getContactInfo());
-        creatonProject.setNumber(data.getNumber());
+        CreationProject creationProject=new CreationProject();
+        creationProject.setName(data.getName());
+        creationProject.setCategory(data.getCategory());
+        creationProject.setBillable(data.getBillable());
+        creationProject.setRewardMethod(data.getRewardMethod());
+        creationProject.setRewardAmount(data.getRewardAmount());
+        creationProject.setDescription(data.getDescription());
+        creationProject.setApplicableFrom(data.getApplicableFrom());
+        creationProject.setApplicableTo(data.getApplicableTo());
+        creationProject.setContactInfo(data.getContactInfo());
+        creationProject.setNumber(data.getNumber());
 
-        JPA.em().persist(creatonProject);
+        JPA.em().persist(creationProject);
 
-        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
-        return ok(studentHome.render(creationProject));
+        List<CreationProject> creationProjects = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        return ok(studentHome.render(creationProjects));
     }
 
+    @Transactional
     public static Result index() {
-        Wireframe.current().setShowBusinessMenu(true);
-        return ok(index.render());
+        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        return ok(index.render(creationProject));
     }
 
     public static Result showCreationProject() {
@@ -82,5 +85,34 @@ public class ProjectController extends SecuredController {
         JPA.em().merge(creationProject);
         Wireframe.current().setShowBusinessMenu(true);
         return ok(details.render(creationProject));
+    }
+
+    // 禁止该项目
+    @Transactional
+    public static Result unPass(Long Id) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
+        creationProject.setPassed(false);
+        JPA.em().merge(creationProject);
+        Wireframe.current().setShowBusinessMenu(true);
+        return ok(details.render(creationProject));
+    }
+
+    // 报名该项目
+    @Transactional
+    public static Result join(Long creationProjectId) {
+        CreationProject creationProject=JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectJoiner projectJoiner=new ProjectJoiner();
+        projectJoiner.setProjectId(creationProjectId);
+        //projectJoiner.setUserName(creationProject.getName());
+        //projectJoiner.setStudentId(creationProject.getRewardMethod());
+        JPA.em().persist(projectJoiner);
+        return ok(details.render(creationProject));
+    }
+
+    //报名人员情况
+    @Transactional
+    public static Result joiners(Long projectJoinerId) {
+        List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,projectJoinerId).getResultList();
+        return ok(joiners.render(projectJoiners));
     }
 }
