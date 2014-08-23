@@ -1,12 +1,43 @@
-@(joiners: List[cn.edu.sdu.sc.spepms.system.creation.models.ProjectJoiner])
+@(creationProjectId: Long)
 
-@layouts.basicLayout() {
+@layouts.basicLayout {
 
-<div>报名情况如下</div>
-@for(joiner <- joiners) {
-<p>姓名: @joiner.getUserName</p>
-<p>学号: @joiner.getStudentId<p>
-}
+<div class="page-header">
+    <h1>报名人员基本信息填写</h1>
+</div>
+
+} {
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.join(creationProjectId)">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">姓名</label>
+        <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="userName" placeholder="请输入姓名" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">学号</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="number" name="studentId" placeholder="请输入学号">
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                提交
+            </button>
+    
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
 } {
 
 }
