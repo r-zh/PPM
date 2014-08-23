@@ -7,6 +7,14 @@ import javax.persistence.Entity;
 
 import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
 
+/**
+ * @author tonyzhou
+ *
+ */
+/**
+ * @author tonyzhou
+ *
+ */
 @Entity
 public class CreationProject extends AuditableModel {
 
@@ -60,8 +68,21 @@ public class CreationProject extends AuditableModel {
      */
     private long number;
 
-    //审核是否通过
+    
+    /**
+     * 审核是否通过
+     */
     private boolean passed=false;
+
+    private boolean trashed=false;
+
+    public boolean isTrashed() {
+        return trashed;
+    }
+
+    public void setTrashed(boolean trashed) {
+        this.trashed = trashed;
+    }
 
     public void setPassed(boolean flag){
         passed=flag;

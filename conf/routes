@@ -36,13 +36,17 @@ GET     /project/show               controllers.Application.showProject()
 #Creation
 GET     /creation/index                     cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.index()
 GET     /creation/Project/add               cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.addProject()
-GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.details(id:Long)
+GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.details(pid:Long)
 POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.saveProject()
+
 GET     /creation/Project/pass              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.pass(id:Long)
 GET     /creation/Project/unPass            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.unPass(id:Long)
-GET     /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
-GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
+GET     /creation/Project/trashed           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.trashed(id:Long)
+
 GET     /creation/Project/check             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.check()
+
+POST    /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
+GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
 
 #Laboratory
 GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()
