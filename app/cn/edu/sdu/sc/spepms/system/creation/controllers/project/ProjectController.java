@@ -1,5 +1,6 @@
 package cn.edu.sdu.sc.spepms.system.creation.controllers.project;
 
+import java.util.Date;
 import java.util.List;
 
 import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
@@ -33,6 +34,8 @@ public class ProjectController extends SecuredController {
         ProjectForm data = form.get();
 
         CreationProject creationProject=new CreationProject();
+        creationProject.setCreatedBy(ContextUtil.getCurrentUserId());
+        creationProject.setCreatedOn(new Date());
         creationProject.setName(data.getName());
         creationProject.setCategory(data.getCategory());
         creationProject.setBillable(data.getBillable());
@@ -54,6 +57,16 @@ public class ProjectController extends SecuredController {
     public static Result index() {
         List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
         return ok(index.render(creationProject));
+    }
+
+    /**
+     * @return显示个人所报的项目
+     */
+    @Transactional
+    public static Result personHome() {
+        //System.out.println(ContextUtil.getCurrentUserId());
+        List<CreationProject> creationProjects = JPA.em().createQuery("select a from CreationProject a, ProjectJoiner b where b.userId=? and a.id=b.projectId group by a.id", CreationProject.class).setParameter(1,ContextUtil.getCurrentUserId()).getResultList();
+        return ok(studentHome.render(creationProjects));
     }
 
     @Transactional

@@ -48,5 +48,7 @@ GET     /creation/Project/check             cn.edu.sdu.sc.spepms.system.creation
 POST    /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
 GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
 
+GET     /creation/Project/personHome        cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.personHome()
+
 #Laboratory
 GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()

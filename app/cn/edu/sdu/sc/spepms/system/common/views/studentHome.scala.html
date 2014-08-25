@@ -1,12 +1,14 @@
 @(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
 
+@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil 
+
 @layouts.basicLayout() {
 
 <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
     </button>
-    <strong>登录成功!</strong> 张三，早上好！
+    <strong>登录成功!</strong> @ContextUtil.getCurrentUsername()，你好！
 </div>
 
 <div class="page-header">
@@ -19,11 +21,6 @@
     </div>
     <div class="panel-body">
         <ul>
-            <li>山东气象应用网格</li>
-            <li>MM5模式预报产品开发和网络分发研究、MM5模式资料预处理系统开发</li>
-            <li>山东大学校园网格和海量数据处理应用网格</li>
-            <li>山东大学研究生学位管理和培养管理系统</li>
-            <li>山东大学软件学院综合教务管理信息系统</li> 
             @for(creationProject <- creationProjects) { 
                 <!-- 展示与有关的项目学生 -->
                 <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></li> 

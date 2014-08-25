@@ -1,5 +1,6 @@
 @(title: String, header: Html = Html(""))(content: Html)(scripts: Html = Html(""))
 
+@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil 
 <!DOCTYPE html>
 
 <html>
@@ -363,8 +364,8 @@
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                                 <img class="nav-user-photo" src="@routes.Assets.at("libs/ace/avatars/user.jpg")" alt="Jason's Photo")" />
                                 <span class="user-info">
-                                    <small>欢迎,</small>
-                                    Tony Zhou
+                                    <small>欢迎</small>
+                                    @ContextUtil.getCurrentUsername()
                                 </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>
@@ -510,12 +511,23 @@
                             </li>
 
                             <li class="">
-                                <a href="#">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     项目执行
+                                    <b class="arrow fa fa-angle-down"></b>
                                 </a>
 
                                 <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.personHome">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            我的项目
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                  </ul>
                             </li>
 
                             <li class="">
