@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
 
@@ -17,6 +19,19 @@ import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
  */
 @Entity
 public class CreationProject extends AuditableModel {
+    
+    
+    public enum Status {
+        NEW,
+        UNDER_APPROVAL,
+        APPROVED,
+        IN_PROGRESS,
+        COMPLETED,
+        KILLED
+    }
+    
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     /**
      * 名称
