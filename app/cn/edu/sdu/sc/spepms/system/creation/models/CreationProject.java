@@ -83,13 +83,25 @@ public class CreationProject extends AuditableModel {
      */
     private long number;
 
-    
+    /**
+     * 已报人数
+     */
+    private long currentNumber;
+
     /**
      * 审核是否通过
      */
     private boolean passed=false;
 
     private boolean trashed=false;
+
+    public long getCurrentNumber() {
+        return currentNumber;
+    }
+
+    public void setCurrentNumber(long currentNumber) {
+        this.currentNumber = currentNumber;
+    }
 
     public boolean isTrashed() {
         return trashed;

@@ -23,7 +23,6 @@ public class ProjectController extends SecuredController {
     //创新项目发布
     public static Result addProject() {
         //System.out.println(request().username());
-    Wireframe.current().setShowBusinessMenu(true);
         return ok(add.render());
     }
 
@@ -78,7 +77,6 @@ public class ProjectController extends SecuredController {
     //项目详细信息
     @Transactional
     public static Result details(Long creationProjectId) {
-        Wireframe.current().setShowBusinessMenu(true);
         CreationProject creationProject = JPA.em().createQuery("from CreationProject where id =?", CreationProject.class).setParameter(1,creationProjectId).getSingleResult();
         List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,creationProjectId).getResultList();
         return ok(details.render(creationProject,projectJoiners));
@@ -90,9 +88,7 @@ public class ProjectController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setPassed(true);
         JPA.em().merge(creationProject);
-        Wireframe.current().setShowBusinessMenu(true);
-        List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,creationProjectId).getResultList();
-        return ok(details.render(creationProject,projectJoiners));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProjectId));
     }
 
     // 禁止该项目
@@ -101,11 +97,9 @@ public class ProjectController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setPassed(false);
         JPA.em().merge(creationProject);
-        List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,creationProjectId).getResultList();
-        return ok(details.render(creationProject,projectJoiners));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProjectId));
     }
 
-    
     /**
      * @param Id
      * @return
@@ -119,7 +113,11 @@ public class ProjectController extends SecuredController {
         return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.check());
     }
 
-    // 报名该项目
+    /**
+     * @param creationProjectId
+     * 报名该项目
+     * @return
+     */
     @Transactional
     public static Result join(Long creationProjectId) {
         Form<ProjectJoinerForm> form = Form.form(ProjectJoinerForm.class).bindFromRequest();
@@ -136,6 +134,8 @@ public class ProjectController extends SecuredController {
 
         CreationProject creationProject=JPA.em().find(CreationProject.class, creationProjectId);
         List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,creationProjectId).getResultList();
+        creationProject.setCurrentNumber(projectJoiners.size());
+        JPA.em().merge(creationProject);
         return ok(details.render(creationProject,projectJoiners));
     }
 
@@ -147,5 +147,21 @@ public class ProjectController extends SecuredController {
     @Transactional
     public static Result joiners(Long projectId) {
         return ok(joiners.render(projectId));
+    }
+
+    /**
+     * @param projectId
+     * 删除报名的学生
+     * @return
+     */
+    @Transactional
+    public static Result delete(Long joinerId) {
+        ProjectJoiner projectJoiner=JPA.em().createQuery("from ProjectJoiner where id =?", ProjectJoiner.class).setParameter(1,joinerId).getSingleResult();
+        JPA.em().remove(projectJoiner);
+        CreationProject creationProject=JPA.em().find(CreationProject.class, projectJoiner.getProjectId());
+        List<ProjectJoiner> projectJoiners=JPA.em().createQuery("from ProjectJoiner where projectId =?", ProjectJoiner.class).setParameter(1,projectJoiner.getProjectId()).getResultList();
+        creationProject.setCurrentNumber(projectJoiners.size());
+        JPA.em().merge(creationProject);
+        return ok(details.render(creationProject,projectJoiners));
     }
 }

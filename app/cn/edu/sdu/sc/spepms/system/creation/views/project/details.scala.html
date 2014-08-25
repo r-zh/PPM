@@ -144,7 +144,7 @@
         <div class="panel-heading">
             <h2 class="panel-title">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseNine"> <i class="ace-icon fa fa-angle-down bigger-110"
-                    data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;报名情况:
+                    data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;报名情况:&nbsp;已报<i>@joiners.size</i>人
                 </a>
             </h2>
         </div>
@@ -167,7 +167,7 @@
                             <td>@joiner.getStudentId</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons">
-                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.trashed(creationProject.getId)"> <i
+                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(joiner.getId)"> <i
                                         class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>

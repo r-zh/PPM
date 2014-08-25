@@ -14,7 +14,7 @@
                         </label></th>
                         <th>项目名称</th>
                         <th>人数限制</th>
-                        <th class="hidden-480">点击量</th>
+                        <th class="hidden-480">已报人数</th>
                         <th class="hidden-480">联系方式</th>
                         <th></th>
                     </tr>
@@ -29,7 +29,7 @@
 
                         <td><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></td>
                         <td>@creationProject.getNumber</td>
-                        <td class="hidden-480">3,330</td>
+                        <td class="hidden-480">@creationProject.getCurrentNumber</td>
                         <td>@creationProject.getContactInfo</td>
 
                         <td>

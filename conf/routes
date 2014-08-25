@@ -47,6 +47,7 @@ GET     /creation/Project/check             cn.edu.sdu.sc.spepms.system.creation
 
 POST    /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
 GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
+GET     /creation/Project/delete            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.delete(id:Long)
 
 GET     /creation/Project/personHome        cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.personHome()
 
