@@ -65,7 +65,7 @@ Scala IDE doesn't fully support Eclipse 4.4 (Luna/Cocoa), in order to make all P
 * Download Eclipse Standard 4.3.2 from http://www.eclipse.org/downloads/packages/release/Kepler/SR2
 * Download Spring Tool Suite update site archive for Eclipse 4.3.2 from http://spring.io/tools/sts/all
 * Install Spring Tool Suite in Eclipse
-* Install Scala IDE from update site http://download.scala-ide.org/sdk/lithium/e38/scala211/dev/site
+* Install Scala IDE from update site http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site
 ** Check Scala IDE for Eclipse > Scala IDE for Eclipse
 ** Check Scala IDE plugins (incubation) > Play2 support in Scala IDE 
 
