@@ -58,6 +58,17 @@ Workaround: run the following command before run `play`
 * Environment variable
     * Set `JAVA_HOME` to the newly installed JDK 7 folder
 
+### Eclipse 4.3.2 ###
+
+Scala IDE doesn't fully support Eclipse 4.4 (Luna/Cocoa), in order to make all Play related feature functional, please use Eclipse 4.3 (Kepler). STS doesn't provide a bundle installer for previous version of Eclipse, so STS update site archive should be used in this case.
+
+* Download Eclipse Standard 4.3.2 from http://www.eclipse.org/downloads/packages/release/Kepler/SR2
+* Download Spring Tool Suite update site archive for Eclipse 4.3.2 from http://spring.io/tools/sts/all
+* Install Spring Tool Suite in Eclipse
+* Install Scala IDE from update site http://download.scala-ide.org/sdk/lithium/e38/scala211/dev/site
+** Check Scala IDE for Eclipse > Scala IDE for Eclipse
+** Check Scala IDE plugins (incubation) > Play2 support in Scala IDE 
+
 ### Play-2.2.3 ###
 * Download Play-2.2.3 from http://www.playframework.com
 * Unzip it
