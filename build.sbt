@@ -14,7 +14,9 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-entitymanager" % "4.2.5.Final",
   "com.googlecode.genericdao" % "dao" % "1.2.0",
   "com.googlecode.genericdao" % "search-jpa-hibernate" % "1.2.0",
-  "mysql" % "mysql-connector-java" % "5.1.19"
+  "mysql" % "mysql-connector-java" % "5.1.19",
+    // workaround of https://github.com/playframework/playframework/issues/1966
+    "org.javassist" % "javassist" % "3.18.2-GA"
 )
 
 def customLessEntryPoints(base: File): PathFinder = (

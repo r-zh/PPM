@@ -57,7 +57,6 @@ Workaround: run the following command before run `play`
 * Install it
 * Environment variable
     * Set `JAVA_HOME` to the newly installed JDK 7 folder
-    * Set `_JAVA_OPTIONS` to `"-XX:-UseSplitVerifier"`
 
 ### Play-2.2.3 ###
 * Download Play-2.2.3 from http://www.playframework.com
