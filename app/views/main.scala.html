@@ -365,7 +365,6 @@
                                 <img class="nav-user-photo" src="@routes.Assets.at("libs/ace/avatars/user.jpg")" alt="Jason's Photo")" />
                                 <span class="user-info">
                                     <small>欢迎</small>
-                                    @ContextUtil.getCurrentUsername()
                                 </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>
@@ -790,9 +789,9 @@
                     </li>
 
                     <li class="">
-                        <a href="widgets.html">
+                        <a href="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.RegisterController.register">
                             <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text"> Widgets </span>
+                            <span class="menu-text"> 学生注册 </span>
                         </a>
 
                         <b class="arrow"></b>

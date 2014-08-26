@@ -1,6 +1,13 @@
 package cn.edu.sdu.sc.spepms.system.common.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
 
 @Entity
 public class User extends AuditableModel {
@@ -28,6 +35,20 @@ public class User extends AuditableModel {
     private String major;
 
     private String lab;
+
+    @ManyToMany
+    @JoinTable(name = "CreationProject_Users", 
+            joinColumns = {@JoinColumn(name = "Members_Id", referencedColumnName = "Id")}, 
+            inverseJoinColumns = {@JoinColumn(name = "CreationProject_Id", referencedColumnName ="Id")})
+    private List<CreationProject> creationProjects;
+
+    public List<CreationProject> getCreationProjects() {
+        return creationProjects;
+    }
+
+    public void setCreationProjects(List<CreationProject> creationProjects) {
+        this.creationProjects = creationProjects;
+    }
 
     public String getBirthday() {
         return birthday;

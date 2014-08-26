@@ -36,6 +36,7 @@ GET     /project/show               controllers.Application.showProject()
 #Creation
 GET     /creation/index                     cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.index()
 GET     /creation/Project/add               cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.addProject()
+GET     /creation/Project/toCheck           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.toCheck(pid:Long)
 GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.details(pid:Long)
 POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.saveProject()
 
@@ -44,8 +45,8 @@ GET     /creation/Project/unPass            cn.edu.sdu.sc.spepms.system.creation
 GET     /creation/Project/trashed           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.trashed(id:Long)
 
 GET     /creation/Project/check             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.check()
+GET     /creation/Project/join/             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
 
-POST    /creation/Project/join              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
 GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
 GET     /creation/Project/delete            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.delete(id:Long)
 

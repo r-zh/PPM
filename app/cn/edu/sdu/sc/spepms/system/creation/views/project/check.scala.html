@@ -1,5 +1,7 @@
 @(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
 
+@import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject
+
 @layouts.basicLayout() {
 
 <div class="row">
@@ -15,7 +17,7 @@
                         <th>项目名称</th>
                         <th>项目经费</th>
                         <th>人数限制</th>
-                        <th class="hidden-480">点击量</th>
+                        <th class="hidden-480">已有人数</th>
 
                         <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i> 最近更新</th>
                         <th class="hidden-480">项目状态</th>
@@ -26,7 +28,7 @@
 
                 <tbody>
                     @for(creationProject <- creationProjects) {
-                        @if(!creationProject.getPassed){
+                        @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL || creationProject.getStatus==CreationProject.Status.KILLED){
                     <tr>
                         <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
                         </label></td>
@@ -36,12 +38,14 @@
                         <td>@creationProject.getNumber</td>
                         <td class="hidden-480">3,330</td>
                         <td>Feb 12</td>
-
                         <td class="hidden-480">
                         <!-- TODO 将废弃的和未审核的分别显示，可能用到了角色的身份验证 -->
-                            @if(!creationProject.isTrashed){
-                            <span class="label label-sm label-warning">未审核</span>}else{
-                            <span class="label label-sm label-inverse arrowed-in">废弃</span>}
+                            @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
+                            <span class="label label-sm label-warning">未审核</span>
+                            }
+                            @if(creationProject.getStatus==CreationProject.Status.KILLED){
+                            <span class="label label-sm label-inverse arrowed-in">废弃</span>
+                            }
                         </td>
 
                         <td>
