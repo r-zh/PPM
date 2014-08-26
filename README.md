@@ -76,16 +76,6 @@ Scala IDE doesn't fully support Eclipse 4.4 (Luna/Cocoa), in order to make all P
     * Add `PLAY_HOME` to the unzipped folder of Play
     * Add `PLAY_HOME` to `PATH`
 
-### Node.js ###
-* Download latest Node.js from http://nodejs.org/download/
-* Install it
-
-### Less compiler ###
-* Use the following command to install less compiler (it requires admin access to the OS)
-```
-npm install -g less
-```
-
 ## Run the application ##
 
 ### Create a database ###

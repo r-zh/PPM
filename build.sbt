@@ -19,13 +19,4 @@ libraryDependencies ++= Seq(
     "org.javassist" % "javassist" % "3.18.2-GA"
 )
 
-def customLessEntryPoints(base: File): PathFinder = (
-   (base / "app" / "assets" / "libs" / "bootstrap" / "css" * "bootstrap.less") +++
-   (base / "app" / "assets" / "stylesheets" / "main.less")
-)
-
 play.Project.playJavaSettings ++ lesscSettings
-
-lessEntryPoints := Nil
-
-lesscEntryPoints in Compile <<= baseDirectory(customLessEntryPoints)
