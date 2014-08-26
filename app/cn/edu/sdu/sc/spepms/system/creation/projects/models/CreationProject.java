@@ -1,4 +1,4 @@
-package cn.edu.sdu.sc.spepms.system.creation.models;
+package cn.edu.sdu.sc.spepms.system.creation.projects.models;
 
 import java.math.BigDecimal;
 import java.util.Date;

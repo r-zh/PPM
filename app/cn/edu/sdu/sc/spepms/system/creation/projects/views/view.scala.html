@@ -1,34 +1,35 @@
-@(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject,currentUser: cn.edu.sdu.sc.spepms.system.common.models.User) 
+@(creationProject: cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject, currentUser: cn.edu.sdu.sc.spepms.system.common.models.User)
 
-@import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject
+@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
 
 @layouts.basicLayout {
 
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-primary btn-lg btn-pass"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.pass(creationProject.getId)';">
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)';">
         <span class="glyphicon glyphicon-ok"></span>审核通过
     </button>
     <button type="button" class="btn btn-primary btn-lg btn-unpass"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.unPass(creationProject.getId)';">
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.reject(creationProject.getId)';">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
     @if(creationProject.getStatus==CreationProject.Status.NEW){
     <button type="button" class="btn btn-primary btn-lg btn-join"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.toCheck(creationProject.getId)';">
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.submit(creationProject.getId)';">
         <span class="glyphicon glyphicon-heart"></span>提交审核
     </button>
     }
     @if(!creationProject.getMembers().contains(currentUser)){
         @if(creationProject.getCurrentNumber < creationProject.getMembers().size){
     <button type="button" class="btn btn-primary btn-lg btn-join"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.join(creationProject.getId)';">
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.join(creationProject.getId)';">
         <span class="glyphicon glyphicon-heart"></span>接受挑战
     </button>
-    }
+        }
+    
     }else{
     <button type="button" class="btn btn-primary btn-lg btn-cancelJoin"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(creationProject.getId)';">
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId)';">
         <span class="glyphicon glyphicon-heart"></span>黯然离去
     </button>
     }
@@ -38,6 +39,7 @@
 <div class="page-header">
     <h1>项目概观</h1>
 </div>
+
 } {
 
 <!-- Place this in the body of the page content -->
@@ -174,11 +176,11 @@
                     <tbody>
                         @for(member <- creationProject.getMembers) {
                         <tr>
-                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@member.getName</a></td>
+                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@member.getName</a></td>
                             <td>@member.getStudentId</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons">
-                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(creationProject.getId)"> <i
+                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId)"> <i
                                         class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>
@@ -203,6 +205,7 @@
     </div>
 </div>
 </div>
+
 } {
 
 <script>

@@ -1,6 +1,6 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
+@(projects: List[cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject])
 
-@import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject
+@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
 
 @layouts.basicLayout() {
 
@@ -23,22 +23,22 @@
                 </thead>
 
                 <tbody>
-                    @for(creationProject <- creationProjects) {
-                        @if(creationProject.getStatus==CreationProject.Status.APPROVED){
+                    @for(project <- projects) {
+                        @if(project.getStatus == CreationProject.Status.APPROVED) {
                     <tr>
                         <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
                         </label></td>
 
-                        <td><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></td>
-                        <td>@creationProject.getNumber</td>
-                        <td class="hidden-480">@creationProject.getCurrentNumber</td>
-                        <td>@creationProject.getContactInfo</td>
+                        <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(project.getId)">@project.getName</a></td>
+                        <td>@project.getNumber</td>
+                        <td class="hidden-480">@project.getCurrentNumber</td>
+                        <td>@project.getContactInfo</td>
 
                         <td>
                             <div class="hidden-sm hidden-xs action-buttons">
                                 <a class="blue" href="#"> <i class="ace-icon fa fa-search-plus bigger-130"></i>
                                 </a> <a class="green" href="#"> <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                </a> <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.trashed(creationProject.getId)"> <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                </a> <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.kill(project.getId)"> <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                 </a>
                             </div>
 

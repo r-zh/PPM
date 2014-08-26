@@ -2,28 +2,33 @@ package controllers;
 
 import java.util.List;
 
-import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
-import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
-import cn.edu.sdu.sc.spepms.system.common.models.BaseModel;
-import cn.edu.sdu.sc.spepms.system.common.models.User;
-import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.forms.ProjectForm;
-import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
-import play.*;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
-import play.mvc.*;
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.addArticle;
+import views.html.index;
+import views.html.publishProject;
+import views.html.showProject;
+import views.html.teacherHome;
+import views.html.userList;
+import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
+import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
+import cn.edu.sdu.sc.spepms.system.common.models.User;
+import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
+import cn.edu.sdu.sc.spepms.system.creation.projects.forms.ProjectForm;
+import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
 
 public class Application extends Controller {
 
     @Transactional
     public static Result index() {
-        //System.out.println(request().username());
+        // System.out.println(request().username());
         List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
         return ok(index.render(creationProject));
     }
+
     @Transactional
     public static Result registerSave() {
         Form<RegisterForm> form = Form.form(RegisterForm.class).bindFromRequest();
@@ -38,7 +43,7 @@ public class Application extends Controller {
 
         return ok();
     }
-    
+
     @Transactional
     public static Result users() {
         List<User> users = JPA.em().createQuery("from User", User.class).getResultList();

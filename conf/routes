@@ -3,54 +3,54 @@
 # ~~~~
 
 # Home page for public access
-GET     /                           controllers.Application.index()
+GET    /                                         controllers.Application.index()
 
 # User login
-GET      /login                     cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.login()
-POST     /authenticate              cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
-GET      /logout                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
+GET    /login                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.login()
+POST   /authenticate                             cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
+GET    /logout                                   cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
 
-GET     /users                      controllers.Application.users()
+GET    /users                                    controllers.Application.users()
 
 # User register
-GET    /register                    cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
-POST   /register/save               cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
+GET    /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
+POST   /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
 
 # Home page after user login
-GET     /home/student               controllers.Application.studentHome()
-GET     /home/teacher               controllers.Application.teacherHome()
+GET    /home/student                             controllers.Application.studentHome()
+GET    /home/teacher                             controllers.Application.teacherHome()
 
 # Articles
-GET     /articles/add               controllers.Application.addArticle()
-
-POST    /articles                   controllers.Application.saveArticle()
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET    /articles/add                             controllers.Application.addArticle()
+POST   /articles                                 controllers.Application.saveArticle()
 
 # Project
-GET     /project/publish            controllers.Application.publishProject()
-GET     /project/show               controllers.Application.showProject()
-#GET    /project/publish            cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectsController.publishProject()
+GET    /projects/publish                         controllers.Application.publishProject()
+GET    /projects/show                            controllers.Application.showProject()
+#GET    /project/publish                          cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectsController.publishProject()
 
-#Creation
-GET     /creation/index                     cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.index()
-GET     /creation/Project/add               cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.addProject()
-GET     /creation/Project/toCheck           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.toCheck(pid:Long)
-GET     /creation/Project/details           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.details(pid:Long)
-POST    /creation/Project/save              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.saveProject()
+# Creation
+GET    /creation                                 cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.index()
+GET    /creation/personHome                      cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.personHome()
 
-GET     /creation/Project/pass              cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.pass(id:Long)
-GET     /creation/Project/unPass            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.unPass(id:Long)
-GET     /creation/Project/trashed           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.trashed(id:Long)
+GET    /creation/projects                        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.list()
+GET    /creation/projects/add                    cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.add()
+POST   /creation/projects                        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.save()
 
-GET     /creation/Project/check             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.check()
-GET     /creation/Project/join/             cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.join(id:Long)
+POST   /creation/projects/:projectId/approve     cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.approve(projectId: Long)
+POST   /creation/projects/:projectId/reject      cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.reject(projectId: Long)
+POST   /creation/projects/:projectId/kill        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.kill(projectId: Long)
 
-GET     /creation/Project/joiners           cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.joiners(id:Long)
-GET     /creation/Project/delete            cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.delete(id:Long)
+POST   /creation/projects/:projectId/submit      cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.submit(projectId: Long)
+POST   /creation/projects/:projectId/join        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.join(projectId: Long)
 
-GET     /creation/Project/personHome        cn.edu.sdu.sc.spepms.system.creation.controllers.project.ProjectController.personHome()
+GET    /creation/projects/:projectId/applicate   cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.applicate(projectId: Long)
+POST   /creation/projects/:projectId/leave       cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.leave(projectId: Long)
 
-#Laboratory
-GET     /creation/lab/index                 cn.edu.sdu.sc.spepms.system.creation.controllers.lab.LabController.index()
+GET    /creation/projects/:projectId             cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.view(projectId:Long)
+
+# Laboratory
+GET    /creation/labs                            cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET    /assets/*file                             controllers.Assets.at(path="/public", file)

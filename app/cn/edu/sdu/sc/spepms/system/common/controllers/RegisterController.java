@@ -12,7 +12,7 @@ import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.views.html.register;
 import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
 
 public class RegisterController extends Controller {
 

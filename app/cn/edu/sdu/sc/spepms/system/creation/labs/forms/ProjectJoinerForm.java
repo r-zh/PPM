@@ -1,4 +1,4 @@
-package cn.edu.sdu.sc.spepms.system.creation.forms;
+package cn.edu.sdu.sc.spepms.system.creation.labs.forms;
 
 public class ProjectJoinerForm {
 

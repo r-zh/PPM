@@ -1,6 +1,6 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
+@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject])
 
-@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil 
+@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil
 
 @layouts.basicLayout() {
 
@@ -23,7 +23,7 @@
         <ul>
             @for(creationProject <- creationProjects) { 
                 <!-- 展示与有关的项目学生 -->
-                <li><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@creationProject.getName</a></li> 
+                <li><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></li> 
             }
         </ul>
     </div>

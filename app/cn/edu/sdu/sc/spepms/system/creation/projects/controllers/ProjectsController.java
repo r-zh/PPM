@@ -1,38 +1,37 @@
-package cn.edu.sdu.sc.spepms.system.creation.controllers.project;
+package cn.edu.sdu.sc.spepms.system.creation.projects.controllers;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
-import cn.edu.sdu.sc.spepms.system.common.controllers.SecuredController;
-import cn.edu.sdu.sc.spepms.system.common.models.User;
-import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil;
-import cn.edu.sdu.sc.spepms.system.common.views.html.*;
-import cn.edu.sdu.sc.spepms.system.creation.forms.ProjectForm;
-import cn.edu.sdu.sc.spepms.system.creation.forms.ProjectJoinerForm;
-import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
-import cn.edu.sdu.sc.spepms.system.creation.views.html.project.*;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
-import play.mvc.*;
+import play.mvc.Result;
+import cn.edu.sdu.sc.spepms.system.common.controllers.SecuredController;
+import cn.edu.sdu.sc.spepms.system.common.models.User;
+import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil;
+import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
+import cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes;
+import cn.edu.sdu.sc.spepms.system.creation.projects.forms.ProjectForm;
+import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.projects.views.html.*;
 
+public class ProjectsController extends SecuredController {
 
-public class ProjectController extends SecuredController {
-    //创新项目发布
-    public static Result addProject() {
-        //System.out.println(request().username());
+    // 创新项目发布
+    public static Result add() {
+        // System.out.println(request().username());
         return ok(add.render());
     }
 
-    //信息录入数据库
+    // 信息录入数据库
     @Transactional
-    public static Result saveProject() {
+    public static Result save() {
         Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
         ProjectForm data = form.get();
 
-        CreationProject creationProject=new CreationProject();
+        CreationProject creationProject = new CreationProject();
         creationProject.setCreatedBy(ContextUtil.getCurrentUserId());
         creationProject.setCreatedOn(new Date());
         creationProject.setStatus(CreationProject.Status.NEW);
@@ -60,8 +59,8 @@ public class ProjectController extends SecuredController {
         pmembers.add(pmember);
         creationProject.setProjectMembers(pmembers);
         */
-        //return ok(studentHome.render(getCurrentUser().getCreationProjects()));
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.index());
+        // return ok(studentHome.render(getCurrentUser().getCreationProjects()));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index());
     }
 
     @Transactional
@@ -71,72 +70,79 @@ public class ProjectController extends SecuredController {
     }
 
     /**
-     * @return显示个人所报的项目
+     * 显示个人所报的项目
+     * 
+     * @return
      */
     @Transactional
     public static Result personHome() {
-        //System.out.println(ContextUtil.getCurrentUserId());
+        // System.out.println(ContextUtil.getCurrentUserId());
         return ok(studentHome.render(getCurrentUser().getCreationProjects()));
     }
 
     /**
-     * @return审核该项目
+     * 审核该项目
+     * 
+     * @return
      */
     @Transactional
-    public static Result check() {
+    public static Result list() {
         List<CreationProject> creationProjects = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
-        return ok(check.render(creationProjects));
+        return ok(list.render(creationProjects));
     }
 
-    //项目详细信息
+    // 项目详细信息
     @Transactional
-    public static Result details(Long creationProjectId) {
+    public static Result view(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
-        return ok(details.render(creationProject,getCurrentUser()));
+        return ok(view.render(creationProject, getCurrentUser()));
     }
 
     // 审核通过该项目
     @Transactional
-    public static Result pass(Long creationProjectId) {
+    public static Result approve(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.APPROVED);;
         JPA.em().merge(creationProject);
-        return ok(details.render(creationProject,getCurrentUser()));
+        return ok(view.render(creationProject, getCurrentUser()));
     }
 
     // 审核不通过该项目
     @Transactional
-    public static Result unPass(Long creationProjectId) {
+    public static Result reject(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
-        return ok(details.render(creationProject,getCurrentUser()));
+        return ok(view.render(creationProject, getCurrentUser()));
     }
 
     // 项目提交审核
     @Transactional
-    public static Result toCheck(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+    public static Result submit(Long projectId) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, projectId);
         creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
-        return ok(details.render(creationProject,getCurrentUser()));
-    }
-    /**
-     * @param Id
-     * @return
-     * 废弃该项目
-     */
-    @Transactional
-    public static Result trashed(Long Id) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
-        creationProject.setStatus(CreationProject.Status.KILLED);
-        JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.check());
+        return ok(view.render(creationProject, getCurrentUser()));
     }
 
     /**
-     * @param creationProjectId
+     * 废弃该项目
+     * 
+     * @param Id
+     * @return
+     */
+    @Transactional
+    public static Result kill(Long Id) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
+        creationProject.setStatus(CreationProject.Status.KILLED);
+        JPA.em().merge(creationProject);
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
+    }
+
+    /**
      * 报名该项目
+     * 
+     * @param creationProjectId
      * @return
      */
     @Transactional
@@ -155,36 +161,38 @@ public class ProjectController extends SecuredController {
          User user=new User();
          user.setName(data.getUserName());
          */
-        CreationProject creationProject=JPA.em().find(CreationProject.class, creationProjectId);
+        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.getMembers().add(getCurrentUser());
-        //creationProject.getMembers().get(0).getName();
+        // creationProject.getMembers().get(0).getName();
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProjectId));
-        //return ok(details.render(creationProject,getCurrentUser()));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProjectId));
     }
 
     /**
-     * @param projectId
      * 填写报名人员情况
+     * 
+     * @param projectId
      * @return
      */
     @Transactional
-    public static Result joiners(Long projectId) {
-        return ok(joiners.render(projectId));
+    public static Result applicate(Long projectId) {
+        return ok(applicate.render(projectId));
     }
 
     /**
-     * @param projectId
      * 删除报名的学生
+     * 
+     * @param projectId
      * @return
      */
     @Transactional
-    public static Result delete(Long creationProjectId) {
-        CreationProject creationProject=JPA.em().find(CreationProject.class, creationProjectId);
+    public static Result leave(Long creationProjectId) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.getMembers().remove(getCurrentUser());
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
-        return ok(details.render(creationProject,getCurrentUser()));
+        return ok(view.render(creationProject, getCurrentUser()));
     }
+
 }

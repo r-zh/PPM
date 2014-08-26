@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
 
 @Entity
 public class User extends AuditableModel {
