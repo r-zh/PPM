@@ -1,5 +1,7 @@
 @(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.models.CreationProject])
 
+@import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject
+
 @layouts.basicLayout() {
 
 <div class="row">
@@ -22,7 +24,7 @@
 
                 <tbody>
                     @for(creationProject <- creationProjects) {
-                        @if(creationProject.getPassed){
+                        @if(creationProject.getStatus==CreationProject.Status.APPROVED){
                     <tr>
                         <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
                         </label></td>

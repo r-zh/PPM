@@ -1,14 +1,9 @@
-@(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject,joiners: List[cn.edu.sdu.sc.spepms.system.creation.models.ProjectJoiner]) 
+@(creationProject: cn.edu.sdu.sc.spepms.system.creation.models.CreationProject,currentUser: cn.edu.sdu.sc.spepms.system.common.models.User) 
 
-@import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil 
+@import cn.edu.sdu.sc.spepms.system.creation.models.CreationProject
 
 @layouts.basicLayout {
 
-<!-- 
-@ContextUtil.getCurrentUsername()
-
-@ContextUtil.getCurrentUserId()
- -->
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-primary btn-lg btn-pass"
         onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.pass(creationProject.getId)';">
@@ -18,10 +13,26 @@
         onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.unPass(creationProject.getId)';">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
+    @if(creationProject.getStatus==CreationProject.Status.NEW){
     <button type="button" class="btn btn-primary btn-lg btn-join"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.joiners(creationProject.getId)';">
-        <span class="glyphicon glyphicon-heart"></span>我要报名
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.toCheck(creationProject.getId)';">
+        <span class="glyphicon glyphicon-heart"></span>提交审核
     </button>
+    }
+    @if(!creationProject.getMembers().contains(currentUser)){
+        @if(creationProject.getCurrentNumber < creationProject.getMembers().size){
+    <button type="button" class="btn btn-primary btn-lg btn-join"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.join(creationProject.getId)';">
+        <span class="glyphicon glyphicon-heart"></span>接受挑战
+    </button>
+    }
+    }else{
+    <button type="button" class="btn btn-primary btn-lg btn-cancelJoin"
+        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(creationProject.getId)';">
+        <span class="glyphicon glyphicon-heart"></span>黯然离去
+    </button>
+    }
+    
 </div>
 
 <div class="page-header">
@@ -144,11 +155,11 @@
         <div class="panel-heading">
             <h2 class="panel-title">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseNine"> <i class="ace-icon fa fa-angle-down bigger-110"
-                    data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;报名情况:&nbsp;已报<i>@joiners.size</i>人
+                    data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;报名情况:&nbsp;已报<i>@creationProject.getMembers().size</i>人
                 </a>
             </h2>
         </div>
-        @if(creationProject.getCreatedBy==ContextUtil.getCurrentUserId){
+        @if(creationProject.getCreatedBy==currentUser.getId){
         <div class="panel-collapse collapse in" id="collapseNine">
             <div class="panel-body">
                 <table id="sample-table-2" class="table table-striped table-bordered table-hover">
@@ -161,13 +172,13 @@
                     </thead>
 
                     <tbody>
-                        @for(joiner <- joiners) {
+                        @for(member <- creationProject.getMembers) {
                         <tr>
-                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@joiner.getUserName</a></td>
-                            <td>@joiner.getStudentId</td>
+                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.details(creationProject.getId)">@member.getName</a></td>
+                            <td>@member.getStudentId</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons">
-                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(joiner.getId)"> <i
+                                    <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.controllers.project.routes.ProjectController.delete(creationProject.getId)"> <i
                                         class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>

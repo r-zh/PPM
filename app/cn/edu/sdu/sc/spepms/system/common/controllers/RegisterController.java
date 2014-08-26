@@ -42,8 +42,7 @@ public class RegisterController extends Controller {
 
         JPA.em().persist(user);
 
-        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
-        return ok(studentHome.render(creationProject));
+        return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login());
     }
 
 }
