@@ -211,6 +211,7 @@
 <script>
     $('.btn-pass').click(function() {if(confirm("你确认要通过审核吗？")){
         cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId).ajax({
+            
             success: function (data) {
                 alert("操作成功");
             },

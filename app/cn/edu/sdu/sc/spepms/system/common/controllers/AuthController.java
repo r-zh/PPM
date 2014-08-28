@@ -21,7 +21,7 @@ import cn.edu.sdu.sc.spepms.system.common.views.html.profile;
  * 
  * @author Peter Fu
  */
-public class AuthController extends SecuredController {
+public class AuthController extends Controller {
 
     private static final String COOKIE_KEY_REMEMBER_ME = "_remember_me";
 
@@ -129,11 +129,11 @@ public class AuthController extends SecuredController {
     
     /**
      * @return当前用户的详细页面
-     */
+     *//*
     @Transactional
     public static Result view() {
         Logger.debug("AuthController.details");
 
         return ok(profile.render(getCurrentUser()));
-    }
+    }*/
 }

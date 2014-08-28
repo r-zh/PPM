@@ -10,8 +10,8 @@ GET    /login                                    cn.edu.sdu.sc.spepms.system.com
 POST   /authenticate                             cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
 GET    /logout                                   cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
 
-#GET    /users                                   controllers.Application.users()
-GET    /users                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.view()
+GET    /users                                   controllers.Application.users()
+#GET    /users                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.view()
 
 # User register
 GET    /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
