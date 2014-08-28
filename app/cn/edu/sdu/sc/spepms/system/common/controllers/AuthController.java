@@ -126,4 +126,15 @@ public class AuthController extends Controller {
         return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login());
     }
 
+    /**
+     * @return当前用户的详细页面
+     */
+    @Transactional
+    public static Result view() {
+        Logger.debug("AuthController.details");
+
+        return TODO;
+        //return ok(profile.render(getCurrentUser()));
+    }
+
 }

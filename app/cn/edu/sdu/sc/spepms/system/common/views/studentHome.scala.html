@@ -2,8 +2,9 @@
 
 @import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil
 
-@layouts.basicLayout() {
+@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
 
+@layouts.basicLayout() {
 <div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
@@ -15,18 +16,78 @@
     <h1>个人主页</h1>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">我的项目</h3>
-    </div>
-    <div class="panel-body">
-        <ul>
+<div>
+    <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
+                </label></th>
+                <th>项目名称</th>
+                <th>项目经费</th>
+                <th>人数限制</th>
+                <th class="hidden-480">已有人数</th>
+
+                <th><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i> 最近更新</th>
+                <th class="hidden-480">项目状态</th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
             @for(creationProject <- creationProjects) { 
-                <!-- 展示与有关的项目学生 -->
-                <li><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></li> 
-            }
-        </ul>
-    </div>
+            <tr>
+                <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
+                </label></td>
+
+                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></td>
+                <td>$45</td>
+                <td>@creationProject.getNumber</td>
+                <td class="hidden-480">3,330</td>
+                <td>Feb 12</td>
+                <td class="hidden-480">
+                    <!-- TODO 将废弃的和未审核的分别显示，可能用到了角色的身份验证 --> @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){ <span class="label label-sm label-warning">未审核</span>
+                    } @if(creationProject.getStatus==CreationProject.Status.KILLED){ <span class="label label-sm label-inverse arrowed-in">审核不通过</span> }
+                </td>
+
+                <td>
+                    <div class="hidden-sm hidden-xs action-buttons">
+                        <a class="blue" href="#"> <i class="ace-icon fa fa-search-plus bigger-130"></i>
+                        </a> <a class="green" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.edit(creationProject.getId)"> <i class="ace-icon fa fa-pencil bigger-130"></i>
+                        </a> <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.kill(creationProject.getId)"> <i
+                            class="ace-icon fa fa-trash-o bigger-130"></i>
+                        </a>
+                    </div>
+
+                    <div class="hidden-md hidden-lg">
+                        <div class="inline position-relative">
+                            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                <li><a href="#" class="tooltip-info" data-rel="tooltip" title="View"> <span class="blue"> <i
+                                            class="ace-icon fa fa-search-plus bigger-120"></i>
+                                    </span>
+                                </a></li>
+
+                                <li><a href="#" class="tooltip-success" data-rel="tooltip" title="Edit"> <span class="green"> <i
+                                            class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                    </span>
+                                </a></li>
+
+                                <li><a href="#" class="tooltip-error" data-rel="tooltip" title="Delete"> <span class="red"> <i
+                                            class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </span>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            } 
+        </tbody>
+    </table>
 </div>
 
 <div class="panel panel-default">
@@ -44,6 +105,4 @@
     </div>
 </div>
 
-} {
-
-}
+} { }
