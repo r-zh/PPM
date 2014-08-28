@@ -104,7 +104,7 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.APPROVED);;
         JPA.em().merge(creationProject);
-        return ok(view.render(creationProject, getCurrentUser()));
+        return ok();
     }
 
     // 审核不通过该项目

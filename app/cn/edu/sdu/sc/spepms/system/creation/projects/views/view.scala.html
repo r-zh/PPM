@@ -3,10 +3,11 @@
 @import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
 
 @layouts.basicLayout {
+
 <form class="form-horizontal" method="post" role="form">
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-primary btn-lg btn-pass"
-        onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)';">
+        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)">
         <span class="glyphicon glyphicon-ok"></span>审核通过
     </button>
     <button type="button" class="btn btn-primary btn-lg btn-unpass"
@@ -209,19 +210,19 @@
 } {
 
 <script>
-    $('.btn-pass').click(function() {if(confirm("你确认要通过审核吗？")){
-        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId).ajax({
-            
-            success: function (data) {
-                alert("操作成功");
-            },
-            error: function (data) {
-            }
+    $('.btn-pass').click(function() {
+        if(!confirm("你确认要通过审核吗？")) {
+            return false;
+        }
+
+        var url = $(this).attr('href');
+        console.log("ajax - " + url);
+        $.post(url, function (data) {
+            console.log("返回结果："+data);
+            alert("操作成功");
         });
-    }
-    $('#').click(function() {
-        alert("操作成功");
+        return false;
     });
 </script>
-}
+
 }
