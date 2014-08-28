@@ -10,7 +10,7 @@ GET    /login                                    cn.edu.sdu.sc.spepms.system.com
 POST   /authenticate                             cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
 GET    /logout                                   cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
 
-GET    /users                                   controllers.Application.users()
+GET    /users                                    controllers.Application.users()
 #GET    /users                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.view()
 
 # User register
@@ -36,7 +36,9 @@ GET    /creation/personHome                      cn.edu.sdu.sc.spepms.system.cre
 
 GET    /creation/projects                        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.list()
 GET    /creation/projects/add                    cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.add()
+GET    /creation/projects/edit                   cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.edit(projectId: Long)
 POST   /creation/projects                        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.save()
+POST   /creation/projects/update                 cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.reSave(projectId: Long)
 
 POST   /creation/projects/:projectId/approve     cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.approve(projectId: Long)
 POST   /creation/projects/:projectId/reject      cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.reject(projectId: Long)

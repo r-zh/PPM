@@ -34,6 +34,8 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = new CreationProject();
         creationProject.setCreatedBy(ContextUtil.getCurrentUserId());
         creationProject.setCreatedOn(new Date());
+        creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
+        creationProject.setUpdatedOn(new Date());
         creationProject.setStatus(CreationProject.Status.NEW);
 
         creationProject.setName(data.getName());
@@ -63,6 +65,47 @@ public class ProjectsController extends SecuredController {
         return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index());
     }
 
+    /**
+     * 再次编辑该项目
+     * @return
+     */
+    @Transactional
+    public static Result edit(Long creationProjectId) {
+        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        return ok(edit.render(creationProject,getCurrentUser()));
+    }
+
+    /**
+     * @return信息更新
+     * 
+     */
+    @Transactional
+    public static Result reSave(Long creationProjectId) {
+        Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
+        ProjectForm data = form.get();
+
+        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
+        creationProject.setUpdatedOn(new Date());
+        creationProject.setStatus(CreationProject.Status.NEW);
+
+        creationProject.setName(data.getName());
+        creationProject.setCategory(data.getCategory());
+        creationProject.setBillable(data.getBillable());
+        creationProject.setRewardMethod(data.getRewardMethod());
+        creationProject.setRewardAmount(data.getRewardAmount());
+        creationProject.setDescription(data.getDescription());
+        creationProject.setApplicableFrom(data.getApplicableFrom());
+        creationProject.setApplicableTo(data.getApplicableTo());
+        creationProject.setContactInfo(data.getContactInfo());
+        creationProject.setNumber(data.getNumber());
+        JPA.em().persist(creationProject);
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index());
+    }
+
+    /**
+     * @return首页
+     */
     @Transactional
     public static Result index() {
         List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
@@ -104,16 +147,21 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.APPROVED);;
         JPA.em().merge(creationProject);
-        return ok();
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
+
     }
 
-    // 审核不通过该项目
+    /**
+     * @param creationProjectId
+     * @return
+     * 审核不通过该项目,回到审核项目列表页面
+     */
     @Transactional
     public static Result reject(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
-        return ok(view.render(creationProject, getCurrentUser()));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
     }
 
     // 项目提交审核
@@ -122,8 +170,7 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, projectId);
         creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId()));
-        //return ok(view.render(creationProject, getCurrentUser()));
+        return ok();
     }
 
     /**
@@ -137,8 +184,8 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
         creationProject.setStatus(CreationProject.Status.KILLED);
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
-    }
+        return ok();
+}
 
     /**
      * 报名该项目
@@ -167,8 +214,8 @@ public class ProjectsController extends SecuredController {
         // creationProject.getMembers().get(0).getName();
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProjectId));
-    }
+        return ok();
+        }
 
     /**
      * 填写报名人员情况
@@ -193,7 +240,7 @@ public class ProjectsController extends SecuredController {
         creationProject.getMembers().remove(getCurrentUser());
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
-        return ok(view.render(creationProject, getCurrentUser()));
+        return ok();
     }
 
 }
