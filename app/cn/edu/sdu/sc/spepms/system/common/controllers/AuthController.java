@@ -15,13 +15,13 @@ import play.mvc.Result;
 import cn.edu.sdu.sc.spepms.system.common.forms.LoginForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.views.html.auth.login;
-
+import cn.edu.sdu.sc.spepms.system.common.views.html.profile;
 /**
  * Authentication controller
  * 
  * @author Peter Fu
  */
-public class AuthController extends Controller {
+public class AuthController extends SecuredController {
 
     private static final String COOKIE_KEY_REMEMBER_ME = "_remember_me";
 
@@ -126,4 +126,14 @@ public class AuthController extends Controller {
         return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login());
     }
 
+    
+    /**
+     * @return当前用户的详细页面
+     */
+    @Transactional
+    public static Result view() {
+        Logger.debug("AuthController.details");
+
+        return ok(profile.render(getCurrentUser()));
+    }
 }

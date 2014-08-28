@@ -3,7 +3,7 @@
 @import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
 
 @layouts.basicLayout {
-
+<form class="form-horizontal" method="post" role="form">
 <div class="btn-group pull-right">
     <button type="button" class="btn btn-primary btn-lg btn-pass"
         onClick="location.href='@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)';">
@@ -35,7 +35,7 @@
     }
     
 </div>
-
+</form>
 <div class="page-header">
     <h1>项目概观</h1>
 </div>
@@ -209,12 +209,18 @@
 } {
 
 <script>
-    $('.btn-pass').click(function() {
-        alert("操作成功");
-    });
+    $('.btn-pass').click(function() {if(confirm("你确认要通过审核吗？")){
+        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId).ajax({
+            success: function (data) {
+                alert("操作成功");
+            },
+            error: function (data) {
+            }
+        });
+    }
     $('#').click(function() {
         alert("操作成功");
     });
 </script>
-
+}
 }

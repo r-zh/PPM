@@ -122,7 +122,8 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, projectId);
         creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
-        return ok(view.render(creationProject, getCurrentUser()));
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId()));
+        //return ok(view.render(creationProject, getCurrentUser()));
     }
 
     /**
