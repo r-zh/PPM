@@ -28,23 +28,20 @@
 
                 <tbody>
                     @for(creationProject <- creationProjects) {
-                        @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL || creationProject.getStatus==CreationProject.Status.KILLED){
+                        @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
                     <tr>
                         <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
                         </label></td>
 
                         <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></td>
-                        <td>$45</td>
+                        <td>@creationProject.getRewardAmount</td>
                         <td>@creationProject.getNumber</td>
-                        <td class="hidden-480">3,330</td>
-                        <td>Feb 12</td>
+                        <td class="hidden-480">@creationProject.getCurrentNumber</td>
+                        <td>@creationProject.getUpdatedOn</td>
                         <td class="hidden-480">
                         <!-- TODO 将废弃的和未审核的分别显示，可能用到了角色的身份验证 -->
                             @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
-                            <span class="label label-sm label-warning">未审核</span>
-                            }
-                            @if(creationProject.getStatus==CreationProject.Status.KILLED){
-                            <span class="label label-sm label-inverse arrowed-in">审核不通过</span>
+                            <span class="label label-sm label-warning">审核中</span>
                             }
                         </td>
 

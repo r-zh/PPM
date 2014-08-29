@@ -21,7 +21,6 @@ public class ProjectsController extends SecuredController {
 
     // 创新项目发布
     public static Result add() {
-        // System.out.println(request().username());
         return ok(add.render());
     }
 
@@ -53,16 +52,7 @@ public class ProjectsController extends SecuredController {
         creationProject.setMembers(members);
         creationProject.setCurrentNumber(members.size());
         JPA.em().persist(creationProject);
-        /*
-        List<ProjectMember> pmembers = new ArrayList<ProjectMember>();
-        ProjectMember pmember = new ProjectMember();
-        pmember.setUser(getCurrentUser());
-        pmember.setShenfen();
-        pmembers.add(pmember);
-        creationProject.setProjectMembers(pmembers);
-        */
-        // return ok(studentHome.render(getCurrentUser().getCreationProjects()));
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index());
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.personHome());
     }
 
     /**
@@ -100,7 +90,7 @@ public class ProjectsController extends SecuredController {
         creationProject.setContactInfo(data.getContactInfo());
         creationProject.setNumber(data.getNumber());
         JPA.em().persist(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index());
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.personHome());
     }
 
     /**
@@ -119,7 +109,6 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result personHome() {
-        // System.out.println(ContextUtil.getCurrentUserId());
         return ok(studentHome.render(getCurrentUser().getCreationProjects()));
     }
 
@@ -195,23 +184,8 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result join(Long creationProjectId) {
-        /*TODO 这里遇到的问题是能不能替别人报名，如果可以为别人报名，会不会降低安全性，先设置为只能自己报名
-        Form<ProjectJoinerForm> form = Form.form(ProjectJoinerForm.class).bindFromRequest();
-        ProjectJoinerForm data = form.get();
-        ProjectJoiner projectJoiner=new ProjectJoiner();
-        projectJoiner.setProjectId(creationProjectId);
-        projectJoiner.setUserName(data.getUserName());
-        projectJoiner.setStudentId(data.getStudentId());
-        //User user=JPA.em().find(User.class, ContextUtil.getCurrentUserId());
-        //projectJoiner.setStudentId(user.getStudentId());
-        //projectJoiner.setUserId(ContextUtil.getCurrentUserId());
-        JPA.em().persist(projectJoiner);
-         User user=new User();
-         user.setName(data.getUserName());
-         */
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.getMembers().add(getCurrentUser());
-        // creationProject.getMembers().get(0).getName();
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
         return ok();
