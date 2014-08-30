@@ -1,62 +1,130 @@
 @()
 
-@layouts.basicLayout() {
+@layouts.basicLayout {
 
-<form method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.RegisterController.registerSave()">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">个人信息填写</h3>
-    </div>
-    <div class="panel-body">
-        <div class="input-group">
-            <span class="input-group-addon">姓名</span> <input type="text"
-                    class="form-control" placeholder="Username" name="name">
-            <span class="input-group-addon">性别</span> <input type="text"
-                    class="form-control" name="gender">
-            <span class="input-group-addon">籍贯</span> <input type="text"
-                    class="form-control" placeholder="" name="hometown">
-        </div>
-        <div class="input-group">
-                <span class="input-group-addon">出生年月</span> <input type="number"
-                    class="form-control" placeholder="" name="birthday">
-                <span class="input-group-addon">身份证号</span> <input type="text"
-                    class="form-control" placeholder="" name="personalId">
-        </div>
-        <div class="input-group">
-                <span class="input-group-addon">输入密码</span> <input type="password"
-                    class="form-control" placeholder="" name="password">
-                <span class="input-group-addon">密码确认</span> <input type="password"
-                    class="form-control" placeholder="" name="password">
-        </div>
-
-    </div>
+<div class="page-header">
+    <h1>个人基本信息填写</h1>
 </div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">学籍信息填写</h3>
-    </div>
-    <div class="panel-body">
-        <div class="input-group">
-            <span class="input-group-addon">学生序号</span> <input type="number"
-                    class="form-control" placeholder="" name="studentId">
-            <span class="input-group-addon">专业</span> <input type="text"
-                    class="form-control" name="major">
-            <span class="input-group-addon">班级</span> <input type="text"
-                    class="form-control" placeholder="" name="grade">
-        </div>
-        <div class="input-group">
-                <span class="input-group-addon">联系方式</span> <input type="phone"
-                    class="form-control" placeholder="" name="phone">
-                <span class="input-group-addon">邮箱</span> <input type="text"
-                    class="form-control" placeholder="" name="email">
-                <span class="input-group-addon">身份</span> <input type="text"
-                    class="form-control" placeholder="（归属实验室）" name="lab">
+}{
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.RegisterController.registerSave()">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">姓名</label>
+        <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="name"/>
         </div>
     </div>
-</div>
 
-<button type="submit" class="btn btn-primary pull-right">注册</button>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">性别</label>
+        <div class="col-sm-9">
+            <select name="gender" class="col-xs-10 col-sm-5">
+                <option>男</option>
+                <option>女</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">籍贯</label>
+        <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="hometown"/>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">出生年月</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="number" name="birthday"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">身份证号</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="text" name="personalId"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">输入密码</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="password" name="password"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">再次输入</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="password" name="rePassword"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">学号</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="number" name="studentId"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">专业</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="text" name="major"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">班级</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="text" name="grade"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">电话</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="text" name="phone"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">邮箱</label>
+        <div class="col-sm-9">
+            <input class="input-normal" type="text" name="email"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">实验室</label>
+        <div class="col-sm-9">
+            <select name="lab" class="col-xs-10 col-sm-5">
+                <option>创新实验室</option>
+                <option>嵌入式实验室</option>
+                <option>安卓实验室</option>
+                <option>云计算与大数据实验室</option>
+                <option>ING实验室</option>
+                <option>OUT实验室</option>
+                <option>IBM实验室</option>
+                <option>数字媒体实验室</option>
+                <option>其他</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                保存
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                重置
+            </button>
+        </div>
+    </div>
 </form>
 
 } {

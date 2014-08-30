@@ -137,8 +137,7 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.APPROVED);;
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
-
+        return ok();
     }
 
     /**
@@ -151,7 +150,7 @@ public class ProjectsController extends SecuredController {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         creationProject.setStatus(CreationProject.Status.KILLED);
         JPA.em().merge(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
+        return ok();
     }
 
     // 项目提交审核
