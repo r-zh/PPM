@@ -11,7 +11,7 @@ POST   /authenticate                             cn.edu.sdu.sc.spepms.system.com
 GET    /logout                                   cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
 
 GET    /users                                    controllers.Application.users()
-#GET    /users                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.view()
+GET    /users/view                               cn.edu.sdu.sc.spepms.system.common.controllers.UserController.view()
 
 # User register
 GET    /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
@@ -39,6 +39,7 @@ GET    /creation/projects/add                    cn.edu.sdu.sc.spepms.system.cre
 GET    /creation/projects/edit                   cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.edit(projectId: Long)
 POST   /creation/projects                        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.save()
 POST   /creation/projects/update                 cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.reSave(projectId: Long)
+GET    /creation/projects/process                cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.process()
 
 POST   /creation/projects/:projectId/approve     cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.approve(projectId: Long)
 POST   /creation/projects/:projectId/reject      cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.reject(projectId: Long)
@@ -48,12 +49,13 @@ POST   /creation/projects/:projectId/submit      cn.edu.sdu.sc.spepms.system.cre
 POST   /creation/projects/:projectId/join        cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.join(projectId: Long)
 
 GET    /creation/projects/:projectId/applicate   cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.applicate(projectId: Long)
-POST   /creation/projects/:projectId/leave       cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.leave(projectId: Long)
+POST   /creation/projects/:projectId/leave       cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.leave(projectId: Long,userId: Long)
 
 GET    /creation/projects/:projectId             cn.edu.sdu.sc.spepms.system.creation.projects.controllers.ProjectsController.view(projectId:Long)
 
 # Laboratory
 GET    /creation/labs                            cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.index()
+GET    /creation/views                           cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.view()
 
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file                             controllers.Assets.at(path="/public", file)
