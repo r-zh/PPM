@@ -110,7 +110,17 @@ public class CreationProject extends AuditableModel {
     joinColumns = {@JoinColumn(name = "CreationProject_Id", referencedColumnName ="Id")}, 
     inverseJoinColumns = {@JoinColumn(name = "Members_Id", referencedColumnName = "Id")})
     private List<User> members;
-    
+
+    private String process;
+
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
     public List<User> getMembers() {
         return members;
     }
@@ -226,4 +236,5 @@ public class CreationProject extends AuditableModel {
     public void setRewardAmount(long rewardAmount) {
         this.rewardAmount = rewardAmount;
     }
+
 }

@@ -47,6 +47,7 @@ public class ProjectsController extends SecuredController {
         creationProject.setApplicableTo(data.getApplicableTo());
         creationProject.setContactInfo(data.getContactInfo());
         creationProject.setNumber(data.getNumber());
+        creationProject.setProcess("0%");
         List<User> members = new ArrayList<User>();
         members.add(getCurrentUser());
         creationProject.setMembers(members);
@@ -148,7 +149,7 @@ public class ProjectsController extends SecuredController {
     @Transactional
     public static Result reject(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
-        creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
+        creationProject.setStatus(CreationProject.Status.KILLED);
         JPA.em().merge(creationProject);
         return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.list());
     }
@@ -209,12 +210,25 @@ public class ProjectsController extends SecuredController {
      * @return
      */
     @Transactional
-    public static Result leave(Long creationProjectId) {
+    public static Result leave(Long creationProjectId,Long userId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
-        creationProject.getMembers().remove(getCurrentUser());
+        User user=JPA.em().find(User.class, userId);
+        creationProject.getMembers().remove(user);
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
         return ok();
+    }
+
+    /**
+     * 查看项目进度
+     * @return
+     */
+    @Transactional
+    public static Result process(){
+        List<CreationProject> processingProjects = JPA.em()
+                .createQuery("from CreationProject", CreationProject.class)
+                .getResultList();
+        return ok(process.render(processingProjects));
     }
 
 }

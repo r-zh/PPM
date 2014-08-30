@@ -1,7 +1,5 @@
 package cn.edu.sdu.sc.spepms.system.common.controllers;
 
-import java.util.List;
-
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -11,8 +9,6 @@ import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.views.html.register;
-import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
 
 public class RegisterController extends Controller {
 
@@ -42,7 +38,7 @@ public class RegisterController extends Controller {
 
         JPA.em().persist(user);
 
-        return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.AuthController.login());
+        return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.UserController.view());
     }
 
 }

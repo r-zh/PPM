@@ -14,7 +14,7 @@
         href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.reject(creationProject.getId)">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
-    @if(creationProject.getStatus==CreationProject.Status.NEW){
+    @if(creationProject.getStatus==CreationProject.Status.NEW || creationProject.getStatus==CreationProject.Status.KILLED){
     <button type="button" class="btn btn-primary btn-lg btn-submit"
         href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.submit(creationProject.getId)">
         <span class="glyphicon glyphicon-heart"></span>提交审核
@@ -30,7 +30,7 @@
     
     }else{
     <button type="button" class="btn btn-primary btn-lg btn-cancelJoin"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId,currentUser.getId)">
         <span class="glyphicon glyphicon-heart"></span>黯然离去
     </button>
     }
@@ -181,7 +181,7 @@
                             <td>@member.getStudentId</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons">
-                                    <a class="red btn-cancelJoin" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId)"> <i
+                                    <a class="red btn-cancelJoin" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId,member.getId)"> <i
                                         class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>
