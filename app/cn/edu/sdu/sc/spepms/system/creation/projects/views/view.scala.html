@@ -6,6 +6,7 @@
 
 <form class="form-horizontal" method="post" role="form">
 <div class="btn-group pull-right">
+@if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
     <button type="button" class="btn btn-primary btn-lg btn-pass"
         href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)">
         <span class="glyphicon glyphicon-ok"></span>审核通过
@@ -14,6 +15,7 @@
         href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.reject(creationProject.getId)">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
+    }
     @if(creationProject.getStatus==CreationProject.Status.NEW || creationProject.getStatus==CreationProject.Status.KILLED){
     <button type="button" class="btn btn-primary btn-lg btn-submit"
         href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.submit(creationProject.getId)">
