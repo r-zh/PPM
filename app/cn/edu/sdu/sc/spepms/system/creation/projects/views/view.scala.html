@@ -42,116 +42,23 @@
 </div>
 
 } {
-
-<!-- Place this in the body of the page content -->
 <form method="post" role="form">
-    <div id="accordion" class="accordion-style1 panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;项目名称
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseOne">
-                <div class="panel-body">@creationProject.getName</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;项目类别
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseTwo">
-                <div class="panel-body">@creationProject.getBillable</div>
-            </div>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;性质
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseThree">
-                <div class="panel-body">@creationProject.getCategory</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;额度
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseFour">
-                <div class="panel-body">@creationProject.getRewardAmount</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;项目需求介绍
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseFive">
-                <div class="panel-body">@creationProject.getDescription</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;时间范围
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseSix">
-                <div class="panel-body">@creationProject.getApplicableTo</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;联系咨询方式
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseSeven">
-                <div class="panel-body">@creationProject.getContactInfo</div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEight"> <i class="ace-icon fa fa-angle-down bigger-110"
-                        data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;报考人数限制
-                    </a>
-                </h2>
-            </div>
-
-            <div class="panel-collapse collapse in" id="collapseEight">
-                <div class="panel-body">@creationProject.getNumber</div>
-            </div>
-        </div>
-    </div>
+    <p class="alert alert-info">项目名称</p>
+    <h3>@creationProject.getName</h3>
+    <p class="alert alert-info">项目类别</p>
+    <h3>@creationProject.getBillable</h3>
+    <p class="alert alert-info">性质</p>
+    <h3>@creationProject.getCategory</h3>
+    <p class="alert alert-info">额度</p>
+    <h3>@creationProject.getRewardAmount</h3>
+    <p class="alert alert-info">项目需求介绍</p>
+    <h3>@creationProject.getDescription</h3>
+    <p class="alert alert-info">时间范围</p>
+    <h3>@creationProject.getApplicableFrom - @creationProject.getApplicableTo</h3>
+    <p class="alert alert-info">联系咨询方式</p>
+    <h3>@creationProject.getContactInfo</h3>
+    <p class="alert alert-info">报考人数限制</p>
+    <h3>@creationProject.getNumber</h3>
 </form>
 <div id="accordion" class="accordion-style1 panel-group">
     <div class="panel panel-default">
@@ -194,8 +101,6 @@
         </div>}
     </div>
 </div>
-</div>
-
 } {
 
 <script>

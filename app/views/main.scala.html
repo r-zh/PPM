@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="@routes.Assets.at("libs/ace/css/font-awesome.min.css")" />
 
         <!-- page specific plugin styles -->
+        <link rel="stylesheet" href="@routes.Assets.at("libs/ace/css/datepicker.css")" />
+        <link rel="stylesheet" href="@routes.Assets.at("libs/ace/css/daterangepicker.css")" />
 
         <!-- text fonts -->
         <link rel="stylesheet" href="@routes.Assets.at("libs/ace/css/ace-fonts.css")")" />
@@ -748,55 +750,6 @@
                     </li>
 
                     <li class="">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
-                            <span class="menu-text"> Forms </span>
-
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-
-                        <b class="arrow"></b>
-
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="form-elements.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Form Elements
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="form-wizard.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Wizard &amp; Validation
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="wysiwyg.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Wysiwyg &amp; Markdown
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="dropzone.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Dropzone File Upload
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="">
                         <a href="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.RegisterController.register">
                             <i class="menu-icon fa fa-list-alt"></i>
                             <span class="menu-text"> 学生注册 </span>
@@ -805,175 +758,6 @@
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="">
-                        <a href="calendar.html">
-                            <i class="menu-icon fa fa-calendar"></i>
-
-                            <span class="menu-text">
-                                Calendar
-
-                                <!-- #section:basics/sidebar.layout.badge -->
-                                <span class="badge badge-transparent tooltip-error" title="2 Important Events">
-                                    <i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-                                </span>
-
-                                <!-- /section:basics/sidebar.layout.badge -->
-                            </span>
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="gallery.html">
-                            <i class="menu-icon fa fa-picture-o"></i>
-                            <span class="menu-text"> Gallery </span>
-                        </a>
-
-                        <b class="arrow"></b>
-                    </li>
-
-                    <li class="">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-tag"></i>
-                            <span class="menu-text"> More Pages </span>
-
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-
-                        <b class="arrow"></b>
-
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="profile.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    User Profile
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="inbox.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Inbox
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="pricing.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Pricing Tables
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="invoice.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Invoice
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="timeline.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Timeline
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="email.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Email Templates
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="login.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Login &amp; Register
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="active open">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-file-o"></i>
-
-                            <span class="menu-text">
-                                Other Pages
-
-                                <!-- #section:basics/sidebar.layout.badge -->
-                                <span class="badge badge-primary">5</span>
-
-                                <!-- /section:basics/sidebar.layout.badge -->
-                            </span>
-
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-
-                        <b class="arrow"></b>
-
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="faq.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    FAQ
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="error-404.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Error 404
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="error-500.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Error 500
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="">
-                                <a href="grid.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Grid
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="active">
-                                <a href="blank.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Blank Page
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
                 </ul><!-- /.nav-list -->
 
                 <!-- #section:basics/sidebar.layout.minimize -->
@@ -1023,95 +807,6 @@
 
                 <!-- /section:basics/content.breadcrumbs -->
                 <div class="page-content">
-                    <!-- #section:settings.box -->
-                    <div class="ace-settings-container" id="ace-settings-container">
-                        <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                            <i class="ace-icon fa fa-cog bigger-150"></i>
-                        </div>
-
-                        <div class="ace-settings-box clearfix" id="ace-settings-box">
-                            <div class="pull-left width-50">
-                                <!-- #section:settings.skins -->
-                                <div class="ace-settings-item">
-                                    <div class="pull-left">
-                                        <select id="skin-colorpicker" class="hide">
-                                            <option data-skin="no-skin" value="#438EB9">#438EB9</option>
-                                            <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                                            <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                                            <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                                        </select>
-                                    </div>
-                                    <span>&nbsp; Choose Skin</span>
-                                </div>
-
-                                <!-- /section:settings.skins -->
-
-                                <!-- #section:settings.navbar -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                                    <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-                                </div>
-
-                                <!-- /section:settings.navbar -->
-
-                                <!-- #section:settings.sidebar -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                                    <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-                                </div>
-
-                                <!-- /section:settings.sidebar -->
-
-                                <!-- #section:settings.breadcrumbs -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                                    <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-                                </div>
-
-                                <!-- /section:settings.breadcrumbs -->
-
-                                <!-- #section:settings.rtl -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                                    <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-                                </div>
-
-                                <!-- /section:settings.rtl -->
-
-                                <!-- #section:settings.container -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                                    <label class="lbl" for="ace-settings-add-container">
-                                        Inside
-                                        <b>.container</b>
-                                    </label>
-                                </div>
-
-                                <!-- /section:settings.container -->
-                            </div><!-- /.pull-left -->
-
-                            <div class="pull-left width-50">
-                                <!-- #section:basics/sidebar.options -->
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
-                                    <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-                                </div>
-
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
-                                    <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-                                </div>
-
-                                <div class="ace-settings-item">
-                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
-                                    <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-                                </div>
-
-                                <!-- /section:basics/sidebar.options -->
-                            </div><!-- /.pull-left -->
-                        </div><!-- /.ace-settings-box -->
-                    </div><!-- /.ace-settings-container -->
-
                     <!-- /section:settings.box -->
                     <div class="page-content-area">
                         @header
@@ -1131,7 +826,7 @@
                     <!-- #section:basics/footer -->
                     <div class="footer-content">
                         <span class="bigger-120">
-                            <span class="blue bolder">Ace</span>
+                            <span class="blue bolder">Spepms</span>
                             Application &copy; 2013-2014
                         </span>
 
@@ -1170,6 +865,8 @@
         <!-- page specific plugin scripts -->
         <script src="@routes.Assets.at("libs/ace/js/jquery-ui.custom.min.js")"></script>
         <script src="@routes.Assets.at("libs/ace/js/jquery.ui.touch-punch.min.js")"></script>
+        <script src="@routes.Assets.at("libs/ace/js/date-time/bootstrap-datepicker.min.js")"></script>
+        <script src="@routes.Assets.at("libs/ace/js/date-time/daterangepicker.min.js")"></script>
         <script src="@routes.Assets.at("libs/ace/js/markdown/markdown.min.js")"></script>
         <script src="@routes.Assets.at("libs/ace/js/markdown/bootstrap-markdown.min.js")"></script>
         <script src="@routes.Assets.at("libs/ace/js/jquery.hotkeys.min.js")"></script>

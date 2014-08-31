@@ -18,12 +18,12 @@
             <tbody>
                 @for(creationProject <- creationProjects){
                 <tr>
-                <th>@creationProject.getName</th>
-                <th>
+                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></td>
+                <td>
                 <div class="progress progress-striped pos-rel" data-percent="@creationProject.getProcess">
                     <div class="progress-bar progress-bar-success" style="width: @creationProject.getProcess;"></div>
                 </div>
-                </th>
+                </td>
                 </tr>
                 }
             </tbody>
