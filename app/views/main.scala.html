@@ -453,7 +453,7 @@
 
                 <ul class="nav nav-list">
                     <li class="">
-                        <a href="/">
+                        <a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> 首页 </span>
                         </a>
@@ -719,8 +719,8 @@
                     </li>
 
                     <li class="">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list"></i>
+                        <a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.index" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text"> 实训中心 </span>
 
                             <b class="arrow fa fa-angle-down"></b>
@@ -730,18 +730,68 @@
 
                         <ul class="submenu">
                             <li class="">
-                                <a href="tables.html">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    Simple &amp; Dynamic
+                                    实训题目
+                                    <b class="arrow fa fa-angle-down"></b>
                                 </a>
 
                                 <b class="arrow"></b>
+
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="@cn.edu.sdu.sc.spepms.system.practice.controllers.routes.ProjectsController.add">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            填写内容
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="@cn.edu.sdu.sc.spepms.system.practice.controllers.routes.ProjectsController.list">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            审核发布
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="@cn.edu.sdu.sc.spepms.system.practice.controllers.routes.ProjectsController.index">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            报名参加
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="">
-                                <a href="jqgrid.html">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    jqGrid plugin
+                                    项目执行
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+
+                                <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.process">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            项目进度
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="elements.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    历届项目公示
                                 </a>
 
                                 <b class="arrow"></b>

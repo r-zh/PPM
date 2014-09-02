@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.practice.models.PracticeProject;
+import cn.edu.sdu.sc.spepms.system.practice.models.PracticeProjectMember;
 
 @Entity
 public class User extends AuditableModel {
@@ -41,6 +44,20 @@ public class User extends AuditableModel {
             joinColumns = {@JoinColumn(name = "Members_Id", referencedColumnName = "Id")}, 
             inverseJoinColumns = {@JoinColumn(name = "CreationProject_Id", referencedColumnName ="Id")})
     private List<CreationProject> creationProjects;
+
+    @OneToMany
+    @JoinTable(name = "PracticeProjectMember", 
+            joinColumns = {@JoinColumn(name = "Member_Id", referencedColumnName = "Id")}, 
+            inverseJoinColumns = {@JoinColumn(name = "PracticeProjectMember_Id", referencedColumnName ="Id")})
+    private List<PracticeProjectMember> practiceProjects;
+
+    public List<PracticeProjectMember> getPracticeProjects() {
+        return practiceProjects;
+    }
+
+    public void setPracticeProjects(List<PracticeProjectMember> practiceProjects) {
+        this.practiceProjects = practiceProjects;
+    }
 
     public List<CreationProject> getCreationProjects() {
         return creationProjects;
