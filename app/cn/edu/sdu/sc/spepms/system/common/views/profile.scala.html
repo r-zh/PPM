@@ -9,12 +9,34 @@
             <span class="editable" id="username">@currentUser.getName</span>
         </div>
     </div>
-
+    <div class="profile-info-row">
+        <div class="profile-info-name">性别</div>
+        <div class="profile-info-value">
+            <span class="editable" id="country">@currentUser.getGender</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name">籍贯</div>
+        <div class="profile-info-value">
+            <span class="editable" id="country">@currentUser.getHometown</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name">出生年月</div>
+        <div class="profile-info-value">
+            <span class="editable" id="country">@currentUser.getBirthday</span>
+        </div>
+    </div>
+    <div class="profile-info-row">
+        <div class="profile-info-name">身份证号</div>
+        <div class="profile-info-value">
+            <span class="editable" id="country">@currentUser.getPersonalId</span>
+        </div>
+    </div>
     <div class="profile-info-row">
         <div class="profile-info-name">学号</div>
-
         <div class="profile-info-value">
-            <i class="fa fa-map-marker light-orange bigger-110"></i> <span class="editable" id="country">@currentUser.getStudentId</span> <span class="editable" id="city"></span>
+            <span class="editable" id="country">@currentUser.getStudentId</span>
         </div>
     </div>
 

@@ -105,8 +105,6 @@ public class ProjectsController extends SecuredController {
 
     /**
      * 显示个人所报的项目
-     * 
-     * @return
      */
     @Transactional
     public static Result personHome() {
@@ -115,7 +113,6 @@ public class ProjectsController extends SecuredController {
 
     /**
      * 审核该项目
-     * 
      * @return
      */
     @Transactional
@@ -124,14 +121,20 @@ public class ProjectsController extends SecuredController {
         return ok(list.render(creationProjects));
     }
 
-    // 项目详细信息
+    /**
+     * @param creationProjectId
+     *  项目详细信息
+     */
     @Transactional
     public static Result view(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
         return ok(view.render(creationProject, getCurrentUser()));
     }
 
-    // 审核通过该项目
+    /**
+     * @param creationProjectId
+     * 审核通过该项目
+     */
     @Transactional
     public static Result approve(Long creationProjectId) {
         CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);

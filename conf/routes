@@ -57,5 +57,25 @@ GET    /creation/projects/:projectId             cn.edu.sdu.sc.spepms.system.cre
 GET    /creation/labs                            cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.index()
 GET    /creation/views                           cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.view()
 
+# Practice
+GET    /practice                                 cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.index()
+
+GET    /practice/projects                        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.list()
+GET    /practice/projects/add                    cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.add()
+GET    /practice/projects/edit                   cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.edit(projectId: Long)
+POST   /practice/projects                        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.save()
+POST   /practice/projects/update                 cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.reSave(projectId: Long)
+
+POST   /practice/projects/:projectId/approve     cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.approve(projectId: Long)
+POST   /practice/projects/:projectId/reject      cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.reject(projectId: Long)
+POST   /practice/projects/:projectId/kill        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.kill(projectId: Long)
+
+POST   /practice/projects/:projectId/submit      cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.submit(projectId: Long)
+POST   /practice/projects/:projectId/join        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.join(projectId: Long)
+
+POST   /practice/projects/:projectId/leave       cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.leave(projectId: Long,userId: Long)
+
+GET    /practice/projects/:projectId             cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.view(projectId:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file                             controllers.Assets.at(path="/public", file)

@@ -9,7 +9,7 @@ import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.views.html.register;
-
+import cn.edu.sdu.sc.spepms.system.common.views.html.profile;
 public class RegisterController extends Controller {
 
     public static Result register() {
@@ -38,7 +38,7 @@ public class RegisterController extends Controller {
 
         JPA.em().persist(user);
 
-        return redirect(cn.edu.sdu.sc.spepms.system.common.controllers.routes.UserController.view());
+        return ok(profile.render(user));
     }
 
 }

@@ -10,14 +10,14 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">姓名</label>
         <div class="col-sm-9">
-            <input class="col-xs-10 col-sm-5" type="text" name="name"/>
+            <input class="input-normal" type="text" name="name"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">性别</label>
         <div class="col-sm-9">
-            <select name="gender" class="col-xs-10 col-sm-5">
+            <select name="gender" class="col-xs-3 col-sm-2">
                 <option>男</option>
                 <option>女</option>
             </select>
@@ -27,42 +27,42 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">籍贯</label>
         <div class="col-sm-9">
-            <input class="col-xs-10 col-sm-5" type="text" name="hometown"/>
+            <input class="input-normal" type="text" name="hometown"/>
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">出生年月</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="number" name="birthday"/>
+            <input class="input-mask-date" type="text" name="birthday" placeholder='MM/DD/YYYY'/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">身份证号</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="text" name="personalId"/>
+            <input class="col-xs-5 col-sm-5" type="text" name="personalId"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">输入密码</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="password" name="password"/>
+            <input class="col-xs-5 col-sm-5" type="password" name="password"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">再次输入</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="password" name="rePassword"/>
+            <input class="col-xs-5 col-sm-5" type="password" name="rePassword"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">学号</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="number" name="studentId"/>
+            <input class="col-xs-5 col-sm-5" type="number" name="studentId"/>
         </div>
     </div>
 
@@ -83,14 +83,14 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">电话</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="text" name="phone"/>
+            <input class="col-xs-5 col-sm-5" type="text" name="phone"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">邮箱</label>
         <div class="col-sm-9">
-            <input class="input-normal" type="text" name="email"/>
+            <input class="col-xs-5 col-sm-5" type="text" name="email"/>
         </div>
     </div>
 
@@ -128,5 +128,7 @@
 </form>
 
 } {
-
+<script type="text/javascript">
+    $('.input-mask-date').mask('99/99/9999');
+</script>
 }
