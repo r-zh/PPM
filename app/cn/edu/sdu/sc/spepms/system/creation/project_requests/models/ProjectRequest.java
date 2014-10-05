@@ -1,6 +1,47 @@
-package cn.edu.sdu.sc.spepms.system.creation.projects.forms;
+package cn.edu.sdu.sc.spepms.system.creation.project_requests.models;
 
-public class ProjectForm {
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
+import cn.edu.sdu.sc.spepms.system.common.models.User;
+
+/**
+ * @author tonyzhou
+ *
+ */
+@Entity
+public class ProjectRequest extends AuditableModel {
+    
+    
+    public enum Status {
+        NEW,
+        UNDER_APPROVAL,
+        APPROVED,
+        IN_PROGRESS,
+        COMPLETED,
+        KILLED
+    }
+    
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     /**
      * 名称
@@ -51,7 +92,71 @@ public class ProjectForm {
      * 人数上限
      */
     private long number;
- 
+
+    /**
+     * 已报人数
+     */
+    private long currentNumber;
+
+    /**
+     * 审核是否通过
+     */
+    private boolean passed=false;
+
+    private boolean trashed=false;
+    
+    @ManyToMany
+    @JoinTable(name = "ProjectRequest_Users", 
+    joinColumns = {@JoinColumn(name = "ProjectRequest_Id", referencedColumnName ="Id")}, 
+    inverseJoinColumns = {@JoinColumn(name = "Members_Id", referencedColumnName = "Id")})
+    private List<User> members;
+
+    private String process;
+
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
+    public List<User> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<User> members) {
+        this.members = members;
+    }
+
+    public boolean hasMember(User user) {
+        return members.contains(user);
+    }
+
+    public long getCurrentNumber() {
+        return currentNumber;
+    }
+
+    public void setCurrentNumber(long currentNumber) {
+        this.currentNumber = currentNumber;
+    }
+
+    public boolean isTrashed() {
+        return trashed;
+    }
+
+    public void setTrashed(boolean trashed) {
+        this.trashed = trashed;
+    }
+
+    public void setPassed(boolean flag){
+        passed=flag;
+    }
+
+    public boolean getPassed(){
+        return passed;
+    }
+
     public String getCategory() {
         return category;
     }

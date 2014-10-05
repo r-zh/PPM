@@ -8,7 +8,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest;
 import cn.edu.sdu.sc.spepms.system.practice.models.PracticeProject;
 import cn.edu.sdu.sc.spepms.system.practice.models.PracticeProjectMember;
 
@@ -40,10 +40,10 @@ public class User extends AuditableModel {
     private String lab;
 
     @ManyToMany
-    @JoinTable(name = "CreationProject_Users", 
+    @JoinTable(name = "ProjectRequest_Users", 
             joinColumns = {@JoinColumn(name = "Members_Id", referencedColumnName = "Id")}, 
-            inverseJoinColumns = {@JoinColumn(name = "CreationProject_Id", referencedColumnName ="Id")})
-    private List<CreationProject> creationProjects;
+            inverseJoinColumns = {@JoinColumn(name = "ProjectRequest_Id", referencedColumnName ="Id")})
+    private List<ProjectRequest> projectRequests;
 
     @OneToMany
     @JoinTable(name = "PracticeProjectMember", 
@@ -59,12 +59,12 @@ public class User extends AuditableModel {
         this.practiceProjects = practiceProjects;
     }
 
-    public List<CreationProject> getCreationProjects() {
-        return creationProjects;
+    public List<ProjectRequest> getProjectRequests() {
+        return projectRequests;
     }
 
-    public void setCreationProjects(List<CreationProject> creationProjects) {
-        this.creationProjects = creationProjects;
+    public void setCreationProjects(List<ProjectRequest> projectRequests) {
+        this.projectRequests = projectRequests;
     }
 
     public String getBirthday() {

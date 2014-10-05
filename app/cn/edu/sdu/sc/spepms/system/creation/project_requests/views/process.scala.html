@@ -1,6 +1,6 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject])
+@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest])
 
-@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
+@import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest
 
 @layouts.basicLayout() {
 
@@ -20,9 +20,9 @@
             
             <tbody>
                 @for(creationProject <- creationProjects){
-                @if(creationProject.getStatus==CreationProject.Status.IN_PROGRESS || creationProject.getStatus==CreationProject.Status.COMPLETED){
+                @if(creationProject.getStatus==ProjectRequest.Status.IN_PROGRESS || creationProject.getStatus==ProjectRequest.Status.COMPLETED){
                 <tr>
-                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></td>
+                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.view(creationProject.getId)">@creationProject.getName</a></td>
                 <td></td>
                 <td>
 

@@ -1,4 +1,4 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject])
+@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest])
 
 @layouts.basicLayout() {
  
@@ -15,7 +15,7 @@
             <!-- 展示已经通过了的项目 -->
             @for(creationProject <- creationProjects) { 
                 @if(creationProject.getPassed){
-                    <li><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></li> 
+                    <li><a href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.view(creationProject.getId)">@creationProject.getName</a></li> 
                 }
             }
         </ul>

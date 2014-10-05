@@ -9,18 +9,18 @@
 } {
 
 <!-- Place this in the body of the page content -->
-<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.save()">
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.save()">
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">项目名称</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">项目名称</label>
         <div class="col-sm-9">
             <input class="col-xs-10 col-sm-5" type="text" name="name" />
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">项目类别</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">项目类别</label>
         <div class="col-sm-9">
-            <select name="category" class="col-xs-10 col-sm-5" id="CreationProject">
+            <select name="category" class="col-xs-10 col-sm-5" id="ProjectRequest">
                 <option>竞赛</option>
                 <option>教师科研</option>
                 <option>个人兴趣</option>
@@ -30,9 +30,9 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">性质</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">性质</label>
         <div class="col-sm-9">
-            <select name="billable" class="col-xs-10 col-sm-5" id="CreationProject">
+            <select name="billable" class="col-xs-10 col-sm-5" id="ProjectRequest">
                 <option>有报酬</option>
                 <option>无报酬</option>
             </select>
@@ -40,9 +40,9 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">报酬形式</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">报酬形式</label>
         <div class="col-sm-9">
-            <select name="rewardMethod" class="col-xs-10 col-sm-5" id="CreationProject">
+            <select name="rewardMethod" class="col-xs-10 col-sm-5" id="ProjectRequest">
                 <option>现金</option>
                 <option>网上转帐</option>
                 <option>其他</option>
@@ -51,21 +51,21 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">现金额度</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">现金额度</label>
         <div class="col-sm-9">
             <input class="col-xs-10 col-sm-5" type="number" name="rewardAmount" />
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">项目需求介绍</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">项目需求介绍</label>
         <div class="col-sm-9">
             <textarea class="col-xs-10 col-sm-5" name="description"></textarea>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">起止时间</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">起止时间</label>
         <div class="col-sm-9 input-daterange">
             <input type="text" class="col-xs-5 col-sm-2" name="applicableFrom" />
             <span class="col-sm-1">&nbsp; &nbsp;&nbsp; &nbsp;至</span>
@@ -74,14 +74,14 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">联系咨询方式</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">联系咨询方式</label>
         <div class="col-sm-9">
             <input type="text" class="col-xs-10 col-sm-5" name="contactInfo"/>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right" for="CreationProject">人数限制</label>
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">人数限制</label>
         <div class="col-sm-9">
             <input class="col-xs-10 col-sm-5" type="number" name="number">
         </div>

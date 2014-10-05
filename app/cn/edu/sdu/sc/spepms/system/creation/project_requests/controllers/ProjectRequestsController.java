@@ -1,4 +1,4 @@
-package cn.edu.sdu.sc.spepms.system.creation.projects.controllers;
+package cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,12 +12,12 @@ import cn.edu.sdu.sc.spepms.system.common.controllers.SecuredController;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil;
 import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes;
-import cn.edu.sdu.sc.spepms.system.creation.projects.forms.ProjectForm;
-import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
-import cn.edu.sdu.sc.spepms.system.creation.projects.views.html.*;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.forms.ProjectRequestForm;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.views.html.*;
 
-public class ProjectsController extends SecuredController {
+public class ProjectRequestsController extends SecuredController {
 
     // 创新项目发布
     public static Result add() {
@@ -27,15 +27,15 @@ public class ProjectsController extends SecuredController {
     // 信息录入数据库
     @Transactional
     public static Result save() {
-        Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
-        ProjectForm data = form.get();
+        Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class).bindFromRequest();
+        ProjectRequestForm data = form.get();
 
-        CreationProject creationProject = new CreationProject();
+        ProjectRequest creationProject = new ProjectRequest();
         creationProject.setCreatedBy(ContextUtil.getCurrentUserId());
         creationProject.setCreatedOn(new Date());
         creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
         creationProject.setUpdatedOn(new Date());
-        creationProject.setStatus(CreationProject.Status.NEW);
+        creationProject.setStatus(ProjectRequest.Status.NEW);
 
         creationProject.setName(data.getName());
         creationProject.setCategory(data.getCategory());
@@ -53,7 +53,7 @@ public class ProjectsController extends SecuredController {
         creationProject.setMembers(members);
         creationProject.setCurrentNumber(members.size());
         JPA.em().persist(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.personHome());
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.personHome());
     }
 
     /**
@@ -62,7 +62,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result edit(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
         return ok(edit.render(creationProject,getCurrentUser()));
     }
 
@@ -72,13 +72,13 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result reSave(Long creationProjectId) {
-        Form<ProjectForm> form = Form.form(ProjectForm.class).bindFromRequest();
-        ProjectForm data = form.get();
+        Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class).bindFromRequest();
+        ProjectRequestForm data = form.get();
 
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
         creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
         creationProject.setUpdatedOn(new Date());
-        creationProject.setStatus(CreationProject.Status.NEW);
+        creationProject.setStatus(ProjectRequest.Status.NEW);
 
         creationProject.setName(data.getName());
         creationProject.setCategory(data.getCategory());
@@ -91,7 +91,7 @@ public class ProjectsController extends SecuredController {
         creationProject.setContactInfo(data.getContactInfo());
         creationProject.setNumber(data.getNumber());
         JPA.em().persist(creationProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.personHome());
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.personHome());
     }
 
     /**
@@ -99,7 +99,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result index() {
-        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
         return ok(index.render(creationProject));
     }
 
@@ -108,7 +108,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result personHome() {
-        return ok(studentHome.render(getCurrentUser().getCreationProjects()));
+        return ok(studentHome.render(getCurrentUser().getProjectRequests()));
     }
 
     /**
@@ -117,7 +117,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result list() {
-        List<CreationProject> creationProjects = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        List<ProjectRequest> creationProjects = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
         return ok(list.render(creationProjects));
     }
 
@@ -127,7 +127,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result view(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
         return ok(view.render(creationProject, getCurrentUser()));
     }
 
@@ -137,8 +137,8 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result approve(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
-        creationProject.setStatus(CreationProject.Status.APPROVED);;
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
+        creationProject.setStatus(ProjectRequest.Status.APPROVED);;
         JPA.em().merge(creationProject);
         return ok();
     }
@@ -150,8 +150,8 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result reject(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
-        creationProject.setStatus(CreationProject.Status.KILLED);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
+        creationProject.setStatus(ProjectRequest.Status.KILLED);
         JPA.em().merge(creationProject);
         return ok();
     }
@@ -159,8 +159,8 @@ public class ProjectsController extends SecuredController {
     // 项目提交审核
     @Transactional
     public static Result submit(Long projectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, projectId);
-        creationProject.setStatus(CreationProject.Status.UNDER_APPROVAL);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, projectId);
+        creationProject.setStatus(ProjectRequest.Status.UNDER_APPROVAL);
         JPA.em().merge(creationProject);
         return ok();
     }
@@ -173,8 +173,8 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result kill(Long Id) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, Id);
-        creationProject.setStatus(CreationProject.Status.KILLED);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, Id);
+        creationProject.setStatus(ProjectRequest.Status.KILLED);
         JPA.em().merge(creationProject);
         return ok();
 }
@@ -187,7 +187,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result join(Long creationProjectId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
         creationProject.getMembers().add(getCurrentUser());
         creationProject.setCurrentNumber(creationProject.getMembers().size());
         JPA.em().merge(creationProject);
@@ -213,7 +213,7 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result leave(Long creationProjectId,Long userId) {
-        CreationProject creationProject = JPA.em().find(CreationProject.class, creationProjectId);
+        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
         User user=JPA.em().find(User.class, userId);
         creationProject.getMembers().remove(user);
         creationProject.setCurrentNumber(creationProject.getMembers().size());
@@ -227,8 +227,8 @@ public class ProjectsController extends SecuredController {
      */
     @Transactional
     public static Result process(){
-        List<CreationProject> processingProjects = JPA.em()
-                .createQuery("from CreationProject", CreationProject.class)
+        List<ProjectRequest> processingProjects = JPA.em()
+                .createQuery("from ProjectRequest", ProjectRequest.class)
                 .getResultList();
         return ok(process.render(processingProjects));
     }

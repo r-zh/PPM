@@ -1,8 +1,8 @@
-@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject])
+@(creationProjects: List[cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest])
 
 @import cn.edu.sdu.sc.spepms.system.common.utils.ContextUtil
 
-@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
+@import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest
 
 @layouts.basicLayout() {
 
@@ -41,24 +41,24 @@
                 <td class="center"><label class="position-relative"> <input type="checkbox" class="ace" /> <span class="lbl"></span>
                 </label></td>
 
-                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@creationProject.getName</a></td>
+                <td><a href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.view(creationProject.getId)">@creationProject.getName</a></td>
                 <td>@creationProject.getRewardAmount</td>
                 <td>@creationProject.getNumber</td>
                 <td class="hidden-480">@creationProject.getCurrentNumber</td>
                 <td>@creationProject.getUpdatedOn</td>
                 <td class="hidden-480">
                     <!-- TODO 将废弃的和未审核的分别显示，可能用到了角色的身份验证 -->
-                    @if(creationProject.getStatus==CreationProject.Status.NEW){
+                    @if(creationProject.getStatus==ProjectRequest.Status.NEW){
                     <span class="label label-sm label-warning arrowed arrowed-righ">草稿(未提交)</span>
-                    } @if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
+                    } @if(creationProject.getStatus==ProjectRequest.Status.UNDER_APPROVAL){
                     <span class="label label-sm arrowed arrowed-righ">项目审核中...</span>
-                    } @if(creationProject.getStatus==CreationProject.Status.APPROVED){
+                    } @if(creationProject.getStatus==ProjectRequest.Status.APPROVED){
                     <span class="label label-sm label-important arrowed arrowed-righ">通过，报名中</span>
-                    } @if(creationProject.getStatus==CreationProject.Status.IN_PROGRESS){
+                    } @if(creationProject.getStatus==ProjectRequest.Status.IN_PROGRESS){
                     <span class="label label-sm label-info arrowed arrowed-righ">项目进行中</span>
-                    }@if(creationProject.getStatus==CreationProject.Status.COMPLETED){
+                    }@if(creationProject.getStatus==ProjectRequest.Status.COMPLETED){
                     <span class="label label-sm label-success arrowed arrowed-righ">项目已完成</span>
-                    } @if(creationProject.getStatus==CreationProject.Status.KILLED){ 
+                    } @if(creationProject.getStatus==ProjectRequest.Status.KILLED){ 
                     <span class="label label-sm label-inverse arrowed arrowed-righ">审核不通过</span>
                     }
                 </td>
@@ -66,9 +66,9 @@
                 <td>
                     <div class="hidden-sm hidden-xs action-buttons">
                         <a class="blue" href="#"> <i class="ace-icon fa fa-search-plus bigger-130"></i>
-                        </a> <a class="green" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.edit(creationProject.getId)"> <i
+                        </a> <a class="green" href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.edit(creationProject.getId)"> <i
                             class="ace-icon fa fa-pencil bigger-130"></i>
-                        </a> <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.kill(creationProject.getId)"> <i
+                        </a> <a class="red" href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.kill(creationProject.getId)"> <i
                             class="ace-icon fa fa-trash-o bigger-130"></i>
                         </a>
                     </div>

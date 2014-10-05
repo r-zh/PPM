@@ -1,38 +1,38 @@
-@(creationProject: cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject, currentUser: cn.edu.sdu.sc.spepms.system.common.models.User)
+@(creationProject: cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest, currentUser: cn.edu.sdu.sc.spepms.system.common.models.User)
 
-@import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject
+@import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest
 
 @layouts.basicLayout {
 
 <form class="form-horizontal" method="post" role="form">
 <div class="btn-group pull-right">
-@if(creationProject.getStatus==CreationProject.Status.UNDER_APPROVAL){
+@if(creationProject.getStatus==ProjectRequest.Status.UNDER_APPROVAL){
     <button type="button" class="btn btn-primary btn-lg btn-pass"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.approve(creationProject.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.approve(creationProject.getId)">
         <span class="glyphicon glyphicon-ok"></span>审核通过
     </button>
     <button type="button" class="btn btn-primary btn-lg btn-unpass"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.reject(creationProject.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.reject(creationProject.getId)">
         <span class="glyphicon glyphicon-remove"></span>审核失败
     </button>
     }
-    @if(creationProject.getStatus==CreationProject.Status.NEW || creationProject.getStatus==CreationProject.Status.KILLED){
+    @if(creationProject.getStatus==ProjectRequest.Status.NEW || creationProject.getStatus==ProjectRequest.Status.KILLED){
     <button type="button" class="btn btn-primary btn-lg btn-submit"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.submit(creationProject.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.submit(creationProject.getId)">
         <span class="glyphicon glyphicon-heart"></span>提交审核
     </button>
     }
     @if(!creationProject.getMembers().contains(currentUser)){
         @if(creationProject.getCurrentNumber < creationProject.getNumber){
     <button type="button" class="btn btn-primary btn-lg btn-join"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.join(creationProject.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.join(creationProject.getId)">
         <span class="glyphicon glyphicon-heart"></span>接受挑战
     </button>
         }
     
     }else{
     <button type="button" class="btn btn-primary btn-lg btn-cancelJoin"
-        href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId,currentUser.getId)">
+        href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.leave(creationProject.getId,currentUser.getId)">
         <span class="glyphicon glyphicon-heart"></span>黯然离去
     </button>
     }
@@ -86,11 +86,11 @@
                     <tbody>
                         @for(member <- creationProject.getMembers) {
                         <tr>
-                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.view(creationProject.getId)">@member.getName</a></td>
+                            <td><a href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.view(creationProject.getId)">@member.getName</a></td>
                             <td>@member.getStudentId</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons">
-                                    <a class="red btn-cancelJoin" href="@cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.leave(creationProject.getId,member.getId)"> <i
+                                    <a class="red btn-cancelJoin" href="@cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.leave(creationProject.getId,member.getId)"> <i
                                         class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>

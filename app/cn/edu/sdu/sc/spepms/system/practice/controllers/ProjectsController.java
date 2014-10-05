@@ -78,7 +78,7 @@ public class ProjectsController extends SecuredController{
         practiceProject.setContactInfo(data.getContactInfo());
         practiceProject.setNumber(data.getNumber());
         JPA.em().persist(practiceProject);
-        return redirect(cn.edu.sdu.sc.spepms.system.creation.projects.controllers.routes.ProjectsController.personHome());
+        return redirect(cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.personHome());
     }
 
     /**
