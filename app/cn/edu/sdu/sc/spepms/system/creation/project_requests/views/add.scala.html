@@ -20,11 +20,11 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">项目类别</label>
         <div class="col-sm-9">
-            <select name="category" class="col-xs-10 col-sm-5" id="ProjectRequest">
-                <option>竞赛</option>
-                <option>教师科研</option>
-                <option>个人兴趣</option>
-                <option>外部合作</option>
+            <select name="category" class="col-xs-10 col-sm-5">
+                <option value="COMPETITION">竞赛</option>
+                <option value="RESEARCH">教师科研</option>
+                <option value="PERSONAL">个人兴趣</option>
+                <option value="EXTERNAL">外部合作</option>
             </select>
         </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">性质</label>
         <div class="col-sm-9">
-            <select name="billable" class="col-xs-10 col-sm-5" id="ProjectRequest">
+            <select name="billable" class="col-xs-10 col-sm-5">
                 <option>有报酬</option>
                 <option>无报酬</option>
             </select>
@@ -42,7 +42,7 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">报酬形式</label>
         <div class="col-sm-9">
-            <select name="rewardMethod" class="col-xs-10 col-sm-5" id="ProjectRequest">
+            <select name="rewardMethod" class="col-xs-10 col-sm-5">
                 <option>现金</option>
                 <option>网上转帐</option>
                 <option>其他</option>
@@ -67,9 +67,9 @@
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">起止时间</label>
         <div class="col-sm-9 input-daterange">
-            <input type="text" class="col-xs-5 col-sm-2" name="applicableFrom" />
+            <input class="col-xs-5 col-sm-2" type="text" name="applicableFrom" placeholder='MM/DD/YYYY'/>
             <span class="col-sm-1">&nbsp; &nbsp;&nbsp; &nbsp;至</span>
-            <input type="text" class="col-xs-5 col-sm-2" name="applicableTo" />
+            <input class="col-xs-5 col-sm-2" type="text" name="applicableTo" placeholder='MM/DD/YYYY'/>
         </div>
     </div>
 

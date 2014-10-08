@@ -1,7 +1,5 @@
 package cn.edu.sdu.sc.spepms.system.creation.project_requests.models;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,7 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import cn.edu.sdu.sc.spepms.system.common.models.AuditableModel;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
@@ -21,17 +19,23 @@ import cn.edu.sdu.sc.spepms.system.common.models.User;
  */
 @Entity
 public class ProjectRequest extends AuditableModel {
-    
-    
-    public enum Status {
-        NEW,
-        UNDER_APPROVAL,
-        APPROVED,
-        IN_PROGRESS,
-        COMPLETED,
-        KILLED
+
+    public enum Type {
+        COMPETITION,//竞赛
+        EXTERNAL,//外部项目
+        PERSONAL,//个人兴趣
+        RESEARCH//教师科研
     }
-    
+
+    public enum Status {
+        NEW,//草稿
+        UNDER_APPROVAL,//待审核
+        APPROVED,//审核通过
+        IN_PROGRESS,//报名进行中
+        COMPLETED,//报名结束
+        KILLED//废弃
+    }
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -51,7 +55,8 @@ public class ProjectRequest extends AuditableModel {
     /**
      * 类别（外部合作、竞赛发布）
      */
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Type category;
 
     /**
      * 性质（有尝、无报酬）
@@ -66,7 +71,7 @@ public class ProjectRequest extends AuditableModel {
     /**
      * 报酬额度
      */
-    private long rewardAmount;
+    private Integer rewardAmount;
 
     /**
      * 项目需求介绍
@@ -91,17 +96,12 @@ public class ProjectRequest extends AuditableModel {
     /**
      * 人数上限
      */
-    private long number;
+    private Integer number;
 
     /**
      * 已报人数
      */
-    private long currentNumber;
-
-    /**
-     * 审核是否通过
-     */
-    private boolean passed=false;
+    private Integer currentNumber;
 
     private boolean trashed=false;
     
@@ -112,6 +112,10 @@ public class ProjectRequest extends AuditableModel {
     private List<User> members;
 
     private String process;
+
+    //项目需求申请人
+    @ManyToOne
+    private User organizer;
 
     public String getProcess() {
         return process;
@@ -133,11 +137,11 @@ public class ProjectRequest extends AuditableModel {
         return members.contains(user);
     }
 
-    public long getCurrentNumber() {
+    public Integer getCurrentNumber() {
         return currentNumber;
     }
 
-    public void setCurrentNumber(long currentNumber) {
+    public void setCurrentNumber(Integer currentNumber) {
         this.currentNumber = currentNumber;
     }
 
@@ -149,16 +153,12 @@ public class ProjectRequest extends AuditableModel {
         this.trashed = trashed;
     }
 
-    public void setPassed(boolean flag){
-        passed=flag;
-    }
-
-    public boolean getPassed(){
-        return passed;
-    }
-
-    public String getCategory() {
+	public Type getCategory() {
         return category;
+    }
+
+    public void setCategory(Type category) {
+        this.category = category;
     }
 
     public String getName() {
@@ -167,18 +167,6 @@ public class ProjectRequest extends AuditableModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getNumber() {
-        return number;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getBillable() {
@@ -198,22 +186,30 @@ public class ProjectRequest extends AuditableModel {
     }
 
     public String getApplicableFrom() {
-        return applicableFrom;
-    }
+		return applicableFrom;
+	}
 
-    public void setApplicableFrom(String applicableFrom) {
-        this.applicableFrom = applicableFrom;
-    }
+	public void setApplicableFrom(String applicableFrom) {
+		this.applicableFrom = applicableFrom;
+	}
 
-    public String getApplicableTo() {
-        return applicableTo;
-    }
+	public String getApplicableTo() {
+		return applicableTo;
+	}
 
-    public void setApplicableTo(String applicableTo) {
-        this.applicableTo = applicableTo;
-    }
+	public void setApplicableTo(String applicableTo) {
+		this.applicableTo = applicableTo;
+	}
 
-    public String getContactInfo() {
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public String getContactInfo() {
         return contactInfo;
     }
 
@@ -229,12 +225,20 @@ public class ProjectRequest extends AuditableModel {
         this.rewardMethod = rewardMethod;
     }
 
-    public long getRewardAmount() {
+    public Integer getRewardAmount() {
         return rewardAmount;
     }
 
-    public void setRewardAmount(long rewardAmount) {
+    public void setRewardAmount(Integer rewardAmount) {
         this.rewardAmount = rewardAmount;
     }
+
+	public User getOrganizer() {
+		return organizer;
+	}
+
+	public void setOrganizer(User organizer) {
+		this.organizer = organizer;
+	}
 
 }

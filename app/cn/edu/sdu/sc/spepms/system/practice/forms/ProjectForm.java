@@ -70,7 +70,7 @@ public class ProjectForm extends AuditableModel {
     /**
      * 人数上限
      */
-    private long number;
+    private Integer number;
 
     public String getBackground() {
         return background;
@@ -136,11 +136,11 @@ public class ProjectForm extends AuditableModel {
         this.name = name;
     }
 
-    public long getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 

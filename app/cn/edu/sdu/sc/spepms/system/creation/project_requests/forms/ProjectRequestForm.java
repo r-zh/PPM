@@ -1,5 +1,9 @@
 package cn.edu.sdu.sc.spepms.system.creation.project_requests.forms;
 
+import java.util.Date;
+
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest.Type;
+
 public class ProjectRequestForm {
 
     /**
@@ -10,7 +14,7 @@ public class ProjectRequestForm {
     /**
      * 类别（外部合作、竞赛发布）
      */
-    private String category;
+    private Type category;
 
     /**
      * 性质（有尝、无报酬）
@@ -25,7 +29,7 @@ public class ProjectRequestForm {
     /**
      * 报酬额度
      */
-    private long rewardAmount;
+    private Integer rewardAmount;
 
     /**
      * 项目需求介绍
@@ -50,9 +54,9 @@ public class ProjectRequestForm {
     /**
      * 人数上限
      */
-    private long number;
+    private Integer number;
  
-    public String getCategory() {
+    public Type getCategory() {
         return category;
     }
 
@@ -64,15 +68,7 @@ public class ProjectRequestForm {
         this.name = name;
     }
 
-    public long getNumber() {
-        return number;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
-    }
-
-    public void setCategory(String category) {
+    public void setCategory(Type category) {
         this.category = category;
     }
 
@@ -92,22 +88,6 @@ public class ProjectRequestForm {
         this.description = description;
     }
 
-    public String getApplicableFrom() {
-        return applicableFrom;
-    }
-
-    public void setApplicableFrom(String applicableFrom) {
-        this.applicableFrom = applicableFrom;
-    }
-
-    public String getApplicableTo() {
-        return applicableTo;
-    }
-
-    public void setApplicableTo(String applicableTo) {
-        this.applicableTo = applicableTo;
-    }
-
     public String getContactInfo() {
         return contactInfo;
     }
@@ -124,12 +104,36 @@ public class ProjectRequestForm {
         this.rewardMethod = rewardMethod;
     }
 
-    public long getRewardAmount() {
-        return rewardAmount;
-    }
+	public Integer getRewardAmount() {
+		return rewardAmount;
+	}
 
-    public void setRewardAmount(long rewardAmount) {
-        this.rewardAmount = rewardAmount;
-    }
+	public void setRewardAmount(Integer rewardAmount) {
+		this.rewardAmount = rewardAmount;
+	}
+
+	public String getApplicableFrom() {
+		return applicableFrom;
+	}
+
+	public void setApplicableFrom(String applicableFrom) {
+		this.applicableFrom = applicableFrom;
+	}
+
+	public String getApplicableTo() {
+		return applicableTo;
+	}
+
+	public void setApplicableTo(String applicableTo) {
+		this.applicableTo = applicableTo;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
 
 }
