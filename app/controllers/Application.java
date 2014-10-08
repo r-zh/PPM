@@ -17,15 +17,15 @@ import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.projects.forms.ProjectForm;
-import cn.edu.sdu.sc.spepms.system.creation.projects.models.CreationProject;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.forms.ProjectRequestForm;
+import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest;
 
 public class Application extends Controller {
 
     @Transactional
     public static Result index() {
         // System.out.println(request().username());
-        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
         return ok(index.render(creationProject));
     }
 
@@ -53,7 +53,7 @@ public class Application extends Controller {
     @Transactional
     public static Result studentHome() {
         Wireframe.current().setShowBusinessMenu(true);
-        List<CreationProject> creationProject = JPA.em().createQuery("from CreationProject", CreationProject.class).getResultList();
+        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
         return ok(studentHome.render(creationProject));
     }
 
@@ -87,23 +87,23 @@ public class Application extends Controller {
 
     public static Result dummySavePublishedProject() {
         // 从提交的表单中获取数据
-        Form<ProjectForm> form = Form.form(ProjectForm.class)
+        Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class)
                 .bindFromRequest();
-        ProjectForm data = form.get();
+        ProjectRequestForm data = form.get();
 
         // 往PublishedProject表中添加一条记录
-        CreationProject p = new CreationProject();
+        ProjectRequest p = new ProjectRequest();
         p.setDescription(data.getName());
         JPA.em().persist(p);
 
         // 查找PublishedProject表里面的所有记录
-        List<CreationProject> publishedProjectList = JPA.em()
-                .createQuery("from PublishedProject", CreationProject.class)
+        List<ProjectRequest> publishedProjectList = JPA.em()
+                .createQuery("from PublishedProject", ProjectRequest.class)
                 .getResultList();
 
         // 更新某条记录
         Long id = 1L;
-        CreationProject someP = JPA.em().find(CreationProject.class, id);
+        ProjectRequest someP = JPA.em().find(ProjectRequest.class, id);
         someP.setDescription(data.getName());
         JPA.em().merge(someP);
 
