@@ -30,29 +30,28 @@ public class ProjectRequestsController extends SecuredController {
         Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class).bindFromRequest();
         ProjectRequestForm data = form.get();
 
-        ProjectRequest creationProject = new ProjectRequest();
-        creationProject.setCreatedBy(ContextUtil.getCurrentUserId());
-        creationProject.setCreatedOn(new Date());
-        creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
-        creationProject.setUpdatedOn(new Date());
-        creationProject.setStatus(ProjectRequest.Status.NEW);
+        ProjectRequest projectRequest = new ProjectRequest();
+        projectRequest.setCreatedBy(ContextUtil.getCurrentUserId());
+        projectRequest.setCreatedOn(new Date());
+        projectRequest.setUpdatedBy(ContextUtil.getCurrentUserId());
+        projectRequest.setUpdatedOn(new Date());
+        projectRequest.setStatus(ProjectRequest.Status.NEW);
 
-        creationProject.setName(data.getName());
-        creationProject.setCategory(data.getCategory());
-        creationProject.setBillable(data.getBillable());
-        creationProject.setRewardMethod(data.getRewardMethod());
-        creationProject.setRewardAmount(data.getRewardAmount());
-        creationProject.setDescription(data.getDescription());
-        creationProject.setApplicableFrom(data.getApplicableFrom());
-        creationProject.setApplicableTo(data.getApplicableTo());
-        creationProject.setContactInfo(data.getContactInfo());
-        creationProject.setNumber(data.getNumber());
-        creationProject.setProcess("0%");
-        List<User> members = new ArrayList<User>();
-        members.add(getCurrentUser());
-        creationProject.setMembers(members);
-        creationProject.setCurrentNumber(members.size());
-        JPA.em().persist(creationProject);
+        projectRequest.setName(data.getName());
+        projectRequest.setCategory(data.getCategory());
+        projectRequest.setBillable(data.getBillable());
+        projectRequest.setRewardMethod(data.getRewardMethod());
+        projectRequest.setRewardAmount(data.getRewardAmount());
+        projectRequest.setDescription(data.getDescription());
+        projectRequest.setApplicableFrom(data.getApplicableFrom());
+        projectRequest.setApplicableTo(data.getApplicableTo());
+        projectRequest.setContactInfo(data.getContactInfo());
+        projectRequest.setNumber(data.getNumber());
+
+        projectRequest.setProcess("0%");
+        projectRequest.setOrganizer(getCurrentUser());
+        projectRequest.setCurrentNumber(0);
+        JPA.em().persist(projectRequest);
         return redirect(cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.personHome());
     }
 
@@ -61,9 +60,9 @@ public class ProjectRequestsController extends SecuredController {
      * @return
      */
     @Transactional
-    public static Result edit(Long creationProjectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        return ok(edit.render(creationProject,getCurrentUser()));
+    public static Result edit(Long projectRequestId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        return ok(edit.render(projectRequest,getCurrentUser()));
     }
 
     /**
@@ -71,26 +70,26 @@ public class ProjectRequestsController extends SecuredController {
      * 
      */
     @Transactional
-    public static Result reSave(Long creationProjectId) {
+    public static Result reSave(Long projectRequestId) {
         Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class).bindFromRequest();
         ProjectRequestForm data = form.get();
 
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        creationProject.setUpdatedBy(ContextUtil.getCurrentUserId());
-        creationProject.setUpdatedOn(new Date());
-        creationProject.setStatus(ProjectRequest.Status.NEW);
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        projectRequest.setUpdatedBy(ContextUtil.getCurrentUserId());
+        projectRequest.setUpdatedOn(new Date());
+        projectRequest.setStatus(ProjectRequest.Status.NEW);
 
-        creationProject.setName(data.getName());
-        creationProject.setCategory(data.getCategory());
-        creationProject.setBillable(data.getBillable());
-        creationProject.setRewardMethod(data.getRewardMethod());
-        creationProject.setRewardAmount(data.getRewardAmount());
-        creationProject.setDescription(data.getDescription());
-        creationProject.setApplicableFrom(data.getApplicableFrom());
-        creationProject.setApplicableTo(data.getApplicableTo());
-        creationProject.setContactInfo(data.getContactInfo());
-        creationProject.setNumber(data.getNumber());
-        JPA.em().persist(creationProject);
+        projectRequest.setName(data.getName());
+        projectRequest.setCategory(data.getCategory());
+        projectRequest.setBillable(data.getBillable());
+        projectRequest.setRewardMethod(data.getRewardMethod());
+        projectRequest.setRewardAmount(data.getRewardAmount());
+        projectRequest.setDescription(data.getDescription());
+        projectRequest.setApplicableFrom(data.getApplicableFrom());
+        projectRequest.setApplicableTo(data.getApplicableTo());
+        projectRequest.setContactInfo(data.getContactInfo());
+        projectRequest.setNumber(data.getNumber());
+        JPA.em().persist(projectRequest);
         return redirect(cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.routes.ProjectRequestsController.personHome());
     }
 
@@ -99,8 +98,8 @@ public class ProjectRequestsController extends SecuredController {
      */
     @Transactional
     public static Result index() {
-        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
-        return ok(index.render(creationProject));
+        List<ProjectRequest> projectRequest = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
+        return ok(index.render(projectRequest));
     }
 
     /**
@@ -108,7 +107,9 @@ public class ProjectRequestsController extends SecuredController {
      */
     @Transactional
     public static Result personHome() {
-        return ok(studentHome.render(getCurrentUser().getProjectRequests()));
+        List<ProjectRequest> projectRequest = JPA.em().createQuery("from ProjectRequest where organizer_Id=?").setParameter(1, getCurrentUserId()).getResultList();
+        projectRequest.addAll(getCurrentUser().getProjectRequests());
+        return ok(studentHome.render(projectRequest));
     }
 
     /**
@@ -117,51 +118,51 @@ public class ProjectRequestsController extends SecuredController {
      */
     @Transactional
     public static Result list() {
-        List<ProjectRequest> creationProjects = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
-        return ok(list.render(creationProjects));
+        List<ProjectRequest> projectRequests = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
+        return ok(list.render(projectRequests));
     }
 
     /**
-     * @param creationProjectId
+     * @param projectRequestId
      *  项目详细信息
      */
     @Transactional
-    public static Result view(Long creationProjectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        return ok(view.render(creationProject, getCurrentUser()));
+    public static Result view(Long projectRequestId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        return ok(view.render(projectRequest, getCurrentUser()));
     }
 
     /**
-     * @param creationProjectId
+     * @param projectRequestId
      * 审核通过该项目
      */
     @Transactional
-    public static Result approve(Long creationProjectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        creationProject.setStatus(ProjectRequest.Status.APPROVED);;
-        JPA.em().merge(creationProject);
+    public static Result approve(Long projectRequestId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        projectRequest.setStatus(ProjectRequest.Status.APPROVED);;
+        JPA.em().merge(projectRequest);
         return ok();
     }
 
     /**
-     * @param creationProjectId
+     * @param projectRequestId
      * @return
      * 审核不通过该项目,回到审核项目列表页面
      */
     @Transactional
-    public static Result reject(Long creationProjectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        creationProject.setStatus(ProjectRequest.Status.KILLED);
-        JPA.em().merge(creationProject);
+    public static Result reject(Long projectRequestId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        projectRequest.setStatus(ProjectRequest.Status.KILLED);
+        JPA.em().merge(projectRequest);
         return ok();
     }
 
     // 项目提交审核
     @Transactional
     public static Result submit(Long projectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, projectId);
-        creationProject.setStatus(ProjectRequest.Status.UNDER_APPROVAL);
-        JPA.em().merge(creationProject);
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectId);
+        projectRequest.setStatus(ProjectRequest.Status.UNDER_APPROVAL);
+        JPA.em().merge(projectRequest);
         return ok();
     }
 
@@ -173,24 +174,24 @@ public class ProjectRequestsController extends SecuredController {
      */
     @Transactional
     public static Result kill(Long Id) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, Id);
-        creationProject.setStatus(ProjectRequest.Status.KILLED);
-        JPA.em().merge(creationProject);
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, Id);
+        projectRequest.setStatus(ProjectRequest.Status.KILLED);
+        JPA.em().merge(projectRequest);
         return ok();
 }
 
     /**
      * 报名该项目
      * 
-     * @param creationProjectId
+     * @param projectRequestId
      * @return
      */
     @Transactional
-    public static Result join(Long creationProjectId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
-        creationProject.getMembers().add(getCurrentUser());
-        creationProject.setCurrentNumber(creationProject.getMembers().size());
-        JPA.em().merge(creationProject);
+    public static Result join(Long projectRequestId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
+        projectRequest.getMembers().add(getCurrentUser());
+        projectRequest.setCurrentNumber(projectRequest.getMembers().size());
+        JPA.em().merge(projectRequest);
         return ok();
         }
 
@@ -212,12 +213,12 @@ public class ProjectRequestsController extends SecuredController {
      * @return
      */
     @Transactional
-    public static Result leave(Long creationProjectId,Long userId) {
-        ProjectRequest creationProject = JPA.em().find(ProjectRequest.class, creationProjectId);
+    public static Result leave(Long projectRequestId,Long userId) {
+        ProjectRequest projectRequest = JPA.em().find(ProjectRequest.class, projectRequestId);
         User user=JPA.em().find(User.class, userId);
-        creationProject.getMembers().remove(user);
-        creationProject.setCurrentNumber(creationProject.getMembers().size());
-        JPA.em().merge(creationProject);
+        projectRequest.getMembers().remove(user);
+        projectRequest.setCurrentNumber(projectRequest.getMembers().size());
+        JPA.em().merge(projectRequest);
         return ok();
     }
 
