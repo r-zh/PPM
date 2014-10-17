@@ -19,7 +19,7 @@ import cn.edu.sdu.sc.spepms.system.common.models.User;
  * @author tonyzhou
  *
  */
-@Entity
+
 public class ProjectForm extends AuditableModel {
 
     /**

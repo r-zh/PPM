@@ -24,9 +24,7 @@ public class Application extends Controller {
 
     @Transactional
     public static Result index() {
-        // System.out.println(request().username());
-        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
-        return ok(index.render(creationProject));
+        return ok(index.render());
     }
 
     @Transactional
