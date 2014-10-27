@@ -18,7 +18,6 @@ GET    /register                                 cn.edu.sdu.sc.spepms.system.com
 POST   /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
 
 # Home page after user login
-GET    /home/student                             controllers.Application.studentHome()
 GET    /home/teacher                             controllers.Application.teacherHome()
 
 # Articles
@@ -28,54 +27,6 @@ POST   /articles                                 controllers.Application.saveArt
 # Project
 GET    /projects/publish                         controllers.Application.publishProject()
 GET    /projects/show                            controllers.Application.showProject()
-#GET    /project/publish                          cn.edu.sdu.sc.spepms.system.creation.controllers.ProjectRequestsController.publishProject()
-
-# Creation
-GET    /creation                                 cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.index()
-GET    /creation/personHome                      cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.personHome()
-
-GET    /creation/project_requests                        cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.list()
-GET    /creation/project_requests/add                    cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.add()
-GET    /creation/project_requests/edit                   cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.edit(projectId: Long)
-POST   /creation/project_requests                        cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.save()
-POST   /creation/project_requests/update                 cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.reSave(projectId: Long)
-GET    /creation/project_requests/process                cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.process()
-
-POST   /creation/project_requests/:projectId/approve     cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.approve(projectId: Long)
-POST   /creation/project_requests/:projectId/reject      cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.reject(projectId: Long)
-POST   /creation/project_requests/:projectId/kill        cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.kill(projectId: Long)
-
-POST   /creation/project_requests/:projectId/submit      cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.submit(projectId: Long)
-POST   /creation/project_requests/:projectId/join        cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.join(projectId: Long)
-
-GET    /creation/project_requests/:projectId/applicate   cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.applicate(projectId: Long)
-POST   /creation/project_requests/:projectId/leave       cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.leave(projectId: Long,userId: Long)
-
-GET    /creation/project_requests/:projectId             cn.edu.sdu.sc.spepms.system.creation.project_requests.controllers.ProjectRequestsController.view(projectId:Long)
-
-# Laboratory
-GET    /creation/labs                            cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.index()
-GET    /creation/views                           cn.edu.sdu.sc.spepms.system.creation.labs.controllers.LabsController.view()
-
-# Practice
-GET    /practice                                 cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.index()
-
-GET    /practice/projects                        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.list()
-GET    /practice/projects/add                    cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.add()
-GET    /practice/projects/edit                   cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.edit(projectId: Long)
-POST   /practice/projects                        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.save()
-POST   /practice/projects/update                 cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.reSave(projectId: Long)
-
-POST   /practice/projects/:projectId/approve     cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.approve(projectId: Long)
-POST   /practice/projects/:projectId/reject      cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.reject(projectId: Long)
-POST   /practice/projects/:projectId/kill        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.kill(projectId: Long)
-
-POST   /practice/projects/:projectId/submit      cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.submit(projectId: Long)
-POST   /practice/projects/:projectId/join        cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.join(projectId: Long)
-
-POST   /practice/projects/:projectId/leave       cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.leave(projectId: Long,userId: Long)
-
-GET    /practice/projects/:projectId             cn.edu.sdu.sc.spepms.system.practice.controllers.ProjectsController.view(projectId:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file                             controllers.Assets.at(path="/public", file)

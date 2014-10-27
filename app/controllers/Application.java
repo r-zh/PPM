@@ -16,9 +16,6 @@ import views.html.userList;
 import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
-import cn.edu.sdu.sc.spepms.system.common.views.html.studentHome;
-import cn.edu.sdu.sc.spepms.system.creation.project_requests.forms.ProjectRequestForm;
-import cn.edu.sdu.sc.spepms.system.creation.project_requests.models.ProjectRequest;
 
 public class Application extends Controller {
 
@@ -48,24 +45,16 @@ public class Application extends Controller {
         return ok(userList.render(users));
     }
 
-    @Transactional
-    public static Result studentHome() {
-        Wireframe.current().setShowBusinessMenu(true);
-        List<ProjectRequest> creationProject = JPA.em().createQuery("from ProjectRequest", ProjectRequest.class).getResultList();
-        return ok(studentHome.render(creationProject));
-    }
 
     public static Result teacherHome() {
-        Wireframe.current().setShowBusinessMenu(true);
         return ok(teacherHome.render());
     }
 
     public static Result login() {
-        return redirect(routes.Application.studentHome());
+        return redirect(routes.Application.index());
     }
 
     public static Result addArticle() {
-        Wireframe.current().setShowBusinessMenu(true);
         return ok(addArticle.render());
     }
 
@@ -74,16 +63,14 @@ public class Application extends Controller {
     }// 实训申请
 
     public static Result publishProject() {
-        Wireframe.current().setShowBusinessMenu(true);
         return ok(publishProject.render());
     }// 实训审核报名
 
     public static Result showProject() {
-        Wireframe.current().setShowBusinessMenu(true);
         return ok(showProject.render());
     }
 
-    public static Result dummySavePublishedProject() {
+/*    public static Result dummySavePublishedProject() {
         // 从提交的表单中获取数据
         Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class)
                 .bindFromRequest();
@@ -110,5 +97,5 @@ public class Application extends Controller {
         JPA.em().remove(someP);
 
         return null;
-    }
+    }*/
 }

@@ -27,14 +27,8 @@ public class RegisterController extends Controller {
         user.setGender(data.getGender());
         user.setPersonalId(data.getPersonalId());
         user.setBirthday(data.getBirthday());
-        user.setEmail(data.getEmail());
         user.setHometown(data.getHometown());
-        user.setLab(data.getLab());
-        user.setMajor(data.getMajor());
         user.setPassword(data.getPassword());
-        user.setGrade(data.getGrade());
-        user.setPhone(data.getPhone());
-        user.setStudentId(data.getStudentId());
 
         JPA.em().persist(user);
 

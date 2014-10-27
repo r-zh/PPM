@@ -2,7 +2,7 @@ package cn.edu.sdu.sc.spepms.system.common.forms;
 
 public class RegisterForm {
 
-    private String name;
+	private String name;
 
     private String gender;
 
@@ -10,116 +10,66 @@ public class RegisterForm {
 
     private String birthday;
 
-    private String email;
-
     private String hometown;
 
     private String password;
 
-    private long studentId;
+    private boolean admin;
 
-    private String phone;
+	public String getName() {
+		return name;
+	}
 
-    private String grade;
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    private String major;
+	public String getGender() {
+		return gender;
+	}
 
-    private String lab;
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    public String getBirthday() {
-        return birthday;
-    }
+	public String getPersonalId() {
+		return personalId;
+	}
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
+	public void setPersonalId(String personalId) {
+		this.personalId = personalId;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getBirthday() {
+		return birthday;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 
-    public long getStudentId() {
-        return studentId;
-    }
+	public String getHometown() {
+		return hometown;
+	}
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
-    }
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getGrade() {
-        return grade;
-    }
+	public boolean isAdmin() {
+		return admin;
+	}
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public String getHometown() {
-        return hometown;
-    }
-
-    public void setHometown(String hometown) {
-        this.hometown = hometown;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
-    }
-
-    public String getLab() {
-        return lab;
-    }
-
-    public void setLab(String lab) {
-        this.lab = lab;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(String personalId) {
-        this.personalId = personalId;
-    }
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
 }
