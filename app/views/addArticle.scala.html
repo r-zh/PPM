@@ -9,24 +9,35 @@
 } {
 
 <!-- Place this in the body of the page content -->
-<form class="form-horizontal" method="post" role="form">
+<form class="form-horizontal" method="post" role="form" action="@controllers.routes.Application.saveArticle()">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="name">事务名称</label>
+        <div class="col-sm-9">
+            <input name="name" class="col-xs-10 col-sm-5"/>
+        </div>
+    </div>
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="articleType">请选择一个类别</label>
         <div class="col-sm-9">
             <select name="articleType" class="col-xs-10 col-sm-5" id="articleType">
                 <option>新闻公告</option>
-                <option>资源下载</option>
+                <option>理财活动</option>
             </select>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="wysiwyg-editor" id="editor1"></div>
+        <label class="col-sm-3 control-label no-padding-right" for="words">活动内容</label>
+        <br></br>
+        <div calss="col-sm-3">
+        <label class="col-sm-2 control-label no-padding-right" for="words"></label>
+            <textarea class="col-xs-10 col-sm-5" name="words"></textarea>
+        </div>
     </div>
 
     <div class="clearfix form-actions">
         <div class="col-md-offset-3 col-md-9">
-            <button class="btn btn-info" type="button">
+            <button class="btn btn-info" type="submit">
                 <i class="ace-icon fa fa-check bigger-110"></i>
                 Submit
             </button>
@@ -42,104 +53,8 @@
 </form>
 
 } {
-
 <script>
-$('#editor1').ace_wysiwyg({
-    toolbar:
-    [
-        'font',
-        null,
-        'fontSize',
-        null,
-        {name:'bold', className:'btn-info'},
-        {name:'italic', className:'btn-info'},
-        {name:'strikethrough', className:'btn-info'},
-        {name:'underline', className:'btn-info'},
-        null,
-        {name:'insertunorderedlist', className:'btn-success'},
-        {name:'insertorderedlist', className:'btn-success'},
-        {name:'outdent', className:'btn-purple'},
-        {name:'indent', className:'btn-purple'},
-        null,
-        {name:'justifyleft', className:'btn-primary'},
-        {name:'justifycenter', className:'btn-primary'},
-        {name:'justifyright', className:'btn-primary'},
-        {name:'justifyfull', className:'btn-inverse'},
-        null,
-        {name:'createLink', className:'btn-pink'},
-        {name:'unlink', className:'btn-pink'},
-        null,
-        {name:'insertImage', className:'btn-success'},
-        null,
-        'foreColor',
-        null,
-        {name:'undo', className:'btn-grey'},
-        {name:'redo', className:'btn-grey'}
-    ],
-    'wysiwyg': {
-        fileUploadError: showErrorAlert
-    }
-}).prev().addClass('wysiwyg-style1');
 
-
-//RESIZE IMAGE
-
-//Add Image Resize Functionality to Chrome and Safari
-//webkit browsers don't have image resize functionality when content is editable
-//so let's add something using jQuery UI resizable
-//another option would be opening a dialog for user to enter dimensions.
-if ( typeof jQuery.ui !== 'undefined' && ace.vars['webkit'] ) {
-    
-    var lastResizableImg = null;
-    function destroyResizable() {
-        if(lastResizableImg == null) return;
-        lastResizableImg.resizable( "destroy" );
-        lastResizableImg.removeData('resizable');
-        lastResizableImg = null;
-    }
-
-    var enableImageResize = function() {
-        $('.wysiwyg-editor')
-        .on('mousedown', function(e) {
-            var target = $(e.target);
-            if( e.target instanceof HTMLImageElement ) {
-                if( !target.data('resizable') ) {
-                    target.resizable({
-                        aspectRatio: e.target.width / e.target.height,
-                    });
-                    target.data('resizable', true);
-                    
-                    if( lastResizableImg != null ) {
-                        //disable previous resizable image
-                        lastResizableImg.resizable( "destroy" );
-                        lastResizableImg.removeData('resizable');
-                    }
-                    lastResizableImg = target;
-                }
-            }
-        })
-        .on('click', function(e) {
-            if( lastResizableImg != null && !(e.target instanceof HTMLImageElement) ) {
-                destroyResizable();
-            }
-        })
-        .on('keydown', function() {
-            destroyResizable();
-        });
-    }
-
-    enableImageResize();
-
-    /**
-    //or we can load the jQuery UI dynamically only if needed
-    if (typeof jQuery.ui !== 'undefined') enableImageResize();
-    else {//load jQuery UI if not loaded
-        $.getScript($path_assets+"/js/jquery-ui.custom.min.js", function(data, textStatus, jqxhr) {
-            enableImageResize()
-        });
-    }
-    */
-}
 </script>
 
 }

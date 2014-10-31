@@ -23,6 +23,15 @@ public class User extends AuditableModel {
 
     private String password;
 
+    //存入
+    private String give;
+
+    //取出
+    private String receive;
+
+    //总金额
+    private String all;
+
     private boolean admin;
 
 	public String getName() {

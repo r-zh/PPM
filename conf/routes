@@ -18,7 +18,7 @@ GET    /register                                 cn.edu.sdu.sc.spepms.system.com
 POST   /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
 
 # Home page after user login
-GET    /home/teacher                             controllers.Application.teacherHome()
+GET    /home/person                              controllers.PersonController.view()
 
 # Articles
 GET    /articles/add                             controllers.Application.addArticle()

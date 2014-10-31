@@ -2,24 +2,20 @@ package controllers;
 
 import java.util.List;
 
+import org.hibernate.validator.internal.util.privilegedactions.GetClassLoader;
+
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.addArticle;
-import views.html.index;
-import views.html.publishProject;
-import views.html.showProject;
-import views.html.teacherHome;
-import views.html.userList;
+import views.html.*;
 import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
 
 public class Application extends Controller {
 
-    @Transactional
     public static Result index() {
         return ok(index.render());
     }
@@ -43,11 +39,6 @@ public class Application extends Controller {
     public static Result users() {
         List<User> users = JPA.em().createQuery("from User", User.class).getResultList();
         return ok(userList.render(users));
-    }
-
-
-    public static Result teacherHome() {
-        return ok(teacherHome.render());
     }
 
     public static Result login() {
