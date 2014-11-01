@@ -29,6 +29,9 @@ public class Application extends Controller {
         user.setName(data.getName());
         user.setGender(data.getGender());
         user.setPersonalId(data.getPersonalId());
+        user.setAll(0);
+        user.setGive(0);
+        user.setReceive(0);
 
         JPA.em().persist(user);
 
@@ -51,11 +54,11 @@ public class Application extends Controller {
 
     public static Result saveArticle() {
         return redirect(routes.Application.index());
-    }// 实训申请
+    }
 
     public static Result publishProject() {
         return ok(publishProject.render());
-    }// 实训审核报名
+    }
 
     public static Result showProject() {
         return ok(showProject.render());
