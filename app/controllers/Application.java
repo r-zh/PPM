@@ -29,6 +29,10 @@ public class Application extends Controller {
         user.setName(data.getName());
         user.setGender(data.getGender());
         user.setPersonalId(data.getPersonalId());
+        user.setHometown(data.getHometown());
+        user.setPassword(data.getPassword());
+
+        user.setAdmin(false);
         user.setAll(0);
         user.setGive(0);
         user.setReceive(0);
