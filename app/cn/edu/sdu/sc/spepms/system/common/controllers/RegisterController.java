@@ -24,6 +24,7 @@ public class RegisterController extends Controller {
 
         User user = new User();
         user.setName(data.getName());
+        System.out.println(data.getName());
         user.setGender(data.getGender());
         user.setPersonalId(data.getPersonalId());
         user.setBirthday(data.getBirthday());
