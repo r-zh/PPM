@@ -1,39 +1,415 @@
-@(currentUser: cn.edu.sdu.sc.spepms.system.common.models.User)
+@(currentUser: cn.edu.sdu.sc.spepms.system.common.models.User,banks: List[cn.edu.sdu.sc.spepms.system.common.models.Bank])
 
-@layouts.basicLayout() {
-<div class="profile-user-info profile-user-info-striped">
-    <div class="profile-info-row">
-        <div class="profile-info-name">姓名</div>
-
-        <div class="profile-info-value">
-            <span class="editable" id="username">@currentUser.getName</span>
+@layouts.basicLayout{
+<div class="page-header">
+    <h1>个人主页</h1>
+</div>
+} {
+<div class="user-profile row">
+    <div class="col-xs-12 col-sm-5">
+        <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+                <div class="profile-info-name">编号</div>
+        
+                <div class="profile-info-value">
+                    <span class="editable" id="username">@currentUser.getName</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">性别</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getGender</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">籍贯</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getHometown</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">出生年月</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getBirthday</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">身份证号</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getPersonalId</span>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="profile-info-row">
-        <div class="profile-info-name">性别</div>
-        <div class="profile-info-value">
-            <span class="editable" id="country">@currentUser.getGender</span>
-        </div>
-    </div>
-    <div class="profile-info-row">
-        <div class="profile-info-name">籍贯</div>
-        <div class="profile-info-value">
-            <span class="editable" id="country">@currentUser.getHometown</span>
-        </div>
-    </div>
-    <div class="profile-info-row">
-        <div class="profile-info-name">出生年月</div>
-        <div class="profile-info-value">
-            <span class="editable" id="country">@currentUser.getBirthday</span>
-        </div>
-    </div>
-    <div class="profile-info-row">
-        <div class="profile-info-name">身份证号</div>
-        <div class="profile-info-value">
-            <span class="editable" id="country">@currentUser.getPersonalId</span>
+    <div class="col-xs-12 col-sm-5">
+        <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+                <div class="profile-info-name">账户余额</div>
+        
+                <div class="profile-info-value">
+                    <span class="editable" id="username">@currentUser.getAccount()</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">近期支出</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getGive()</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">支出类型</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getGiveDes()</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">近期存入</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country">@currentUser.getReceive()</span>
+                </div>
+            </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">备注</div>
+                <div class="profile-info-value">
+                    <span class="editable" id="country"></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="header smaller lighter green">个人业务处理</h3>
+
+        <!-- #section:elements.button.app -->
+        <p>
+            <button class="btn btn-app btn-success" href="#for-eat" data-toggle="modal">
+                <i class="ace-icon fa fa-cutlery bigger-230"></i>
+                饮食消费
+            </button>
+
+            <button class="btn btn-app btn-info" href="#for-phone" data-toggle="modal">
+                <i class="ace-icon fa fa-book bigger-230"></i>
+                话费充值
+            </button>
+
+            <button class="btn btn-app btn-pink" href="#for-transfer" data-toggle="modal">
+                <i class="ace-icon fa fa-fighter-jet bigger-230"></i>
+                交通支付
+            </button>
+
+            <button class="btn btn-app btn-purple" href="#for-movie" data-toggle="modal">
+                <i class="ace-icon fa fa-film bigger-230"></i>
+                电影票预订
+            </button>
+
+            <button class="btn btn-app btn-primary" href="#for-business" data-toggle="modal">
+                <i class="ace-icon fa fa-envelope-o bigger-230"></i>
+                订单结算
+            </button>
+            @if(currentUser.isAdmin()){
+                <button class="btn btn-app btn-yellow" href="#for-pay" data-toggle="modal">
+                    <i class="ace-icon fa fa-cloud-upload bigger-230"></i>
+                    存款
+                </button>
+    
+                <button class="btn btn-app btn-danger" href="#for-get" data-toggle="modal">
+                    <i class="ace-icon fa fa-cloud-download bigger-230"></i>
+                    取款
+                </button>
+            }
+        </p>
+
+        <!-- /section:elements.button.app -->
+    </div>
+</div>
+
+<div class="widget-container-col">
+    <h3 class="header smaller lighter orange">账单查询</h3>
+    <div class="widget-box widget-color-dark">
+        <div class="widget-header widget-hea1der-small">
+            <h6 class="widget-title">近期业务</h6>
+        </div>
+
+        <div class="widget-body">
+            @for(bank <- banks){
+                <div class="widget-main padding-4">
+                    <!-- #section:custom/scrollbar -->
+                        <div class="scrollable" data-height="125">
+                            <div class="content">
+                                <div class="alert alert-success">
+                                &emsp; 业务类型：@bank.getType()&emsp; &emsp; &emsp;
+                                具体号码：@bank.getAccount()&emsp; &emsp; &emsp; 
+                                消费金额：@bank.getNumbers()&emsp; &emsp; &emsp; 
+                                消费日期：@bank.getCreatedOn()
+                                </div>
+                            </div>
+                        </div>
+                    <!-- /section:custom/scrollbar -->
+                </div>
+                }
+        </div>
+    </div>
+</div>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-phone" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        话费充值
+                    </div>
+                </div>
+
+                <div class="col-sm-9">
+                        <label class="col-xs-10 col-sm-3">类型</label>
+                        <input class="col-xs-10 col-sm-5" type="text" name="type" value="话费充值" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                        <label class="col-xs-10 col-sm-3">手机号码</label>
+                        <input class="col-xs-10 col-sm-5" type="text" name="number" />
+                </div>
+                <div class="col-sm-9">
+                        <label class="col-xs-10 col-sm-3">充值金额</label>
+                        <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-transfer" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        交通支付
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                        <label class="col-xs-10 col-sm-3">类型</label>
+                        <input class="col-xs-10 col-sm-5" type="text" name="type" value="交通支付" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">订单号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" />
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-movie" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        电影票预订
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">类型</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="type" value="电影票预订" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">订单号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" />
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-business" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        订单结算
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">类型</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="type" value="订单结算" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">订单号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" />
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-pay" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        存款
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">类型</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="type" value="存入" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">帐号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" value="@currentUser.getName" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-get" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        取款
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">类型</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="type" value="取出" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">帐号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" value="@currentUser.getName" readOnly="true"/>
+                </div>            <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
+
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.trade()">
+    <div id="for-eat" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header no-padding">
+                    <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="white">&times;</span>
+                        </button>
+                        饮食消费
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">类型</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="type" value="饮食消费" readOnly="true"/>
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">订单号</label>
+                    <input class="col-xs-10 col-sm-5" type="text" name="number" />
+                </div>
+                <div class="col-sm-9">
+                    <label class="col-xs-10 col-sm-3">金额</label>
+                    <input class="col-xs-10 col-sm-5" type="number" name="money" />
+                </div>
+                <div class="modal-footer no-margin-top">
+    
+                    <button class="btn btn-sm btn-success pull-left" type="submit">
+                        <i class="ace-icon fa fa-check"></i>
+                        确定
+                    </button>
+    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</form>
 } {
 
 }

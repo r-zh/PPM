@@ -1,0 +1,15 @@
+@(projects: List[cn.edu.sdu.sc.spepms.system.common.models.Project])
+
+@layouts.basicLayout {
+<div class="page-header">
+    <h1>新闻公告</h1>
+    <br>
+</div>
+}{
+@for(project <- projects){
+    <a href="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.view(project.getId)">
+    <p class="alert alert-info">@project.getName</p>
+    </a>
+    }
+}{
+}

@@ -29,10 +29,14 @@ public class RegisterController extends Controller {
         user.setBirthday(data.getBirthday());
         user.setHometown(data.getHometown());
         user.setPassword(data.getPassword());
-
+        user.setAccount(0);
+        user.setGive(0);
+        user.setReceive(0);
         JPA.em().persist(user);
 
-        return ok(profile.render(user));
+        System.out.println("-----------------------------------------------------------------------");
+        System.out.println(user.getBanks());
+        return ok(profile.render(user,user.getBanks()));
     }
 
 }

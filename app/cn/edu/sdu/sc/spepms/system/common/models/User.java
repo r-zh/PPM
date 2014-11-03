@@ -25,59 +25,110 @@ public class User extends AuditableModel {
 
     private boolean admin;
 
-	public String getName() {
-		return name;
-	}
+    private Integer account;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private Integer receive;
 
-	public String getGender() {
-		return gender;
-	}
+    private Integer give;
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    private String giveDes;
 
-	public String getPersonalId() {
-		return personalId;
-	}
+    @OneToMany
+    private List<Bank> banks;
 
-	public void setPersonalId(String personalId) {
-		this.personalId = personalId;
-	}
+    public List<Bank> getBanks() {
+        return banks;
+    }
 
-	public String getBirthday() {
-		return birthday;
-	}
+    public void setBanks(List<Bank> banks) {
+        this.banks = banks;
+    }
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
+    public String getGiveDes() {
+        return giveDes;
+    }
 
-	public String getHometown() {
-		return hometown;
-	}
+    public void setGiveDes(String giveDes) {
+        this.giveDes = giveDes;
+    }
 
-	public void setHometown(String hometown) {
-		this.hometown = hometown;
-	}
+    public Integer getReceive() {
+        return receive;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setReceive(Integer receive) {
+        this.receive = receive;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public Integer getGive() {
+        return give;
+    }
 
-	public boolean isAdmin() {
-		return admin;
-	}
+    public void setGive(Integer give) {
+        this.give = give;
+    }
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAccount() {
+        return account;
+    }
+
+    public void setAccount(Integer account) {
+        this.account = account;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPersonalId() {
+        return personalId;
+    }
+
+    public void setPersonalId(String personalId) {
+        this.personalId = personalId;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public void setHometown(String hometown) {
+        this.hometown = hometown;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }

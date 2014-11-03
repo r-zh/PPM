@@ -1,0 +1,58 @@
+@()
+
+@layouts.basicLayout {
+
+<div class="page-header">
+    <h1>信息发布</h1>
+</div>
+
+} {
+
+<!-- Place this in the body of the page content -->
+<form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.ProjectController.save()">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="ProjectRequest">名称</label>
+        <div class="col-sm-9">
+            <input class="col-xs-10 col-sm-5" type="text" name="name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="articleType">请选择一个类别</label>
+        <div class="col-sm-9">
+            <select name="Type" class="col-xs-10 col-sm-5">
+                <option>新闻公告</option>
+                <option>理财业务</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right">介绍</label>
+        <div class="col-sm-9">
+            <textarea class="col-xs-10 col-sm-5" name="words" style="height: 409px"></textarea>
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                Submit
+            </button>
+    
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                Reset
+            </button>
+        </div>
+    </div>
+
+</form>
+
+} {
+<script>
+</script>
+
+}

@@ -3,30 +3,34 @@
 # ~~~~
 
 # Home page for public access
-GET    /                                         controllers.Application.index()
+GET    /                   controllers.Application.index()
 
 # User login
-GET    /login                                    cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.login()
-POST   /authenticate                             cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
-GET    /logout                                   cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
+GET    /login              cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.login()
+POST   /authenticate       cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.authenticate()
+GET    /logout             cn.edu.sdu.sc.spepms.system.common.controllers.AuthController.logout()
 
-GET    /users                                    controllers.Application.users()
-GET    /users/view                               cn.edu.sdu.sc.spepms.system.common.controllers.UserController.view()
+GET    /users              controllers.Application.users()
+GET    /users/view         cn.edu.sdu.sc.spepms.system.common.controllers.UserController.view()
+POST   /bank               cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.trade()
 
 # User register
-GET    /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
-POST   /register                                 cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
+GET    /register           cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.register()
+POST   /register           cn.edu.sdu.sc.spepms.system.common.controllers.RegisterController.registerSave()
 
 # Home page after user login
-GET    /home/teacher                             controllers.Application.teacherHome()
+GET    /home/teacher       controllers.Application.teacherHome()
 
 # Articles
-GET    /articles/add                             controllers.Application.addArticle()
-POST   /articles                                 controllers.Application.saveArticle()
+GET    /articles/add       controllers.Application.addArticle()
+POST   /articles           controllers.Application.saveArticle()
 
 # Project
-GET    /projects/publish                         controllers.Application.publishProject()
-GET    /projects/show                            controllers.Application.showProject()
+GET    /project            cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.add()
+GET    /news/publish       cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.newsList()
+GET    /projects/publish   cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.projectList()
+GET    /project/show       cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.view(project:Long)
+POST   /project            cn.edu.sdu.sc.spepms.system.common.controllers.ProjectController.save()
 
 # Map static resources from the /public folder to the /assets URL path
-GET    /assets/*file                             controllers.Assets.at(path="/public", file)
+GET    /assets/*file       controllers.Assets.at(path="/public", file)
