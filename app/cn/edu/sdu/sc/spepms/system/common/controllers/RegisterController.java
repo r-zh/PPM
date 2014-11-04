@@ -8,8 +8,9 @@ import play.mvc.Result;
 import cn.edu.sdu.sc.spepms.framework.wireframe.Wireframe;
 import cn.edu.sdu.sc.spepms.system.common.forms.RegisterForm;
 import cn.edu.sdu.sc.spepms.system.common.models.User;
-import cn.edu.sdu.sc.spepms.system.common.views.html.register;
-import cn.edu.sdu.sc.spepms.system.common.views.html.profile;
+import views.html.index;
+import cn.edu.sdu.sc.spepms.system.common.views.html.*;
+
 public class RegisterController extends Controller {
 
     public static Result register() {
@@ -34,9 +35,7 @@ public class RegisterController extends Controller {
         user.setReceive(0);
         JPA.em().persist(user);
 
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println(user.getBanks());
-        return ok(profile.render(user,user.getBanks()));
+        return ok(index.render());
     }
 
 }
