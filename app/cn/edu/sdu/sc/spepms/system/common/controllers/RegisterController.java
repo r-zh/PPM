@@ -14,7 +14,6 @@ import cn.edu.sdu.sc.spepms.system.common.views.html.*;
 public class RegisterController extends Controller {
 
     public static Result register() {
-        Wireframe.current().setShowBusinessMenu(true);
         return ok(register.render());
     }
 
