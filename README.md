@@ -1,4 +1,4 @@
-## Students' professional/engineering practice management system ##
+## Personal Program Model ##
 
 ## Proxy public repositories ##
 
