@@ -7,7 +7,222 @@
 </div>
 }{
 <form class="form-horizontal" method="post" role="form" action="@cn.edu.sdu.sc.spepms.system.common.controllers.routes.RegisterController.registerSave()">
-    <div class="form-group">
+    
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">单选题</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse">
+					<i class="ace-icon fa fa-chevron-up"></i>
+				</a>
+
+				<a href="#" data-action="close">
+					<i class="ace-icon fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main">
+				<!-- #section:plugins/input.autosize -->
+				<div>
+					<label for="form-field-11">题目内容</label>
+
+					<textarea id="form-field-11" class="autosize-transition form-control"></textarea>
+					
+					<div class="control-group">
+						<label class="control-label bolder blue">选项</label>
+
+						<div class="radio">
+							<label>
+								<input name="form-field-radio" type="radio" class="ace" />
+								<span class="lbl"> A选项:</span>
+								<input type="text" />
+							</label>
+						</div>
+
+						<div class="radio">
+							<label>
+								<input name="form-field-radio" type="radio" class="ace" />
+								<span class="lbl"> B选项:</span>
+								<input type="text" />
+							</label>
+						</div>
+
+						<div class="radio">
+							<label>
+								<input name="form-field-radio" type="radio" class="ace" />
+								<span class="lbl"> C选项:</span>
+								<input type="text" />
+							</label>
+						</div>
+
+						<div class="radio">
+							<label>
+								<input name="form-field-radio" type="radio" class="ace" />
+								<span class="lbl"> D选项:</span>
+								<input type="text" />
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- /section:plugins/input.autosize -->
+			</div>
+		</div>
+	</div>
+	<!-- /.span --></br>
+	
+	
+	
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">多选题</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse">
+					<i class="ace-icon fa fa-chevron-up"></i>
+				</a>
+
+				<a href="#" data-action="close">
+					<i class="ace-icon fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main">
+				<!-- #section:plugins/input.autosize -->
+				<div>
+					<label for="form-field-11">题目内容</label>
+
+					<textarea id="form-field-11" class="autosize-transition form-control"></textarea>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label bolder blue">选项</label>
+
+					<!-- #section:custom/checkbox -->
+					<div class="checkbox">
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl"> A选项:</span>
+							<input type="text" />
+						</label>
+					</div>
+
+					<div class="checkbox">
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl"> B选项:</span>
+							<input type="text" />
+						</label>
+					</div>
+
+					<div class="checkbox">
+						<label>
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl"> C选项:</span>
+							<input type="text" />
+						</label>
+					</div>
+
+					<div class="checkbox">
+						<label class="block">
+							<input name="form-field-checkbox" type="checkbox" class="ace" />
+							<span class="lbl"> D选项:</span>
+							<input type="text" />
+						</label>
+					</div>
+
+					<!-- /section:custom/checkbox -->
+				</div>
+
+				<!-- /section:plugins/input.autosize -->
+			</div>
+		</div>
+	</div>
+	<!-- /.span --></br>
+	
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">简答题</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse">
+					<i class="ace-icon fa fa-chevron-up"></i>
+				</a>
+
+				<a href="#" data-action="close">
+					<i class="ace-icon fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main">
+				<!-- #section:plugins/input.autosize -->
+				<div>
+					<label for="form-field-11">题目内容</label>
+
+					<textarea id="form-field-11" class="autosize-transition form-control"></textarea>
+				</div>
+				
+				<!-- /section:plugins/input.autosize -->
+			</div>
+		</div>
+	</div>
+	<!-- /.span --></br>
+	
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">考试信息</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse">
+					<i class="ace-icon fa fa-chevron-up"></i>
+				</a>
+
+				<a href="#" data-action="close">
+					<i class="ace-icon fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body">
+			<div class="widget-main">
+				<!-- #section:plugins/input.autosize -->
+				<div>
+					<label for="form-field-11">考试介绍</label>
+
+					<textarea id="form-field-11" class="autosize-transition form-control"></textarea>
+					
+					<hr />
+					<label for="form-field-11">考试时长：</label>
+					<input type="text" />分钟
+					
+					<hr />
+					<label for="date-timepicker1">考试截止时间</label>
+
+					<!-- #section:plugins/date-time.datetimepicker -->
+					<div class="input-group">
+						<input id="date-timepicker1" type="text" class="form-control" />
+						<span class="input-group-addon">
+							<i class="fa fa-clock-o bigger-110"></i>
+						</span>
+					</div>
+	
+				</div>
+				
+				<!-- /section:plugins/input.autosize -->
+			</div>
+		</div>
+	</div>
+	<!-- /.span --></br>
+
+	
+	<div class="form-group">
         <label class="col-sm-3 control-label no-padding-right">账户名</label>
         <div class="col-sm-9">
             <input class="input-normal" type="text" name="name"/>
@@ -74,6 +289,112 @@
         </div>
     </div>
 </form>
+
+<div class="col-sm-4">
+											<div class="widget-box">
+												<div class="widget-header">
+													<h4 class="widget-title">Date Picker</h4>
+
+													<span class="widget-toolbar">
+														<a href="#" data-action="settings">
+															<i class="ace-icon fa fa-cog"></i>
+														</a>
+
+														<a href="#" data-action="reload">
+															<i class="ace-icon fa fa-refresh"></i>
+														</a>
+
+														<a href="#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-up"></i>
+														</a>
+
+														<a href="#" data-action="close">
+															<i class="ace-icon fa fa-times"></i>
+														</a>
+													</span>
+												</div>
+
+												<div class="widget-body">
+													<div class="widget-main">
+														<label for="id-date-picker-1">Date Picker</label>
+
+														<div class="row">
+															<div class="col-xs-8 col-sm-11">
+																<!-- #section:plugins/date-time.datepicker -->
+																<div class="input-group">
+																	<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+																</div>
+															</div>
+														</div>
+
+														<div class="space space-8"></div>
+														<label>Range Picker</label>
+
+														<div class="row">
+															<div class="col-xs-8 col-sm-11">
+																<div class="input-daterange input-group">
+																	<input type="text" class="input-sm form-control" name="start" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+																	<input type="text" class="input-sm form-control" name="end" />
+																</div>
+
+																<!-- /section:plugins/date-time.datepicker -->
+															</div>
+														</div>
+
+														<hr />
+														<label for="id-date-range-picker-1">Date Range Picker</label>
+
+														<div class="row">
+															<div class="col-xs-8 col-sm-11">
+																<!-- #section:plugins/date-time.daterangepicker -->
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+
+																	<input class="form-control" type="text" name="date-range-picker" id="id-date-range-picker-1" />
+																</div>
+
+																<!-- /section:plugins/date-time.daterangepicker -->
+															</div>
+														</div>
+
+														<hr />
+														<label for="timepicker1">Time Picker</label>
+
+														<!-- #section:plugins/date-time.timepicker -->
+														<div class="input-group bootstrap-timepicker">
+															<input id="timepicker1" type="text" class="form-control" />
+															<span class="input-group-addon">
+																<i class="fa fa-clock-o bigger-110"></i>
+															</span>
+														</div>
+
+														<!-- /section:plugins/date-time.timepicker -->
+														<hr />
+														<label for="date-timepicker1">Date/Time Picker</label>
+
+														<!-- #section:plugins/date-time.datetimepicker -->
+														<div class="input-group">
+															<input id="date-timepicker1" type="text" class="form-control" />
+															<span class="input-group-addon">
+																<i class="fa fa-clock-o bigger-110"></i>
+															</span>
+														</div>
+
+														<!-- /section:plugins/date-time.datetimepicker -->
+													</div>
+												</div>
+											</div>
+										</div>
+
 
 } {
 <script type="text/javascript">

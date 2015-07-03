@@ -1,215 +1,371 @@
 @layouts.basicLayout() {
 <div class="page-header">
     <h1>
-        舜泰银行管理系统
+        E-learning论坛
         <small>
             <i class="ace-icon fa fa-angle-double-right"></i>
-            欢迎使用
+           	 欢迎使用
         </small>
     </h1>
 </div><!-- /.page-header -->
 
 <div class="row">
-            <!-- #section:pages/pricing.large -->
-            <div class="col-xs-6 col-sm-3 pricing-box">
-                <div class="widget-box widget-color-red">
-                    <div class="widget-header">
-                        <h5 class="widget-title bigger lighter">基本信息</h5>
-                    </div>
+	<div class="tabbable">
+		<ul id="inbox-tabs" class="inbox-tabs nav nav-tabs padding-16 tab-size-bigger tab-space-1">
+			<!-- #section:pages/inbox.compose-btn -->
+			<li class="li-new-mail pull-right">
+				<a data-toggle="tab" href="#" class="btn-new-mail">
+					<span class="btn btn-purple no-border">
+						<i class="ace-icon fa fa-envelope bigger-130"></i>
+						<span class="bigger-110">发布新主题</span>
+					</span>
+				</a>
+			</li>
+	
+			<!-- /section:pages/inbox.compose-btn -->
+			<li class="active">
+				<a data-toggle="tab" href="#" data-target="">
+					<i class="blue ace-icon fa fa-inbox bigger-130"></i>
+					<span class="bigger-110">最新发布</span>
+				</a>
+			</li>
+	
+			<li>
+				<a data-toggle="tab" href="#" data-target="">
+					<i class="orange ace-icon fa fa-location-arrow bigger-130"></i>
+					<span class="bigger-110">答疑版块</span>
+				</a>
+			</li>
+	
+			<li>
+				<a data-toggle="tab" href="#" data-target="">
+					<i class="green ace-icon fa fa-pencil bigger-130"></i>
+					<span class="bigger-110">交流版块</span>
+				</a>
+			</li>
+	
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+					<i class="pink ace-icon fa fa-tags bigger-130"></i>
+	
+					<span class="bigger-110">
+						我参与的
+						<i class="ace-icon fa fa-caret-down"></i>
+					</span>
+				</a>
+	
+				<ul class="dropdown-menu dropdown-light-blue dropdown-125">
+					<li>
+						<a data-toggle="tab" href="#">
+							<span class="mail-tag badge badge-pink"></span>
+							<span class="pink">我发布过的</span>
+						</a>
+					</li>
+	
+					<li>
+						<a data-toggle="tab" href="#">
+							<span class="mail-tag badge badge-success"></span>
+							<span class="green">我评论过的</span>
+						</a>
+					</li>
+	
+					<li>
+						<a data-toggle="tab" href="#">
+							<span class="mail-tag badge badge-info"></span>
+							<span class="blue">我关注的</span>
+						</a>
+					</li>
+				</ul>
+			</li><!-- /.dropdown -->
+		</ul>
+	
+		<div class="tab-content no-border no-padding">
+			<div id="inbox" class="tab-pane in active">
+				<div class="message-container">
+					<!-- #section:pages/inbox.navbar -->
+					<div id="id-message-list-navbar" class="message-navbar clearfix">
+						<div class="message-bar">
+							<div class="message-infobar" id="id-message-infobar">
+								<span class="blue bigger-150">公告:</span>
+								<span class="grey bigger-110">(发布一些公告信息。。。。)</span>
+							</div>
+						</div>	
+						<div>
+							<div class="messagebar-item-left">
+								<label class="inline middle">
+									<input type="checkbox" id="id-toggle-all" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								&nbsp;
+								<div class="inline position-relative">
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+										<i class="ace-icon fa fa-caret-down bigger-125 middle"></i>
+									</a>
+	
+									<ul class="dropdown-menu dropdown-lighter dropdown-100">
+										<li>
+											<a id="id-select-message-all" href="#">全选</a>
+										</li>
+	
+										<li>
+											<a id="id-select-message-none" href="#">全不选</a>
+										</li>
+	
+										<li>
+											<a id="id-select-message-unread" href="#">反选</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+	
+							<div class="messagebar-item-right">
+								<div class="inline position-relative">
+									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+										排序方式 &nbsp;
+										<i class="ace-icon fa fa-caret-down bigger-125"></i>
+									</a>
+	
+									<ul class="dropdown-menu dropdown-lighter dropdown-menu-right dropdown-100">
+										<li>
+											<a href="#">
+												<i class="ace-icon fa fa-check green"></i>
+												最近回复
+											</a>
+										</li>
+	
+										<li>
+											<a href="#">
+												<i class="ace-icon fa fa-check invisible"></i>
+												最新发布
+											</a>
+										</li>
+	
+										<li>
+											<a href="#">
+												<i class="ace-icon fa fa-check invisible"></i>
+												人气最高
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+	
+							<!-- #section:pages/inbox.navbar-search -->
+							<div class="nav-search minimized">
+								<form class="form-search">
+									<span class="input-icon">
+										<input type="text" autocomplete="off" class="input-small nav-search-input" placeholder="论坛内搜索" />
+										<i class="ace-icon fa fa-search nav-search-icon"></i>
+									</span>
+								</form>
+							</div>	
+							<!-- /section:pages/inbox.navbar-search -->
+						</div>
+					</div>
+					
+	
+					<!-- /section:pages/inbox.navbar -->
+					<div class="message-list-container">
+						<!-- #section:pages/inbox.message-list -->
+						<div class="message-list" id="message-list">
+							<!-- #section:pages/inbox.message-list.item -->
+							
+							<div class="message-item message-unread">
+								<label class="inline"  >
+									<input type="checkbox" class="ace"/>
+									<span class="lbl" ></span>
+								</label>
+	
+								<span class="sender" title="发布人：admin">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									admin
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+								
+								<span class="summary">
+									<span class="badge badge-info" title="回复数：8">8</span>
+									<span class="text">
+										置顶话题话题新话题新话题新话题新话题新话题新话题新话题
+									</span>
+								</span>
+							</div>
+							
+							<div class="message-item message-unread">
+								<label class="inline">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								<span class="sender" title="发布人：admin">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									admin
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+	
+								<span class="summary">
+									<span class="badge badge-info" title="回复数：128">128</span>
+									<span class="text">
+										新话题新话题新话题新话题新话题新话题新话题新话题
+									</span>
+								</span>
+							</div>							
+	
+							<!-- #section:pages/inbox.message-list.item -->
+							<div class="message-item">
+								<label class="inline">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								<span class="sender" title="发布人：Philip Markov">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									Philip Markov 
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+	
+								<span class="summary">
+									<span class="badge badge-grey" title="回复数：7">7</span>
+									<span class="text">
+										Photo booth beard raw denim letterpress vegan
+									</span>
+								</span>
+							</div>
+	
+							<!-- #section:pages/inbox.message-list.item -->
+							<div class="message-item">
+								<label class="inline">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								<span class="sender" title="发布人：Sabrina">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									Sabrina 
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+	
+								<span class="summary">
+									<span class="badge badge-grey" title="回复数：27">27</span>
+									<span class="text">
+										Nullam quis risus eget urna mollis ornare
+									</span>
+								</span>
+							</div>							
+	
+							<!-- #section:pages/inbox.message-list.item -->
+							<div class="message-item">
+								<label class="inline">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								<span class="sender" title="发布人：Doctor Gomenz">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									Doctor Gomenz 
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+	
+								<span class="summary">
+									<span class="badge badge-grey" title="回复数：37">37</span>
+									<span class="text">
+										Vim te vivendo convenire, summo fuisset
+									</span>
+								</span>
+							</div>
+	
+							<!-- #section:pages/inbox.message-list.item -->
+							<div class="message-item">
+								<label class="inline">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+	
+								<span class="sender" title="发布人：Robin Hood">
+									<i class="ace-icon glyphicon glyphicon-user"></i>
+									Robin Hood 
+								</span>
+								
+								<span class="time" style="width:150px" title="最近回复时间/发布时间">
+									2015-07-02&nbsp;/&nbsp;2015-07-01
+								</span>
+	
+								<span class="summary">
+									<span class="badge badge-grey" title="回复数：47">47</span>
+									<span class="text">
+										No eos veniam equidem mentitum, his porro
+									</span>
+								</span>
+							</div>
 
-                    <div class="widget-body">
-                        <div class="widget-main">
-                            <ul class="list-unstyled spaced2" style="text-align:center">
-                                <li>
-                                    中外联合公司
-                                </li>
+						</div>
+	
+						<!-- /section:pages/inbox.message-list -->
+					</div>
+	
+					<!-- #section:pages/inbox.message-footer -->
+					<div class="message-footer clearfix">
+						<div class="pull-left"> 151 messages total </div>
+	
+						<div class="pull-right">
+							<div class="inline middle"> page 1 of 16 </div>
+	
+							&nbsp; &nbsp;
+							<ul class="pagination middle">
+								<li class="disabled">
+									<span>
+										<i class="ace-icon fa fa-step-backward middle"></i>
+									</span>
+								</li>
+	
+								<li class="disabled">
+									<span>
+										<i class="ace-icon fa fa-caret-left bigger-140 middle"></i>
+									</span>
+								</li>
+	
+								<li>
+									<span>
+										<input value="1" maxlength="3" type="text" />
+									</span>
+								</li>
+	
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-caret-right bigger-140 middle"></i>
+									</a>
+								</li>
+	
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-step-forward middle"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div><!-- /.tab-content -->
+	</div><!-- /.tabbable -->
 
-                                <li>
-                                    年存款突破2亿
-                                </li>
-
-                                <li>
-                                    交通便利，坐落于大山坡
-                                </li>
-
-                                <li>
-                                    银行用户已达3000万
-                                </li>
-
-                                <li>
-                                    国家重点扶持企业
-                                </li>
-
-                                <li>
-                                    全球金融界的摇篮
-                                </li>
-                            </ul>
-
-                            <hr>
-                            <div class="price">
-                                力争世界五百强
-                            </div>
-                        </div>
-
-                        <div>
-                            <a href="#" class="btn btn-block btn-danger">
-                                <span>舜泰银行</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6 col-sm-3 pricing-box">
-                <div class="widget-box widget-color-orange">
-                    <div class="widget-header">
-                        <h5 class="widget-title bigger lighter">顾客业务</h5>
-                    </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main">
-                            <ul class="list-unstyled spaced2" style="text-align:center">
-                                <li>
-                                    个人贷款
-                                </li>
-
-                                <li>
-                                    个人理财
-                                </li>
-
-                                <li>
-                                    出国金融
-                                </li>
-
-                                <li>
-                                    存款账户
-                                </li>
-
-                                <li>
-                                    缴纳费用
-                                </li>
-
-                                <li>
-                                    资金代理
-                                </li>
-                            </ul>
-
-                            <hr>
-                            <div class="price">
-                                顾客永远是我们的上帝
-                            </div>
-                        </div>
-
-                        <div>
-                            <a href="#" class="btn btn-block btn-warning">
-                                <span>个人信息管理</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6 col-sm-3 pricing-box">
-                <div class="widget-box widget-color-blue">
-                    <div class="widget-header">
-                        <h5 class="widget-title bigger lighter">金融市场</h5>
-                    </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main">
-                            <ul class="list-unstyled spaced2" style="text-align:center">
-                                <li>
-                                    宏观经济研究
-                                </li>
-
-                                <li>
-                                    外汇市场研究
-                                </li>
-
-                                <li>
-                                    黄金市场研究
-                                </li>
-
-                                <li>
-                                    债券市场研究
-                                </li>
-
-                                <li>
-                                    中银分析
-                                </li>
-
-                                <li>
-                                    理财产品
-                                </li>
-                            </ul>
-
-                            <hr>
-                            <div class="price">
-                                金融界我们眼光独到
-                            </div>
-                        </div>
-
-                        <div>
-                            <a href="#" class="btn btn-block btn-primary">
-                                <span>金融市场</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-6 col-sm-3 pricing-box">
-                <div class="widget-box widget-color-green">
-                    <div class="widget-header">
-                        <h5 class="widget-title bigger lighter">公司金融</h5>
-                    </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main">
-                            <ul class="list-unstyled spaced2" style="text-align:center">
-                                <li>
-                                    公司融资服务
-                                </li>
-
-                                <li>
-                                    贸易金融服务
-                                </li>
-
-                                <li>
-                                    人民币结算服务
-                                </li>
-
-                                <li>
-                                    全球公司金融
-                                </li>
-
-                                <li>
-                                    养老金服务
-                                </li>
-
-                                <li>
-                                    跨境人民币服务
-                                </li>
-                            </ul>
-
-                            <hr>
-                            <div class="price">
-                                为中国提供更优质的服务
-                            </div>
-                        </div>
-
-                        <div>
-                            <a href="#" class="btn btn-block btn-success">
-                                <i class="ace-icon fa fa-shopping-cart bigger-110"></i>
-                                <span>企业市场</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- /section:pages/pricing.large -->
-        </div>
+</div>
 } {
 
 }
