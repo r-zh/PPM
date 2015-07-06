@@ -27,6 +27,9 @@ POST   /articles                                 controllers.Application.saveArt
 # Project
 GET    /projects/publish                         controllers.Application.publishProject()
 GET    /projects/show                            controllers.Application.showProject()
-
+# Task
+GET    /lesson/add                               controllers.Application.lessonAdd()
+GET    /note/show                                controllers.Application.noteShow()
+GET    /chapter/add                              controllers.Application.chapterAdd()
 # Map static resources from the /public folder to the /assets URL path
 GET    /assets/*file                             controllers.Assets.at(path="/public", file)

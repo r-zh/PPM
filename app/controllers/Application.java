@@ -68,6 +68,15 @@ public class Application extends Controller {
         return ok(showProject.render());
     }
 
+    public static Result lessonAdd() {
+        return ok(lessonAdd.render());
+    }
+    public static Result noteShow() {
+        return ok(noteShow.render());
+    }
+    public static Result chapterAdd() {
+        return ok(chapter.render());
+    }
 /*    public static Result dummySavePublishedProject() {
         // 从提交的表单中获取数据
         Form<ProjectRequestForm> form = Form.form(ProjectRequestForm.class)

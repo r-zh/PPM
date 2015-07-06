@@ -68,7 +68,7 @@
         <script src="@routes.Assets.at("javascripts/main.js")"></script>
 
         <script>
-            $(document).ready(function() {
+            $(document).residebar-shortcutsady(function() {
                 $('#foo').click(function() {
                     
                 });
@@ -420,18 +420,18 @@
 
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                        <button class="btn btn-success">
+                        <a class="btn btn-success" href="@controllers.routes.Application.lessonAdd()">
                             <i class="ace-icon fa fa-signal"></i>
-                        </button>
+                        </a>
 
-                        <button class="btn btn-info">
+                        <a class="btn btn-info" href="@controllers.routes.Application.noteShow()">
                             <i class="ace-icon fa fa-pencil"></i>
-                        </button>
+                        </a>
 
                         <!-- #section:basics/sidebar.layout.shortcuts -->
-                        <button class="btn btn-warning">
+                        <a class="btn btn-warning" href="@controllers.routes.Application.chapterAdd()">
                             <i class="ace-icon fa fa-users"></i>
-                        </button>
+                        </a>
 
                         <button class="btn btn-danger">
                             <i class="ace-icon fa fa-cogs"></i>
