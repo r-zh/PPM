@@ -1,371 +1,711 @@
-@layouts.basicLayout() {
-<div class="page-header">
-    <h1>
-        E-learning论坛
-        <small>
-            <i class="ace-icon fa fa-angle-double-right"></i>
-           	 欢迎使用
-        </small>
-    </h1>
-</div><!-- /.page-header -->
+@()
 
-<div class="row">
-	<div class="tabbable">
-		<ul id="inbox-tabs" class="inbox-tabs nav nav-tabs padding-16 tab-size-bigger tab-space-1">
-			<!-- #section:pages/inbox.compose-btn -->
-			<li class="li-new-mail pull-right">
-				<a data-toggle="tab" href="#" class="btn-new-mail">
-					<span class="btn btn-purple no-border">
-						<i class="ace-icon fa fa-envelope bigger-130"></i>
-						<span class="bigger-110">发布新主题</span>
-					</span>
-				</a>
-			</li>
-	
-			<!-- /section:pages/inbox.compose-btn -->
-			<li class="active">
-				<a data-toggle="tab" href="#" data-target="">
-					<i class="blue ace-icon fa fa-inbox bigger-130"></i>
-					<span class="bigger-110">最新发布</span>
-				</a>
-			</li>
-	
-			<li>
-				<a data-toggle="tab" href="#" data-target="">
-					<i class="orange ace-icon fa fa-location-arrow bigger-130"></i>
-					<span class="bigger-110">答疑版块</span>
-				</a>
-			</li>
-	
-			<li>
-				<a data-toggle="tab" href="#" data-target="">
-					<i class="green ace-icon fa fa-pencil bigger-130"></i>
-					<span class="bigger-110">交流版块</span>
-				</a>
-			</li>
-	
-			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-					<i class="pink ace-icon fa fa-tags bigger-130"></i>
-	
-					<span class="bigger-110">
-						我参与的
-						<i class="ace-icon fa fa-caret-down"></i>
-					</span>
-				</a>
-	
-				<ul class="dropdown-menu dropdown-light-blue dropdown-125">
-					<li>
-						<a data-toggle="tab" href="#">
-							<span class="mail-tag badge badge-pink"></span>
-							<span class="pink">我发布过的</span>
-						</a>
-					</li>
-	
-					<li>
-						<a data-toggle="tab" href="#">
-							<span class="mail-tag badge badge-success"></span>
-							<span class="green">我评论过的</span>
-						</a>
-					</li>
-	
-					<li>
-						<a data-toggle="tab" href="#">
-							<span class="mail-tag badge badge-info"></span>
-							<span class="blue">我关注的</span>
-						</a>
-					</li>
-				</ul>
-			</li><!-- /.dropdown -->
-		</ul>
-	
-		<div class="tab-content no-border no-padding">
-			<div id="inbox" class="tab-pane in active">
-				<div class="message-container">
-					<!-- #section:pages/inbox.navbar -->
-					<div id="id-message-list-navbar" class="message-navbar clearfix">
-						<div class="message-bar">
-							<div class="message-infobar" id="id-message-infobar">
-								<span class="blue bigger-150">公告:</span>
-								<span class="grey bigger-110">(发布一些公告信息。。。。)</span>
-							</div>
-						</div>	
-						<div>
-							<div class="messagebar-item-left">
-								<label class="inline middle">
-									<input type="checkbox" id="id-toggle-all" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								&nbsp;
-								<div class="inline position-relative">
-									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-										<i class="ace-icon fa fa-caret-down bigger-125 middle"></i>
-									</a>
-	
-									<ul class="dropdown-menu dropdown-lighter dropdown-100">
-										<li>
-											<a id="id-select-message-all" href="#">全选</a>
-										</li>
-	
-										<li>
-											<a id="id-select-message-none" href="#">全不选</a>
-										</li>
-	
-										<li>
-											<a id="id-select-message-unread" href="#">反选</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-	
-							<div class="messagebar-item-right">
-								<div class="inline position-relative">
-									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-										排序方式 &nbsp;
-										<i class="ace-icon fa fa-caret-down bigger-125"></i>
-									</a>
-	
-									<ul class="dropdown-menu dropdown-lighter dropdown-menu-right dropdown-100">
-										<li>
-											<a href="#">
-												<i class="ace-icon fa fa-check green"></i>
-												最近回复
-											</a>
-										</li>
-	
-										<li>
-											<a href="#">
-												<i class="ace-icon fa fa-check invisible"></i>
-												最新发布
-											</a>
-										</li>
-	
-										<li>
-											<a href="#">
-												<i class="ace-icon fa fa-check invisible"></i>
-												人气最高
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-	
-							<!-- #section:pages/inbox.navbar-search -->
-							<div class="nav-search minimized">
-								<form class="form-search">
-									<span class="input-icon">
-										<input type="text" autocomplete="off" class="input-small nav-search-input" placeholder="论坛内搜索" />
-										<i class="ace-icon fa fa-search nav-search-icon"></i>
-									</span>
-								</form>
-							</div>	
-							<!-- /section:pages/inbox.navbar-search -->
-						</div>
+@layouts.basicLayout {
+
+<div class="page-header">
+    <img src="@routes.Assets.at("images/title.png")">
+</div>
+
+} {
+
+<div class="col-xs-7" style="margin-left:25px;">
+	<div class="row">
+		<div class="widget-box transparent">
+			<div class="widget-header">
+				<h4 class="widget-title lighter">课程推荐</h4>
+			</div>
+		
+			<div class="widget-body">
+				<div class="widget-main col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:200px">
 					</div>
 					
-	
-					<!-- /section:pages/inbox.navbar -->
-					<div class="message-list-container">
-						<!-- #section:pages/inbox.message-list -->
-						<div class="message-list" id="message-list">
-							<!-- #section:pages/inbox.message-list.item -->
-							
-							<div class="message-item message-unread">
-								<label class="inline"  >
-									<input type="checkbox" class="ace"/>
-									<span class="lbl" ></span>
-								</label>
-	
-								<span class="sender" title="发布人：admin">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									admin
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-								
-								<span class="summary">
-									<span class="badge badge-info" title="回复数：8">8</span>
-									<span class="text">
-										置顶话题话题新话题新话题新话题新话题新话题新话题新话题
-									</span>
-								</span>
-							</div>
-							
-							<div class="message-item message-unread">
-								<label class="inline">
-									<input type="checkbox" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								<span class="sender" title="发布人：admin">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									admin
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-	
-								<span class="summary">
-									<span class="badge badge-info" title="回复数：128">128</span>
-									<span class="text">
-										新话题新话题新话题新话题新话题新话题新话题新话题
-									</span>
-								</span>
-							</div>							
-	
-							<!-- #section:pages/inbox.message-list.item -->
-							<div class="message-item">
-								<label class="inline">
-									<input type="checkbox" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								<span class="sender" title="发布人：Philip Markov">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									Philip Markov 
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-	
-								<span class="summary">
-									<span class="badge badge-grey" title="回复数：7">7</span>
-									<span class="text">
-										Photo booth beard raw denim letterpress vegan
-									</span>
-								</span>
-							</div>
-	
-							<!-- #section:pages/inbox.message-list.item -->
-							<div class="message-item">
-								<label class="inline">
-									<input type="checkbox" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								<span class="sender" title="发布人：Sabrina">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									Sabrina 
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-	
-								<span class="summary">
-									<span class="badge badge-grey" title="回复数：27">27</span>
-									<span class="text">
-										Nullam quis risus eget urna mollis ornare
-									</span>
-								</span>
-							</div>							
-	
-							<!-- #section:pages/inbox.message-list.item -->
-							<div class="message-item">
-								<label class="inline">
-									<input type="checkbox" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								<span class="sender" title="发布人：Doctor Gomenz">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									Doctor Gomenz 
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-	
-								<span class="summary">
-									<span class="badge badge-grey" title="回复数：37">37</span>
-									<span class="text">
-										Vim te vivendo convenire, summo fuisset
-									</span>
-								</span>
-							</div>
-	
-							<!-- #section:pages/inbox.message-list.item -->
-							<div class="message-item">
-								<label class="inline">
-									<input type="checkbox" class="ace" />
-									<span class="lbl"></span>
-								</label>
-	
-								<span class="sender" title="发布人：Robin Hood">
-									<i class="ace-icon glyphicon glyphicon-user"></i>
-									Robin Hood 
-								</span>
-								
-								<span class="time" style="width:150px" title="最近回复时间/发布时间">
-									2015-07-02&nbsp;/&nbsp;2015-07-01
-								</span>
-	
-								<span class="summary">
-									<span class="badge badge-grey" title="回复数：47">47</span>
-									<span class="text">
-										No eos veniam equidem mentitum, his porro
-									</span>
-								</span>
-							</div>
-
-						</div>
-	
-						<!-- /section:pages/inbox.message-list -->
+					<div class="row">
+						<a href="#" class="blue bigger-150">数学文化</a>
 					</div>
-	
-					<!-- #section:pages/inbox.message-footer -->
-					<div class="message-footer clearfix">
-						<div class="pull-left"> 151 messages total </div>
-	
-						<div class="pull-right">
-							<div class="inline middle"> page 1 of 16 </div>
-	
-							&nbsp; &nbsp;
-							<ul class="pagination middle">
-								<li class="disabled">
-									<span>
-										<i class="ace-icon fa fa-step-backward middle"></i>
-									</span>
-								</li>
-	
-								<li class="disabled">
-									<span>
-										<i class="ace-icon fa fa-caret-left bigger-140 middle"></i>
-									</span>
-								</li>
-	
-								<li>
-									<span>
-										<input value="1" maxlength="3" type="text" />
-									</span>
-								</li>
-	
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-caret-right bigger-140 middle"></i>
-									</a>
-								</li>
-	
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-step-forward middle"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						</p>
 					</div>
+				</div>
+				<div class="widget-main padding-6 col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:200px">
+					</div>
+					
+					<div class="row">
+						<a href="#" class="blue bigger-150">美国文学</a>
+					</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						</p>
+					</div>
+				</div>
+				
+				<div class="widget-main padding-6 col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:200px">
+					</div>
+					
+					<div class="row">
+						<a href="#" class="blue bigger-150">几种常见的心理学</a>
+					</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						</p>
+					</div>
+				</div>
+				
+				<div class="widget-main padding-6 col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:200px">
+					</div>
+					
+					<div class="row">
+						<a href="#" class="blue bigger-150">spark+scala课程包</a>
+					</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						</p>
+					</div>
+				</div>
+				
+				<div class="widget-main padding-6 col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:200px">
+					</div>
+					
+					<div class="row">
+						<a href="#" class="blue bigger-150">spark+scala课程包</a>
+					</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						</p>
+					</div>
+				</div>
+				
+				<div class="widget-main padding-6 col-xs-4" style="padding:20px">
+					<div class="row">
+						<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:200px">
+					</div>
+					
+					<div class="row">
+						<a href="#" class="blue bigger-150">spark+scala课程包</a>
+					</div>
+					
+					<div class="row">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 	
+	<div class="row">
+		<div class="widget-box transparent ui-sortable-handle">
+			<div class="widget-header">
+				<h4 class="widget-title lighter">课程排行</h4>
+				
+				<div class="widget-toolbar no-border">
+					<ul class="nav nav-tabs" id="myTab2">
+						<li class="active">
+							<a data-toggle="tab" href="#all">全部</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab2">数学</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab3">历史</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab4">文学</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab5">IT</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab6">心理</a>
+						</li>
+						
+						<li class="">
+							<a data-toggle="tab" href="#tab7">法律</a>
+						</li>
+					</ul>
 				</div>
 			</div>
-		</div><!-- /.tab-content -->
-	</div><!-- /.tabbable -->
+		
+			<div class="widget-body">
+				<div class="widget-main padding-12 no-padding-left no-padding-right">
+					<div class="tab-content padding-4">
+						<div id="all" class="tab-pane active">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">数学文化</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">美国文学</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">几种常见的心理学</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">spark+scala课程包</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							
+						</div>
+					
+						<div id="tab2" class="tab-pane">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">数学文化</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">几何代数</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">微积分</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">微积分</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							
+						</div>
+						
+						<div id="tab3" class="tab-pane ">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">建筑史</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">三国史</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">西汉史</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">spark+scala课程包</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>							
+						</div>
+						
+						<div id="tab4" class="tab-pane ">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">但丁《神曲》解读</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">歌德《浮士德》解读</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">美国文学</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">spark+scala课程包</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>							
+						</div>
+						
+						<div id="tab5" class="tab-pane ">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">微信公众平台的开发入门</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">安卓5.0新特征详解</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">ios开发技术</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">spark+scala课程包</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							
+						</div>
+						
+						<div id="tab6" class="tab-pane ">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">心理学史</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">心理学的研究</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">几种常见的心理学</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">spark+scala课程包</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>							
+						</div>
+						
+						<div id="tab7" class="tab-pane ">
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">法的本质和作用</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover2.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">法的体系</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover3.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">法律的历史发展</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							<hr>
+							
+							<div class="row">
+								<div class="col-xs-3">
+									<img src="@routes.Assets.at("images/course_cover4.jpg")" style="width:150px; padding-left:10px;">
+								</div>
+								<div class="col-xs-9">
+									<a href="#" class="bigger-150">法律的历史发展</a>
+									<span class="grey pull-right">1234人已学习</span>									
+									<p>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>
+
+<div class="col-xs-4" style="margin-left:40px;">
+
+	<div class="row" style="padding:10px;">
+		<form class="form-search">
+			<span class="input-icon align-middle">
+				<i class="ace-icon fa fa-search"></i>
+
+				<input type="text" class="search-query" size="30">
+			</span>
+			
+			<div class="btn-group">
+				<button data-toggle="dropdown" class="btn btn-info btn-sm no-radius dropdown-toggle" style="height:34px;">
+					搜索
+					<span class="ace-icon fa fa-caret-down icon-on-right"></span>
+				</button>
+	
+				<ul class="dropdown-menu dropdown-info dropdown-menu-right">
+					<li>
+						<a href="#">搜课程</a>
+					</li>
+	
+					<li>
+						<a href="#">搜帖子</a>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	
+	<div class="input-group">
+		<input type="text" class="form-control" name="message">
+		<span class="input-group-btn">
+			<div class="btn-group">
+				<button data-toggle="dropdown" class="btn btn-info btn-sm no-radius dropdown-toggle" style="height:34px;">
+					搜索
+					<span class="ace-icon fa fa-caret-down icon-on-right"></span>
+				</button>
+	
+				<ul class="dropdown-menu dropdown-info dropdown-menu-right">
+					<li>
+						<a href="#">搜课程</a>
+					</li>
+	
+					<li>
+						<a href="#">搜帖子</a>
+					</li>
+				</ul>
+			</div>
+		</span>
+	</div>
+	
+	<div class="widget-box transparent" style="padding-top:10px;">
+		<div class="widget-header">
+			<h4 class="widget-title lighter">最新资讯</h4>
+		</div>
+	
+		<div class="widget-body">
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">微信公众平台的开发入门开课啦</font></a>
+				<span class="grey pull-right">2015-07-10</span>												
+			</div>	
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">安卓5.0新特征详解</font></a>
+				<span class="grey pull-right">2015-07-10</span>												
+			</div>
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">ios开发技术</font></a>
+				<span class="grey pull-right">2015-07-10</span>												
+			</div>
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">spark+scala课程包</font></a>
+				<span class="grey pull-right">2015-07-10</span>												
+			</div>			
+		</div>
+	</div>
+	
+	<div class="widget-box transparent" style="padding-top:10px;">
+		<div class="widget-header">
+			<h4 class="widget-title lighter">热门帖子</h4>
+		</div>
+	
+		<div class="widget-body">
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">微信公众平台的开发入门课程交流贴</font></a>
+				<span class="grey pull-right">234人回复</span>												
+			</div>	
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">安卓5.0新特征详解</font></a>
+				<span class="grey pull-right">234人回复</span>												
+			</div>
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">ios开发技术</font></a>
+				<span class="grey pull-right">234人回复</span>												
+			</div>
+			
+			<div class="widget-main padding-6">				
+				<a href="#" class="bigger-110"><font color="#000000">spark+scala课程包</font></a>
+				<span class="grey pull-right">234人回复</span>												
+			</div>			
+		</div>
+	</div>
+
+</div>
+
 } {
+<script>
+
+</script>
 
 }
